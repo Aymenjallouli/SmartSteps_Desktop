@@ -1,5 +1,4 @@
 package Controller;
-
 import entities.Cour;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,39 +12,31 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import services.ServiceCour;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Comparator;
 import java.util.ResourceBundle;
 
-public class AfficherCoursController implements Initializable {
 
+public class AfficherCourEtudiantController implements Initializable {
     @FXML
     private ListView<Cour> listcour;
 
-    @FXML
-    private Button ModifierCour;
-
-    @FXML
-    private Button Retour;
 
 
-    @FXML
-    private Button SupprimerCour;
+
 
     @FXML
     private TextField searchField;
-    @FXML
-    private Button AfficherUnite;
+
 
     private ObservableList<Cour> coursList;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        listcour.setCellFactory(listView -> new ListCell<Cour>() {
+        listcour.setCellFactory(listView -> new ListCell<>() {
             @Override
             protected void updateItem(Cour cour, boolean empty) {
                 super.updateItem(cour, empty);
@@ -57,24 +48,11 @@ public class AfficherCoursController implements Initializable {
             }
         });
 
+
         loadCours();
     }
 
-    @FXML
-    void AjouterCour(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/ajouterCours.fxml"));
-            Scene scene = new Scene(root);
 
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            stage.setScene(scene);
-            stage.show();
-
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
 
 
     private void loadCours() {
@@ -87,47 +65,8 @@ public class AfficherCoursController implements Initializable {
         }}
 
 
-    @FXML
-    void SupprimerCour() {
-        Cour selectedCour = listcour.getSelectionModel().getSelectedItem();
-        if (selectedCour != null) {
-            try {
-                ServiceCour serviceCour = new ServiceCour();
-                serviceCour.supprimer(selectedCour);
 
-                listcour.getItems().remove(selectedCour);
-                showAlert(Alert.AlertType.INFORMATION, "Suppression réussie", "Le cour a été supprimé avec succès.");
-            } catch (SQLException e) {
-                showAlert(Alert.AlertType.ERROR, "Erreur", "Une erreur s'est produite lors de la suppression du cour : " + e.getMessage());
-            }
-        } else {
-            showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Veuillez sélectionner un cour à supprimer.");
-        }
-    }
 
-    @FXML
-    void ModifierCour() {
-        Cour selectedCour = listcour.getSelectionModel().getSelectedItem();
-        if (selectedCour != null) {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierCours.fxml"));
-                Parent root = loader.load();
-
-                Scene scene = listcour.getScene();
-
-                scene.setRoot(root);
-
-                ModifierCoursController modifierCoursController = loader.getController();
-
-                modifierCoursController.setCourData(selectedCour);
-            } catch (Exception e) {
-                e.printStackTrace();
-                showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible de modifier le cours.");
-            }
-        } else {
-            showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Veuillez sélectionner un cours à modifier.");
-        }
-    }
 
     @FXML
     void Retour(ActionEvent event) {
@@ -137,10 +76,10 @@ public class AfficherCoursController implements Initializable {
 
             Stage newStage = new Stage();
             newStage.setTitle("Main Window");
-
             Scene scene = new Scene(root);
             newStage.setScene(scene);
             newStage.show();
+
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {
@@ -154,12 +93,13 @@ public class AfficherCoursController implements Initializable {
         Cour selectedCour = listcour.getSelectionModel().getSelectedItem();
         if (selectedCour != null) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherUnite.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherUniteEtudiant.fxml"));
                 Parent root = loader.load();
 
-                AfficherUniteController uniteController = loader.getController();
+                AfficherUniteEtudiantController uniteController = loader.getController();
 
                 uniteController.setSelectedCour(selectedCour);
+
 
                 Stage currentStage = (Stage) listcour.getScene().getWindow();
                 currentStage.setScene(new Scene(root));
@@ -204,7 +144,9 @@ public class AfficherCoursController implements Initializable {
         alert.showAndWait();
     }
 
-    public void actualiserCours() {
+    public void actualiserCours()
+    {
         loadCours();
     }
 }
+

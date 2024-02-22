@@ -4,13 +4,18 @@ import entities.Cour;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import services.ServiceCour;
+import javafx.scene.control.DatePicker;
+import java.time.LocalDate;
+
+
 
 import java.io.IOException;
 import java.sql.Date;
@@ -34,77 +39,80 @@ public class ModifierCoursController {
     @FXML
     private DatePicker Date_fin;
 
+
+    private boolean validateFields() {
+        if (NOM_MATIERE.getText().isEmpty() || Date_debut.getValue() == null || Date_fin.getValue() == null) {
+            showAlert(Alert.AlertType.WARNING, "Champs obligatoires", "Veuillez remplir tous les champs obligatoires.");
+            return false;
+        }
+        return true;
+    }
+
+    private void showAlert(Alert.AlertType type, String title, String contentText) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setContentText(contentText);
+        alert.showAndWait();
+    }
     @FXML
     void ModifierCour(ActionEvent event) throws IOException, SQLException {
-        // Update the currentTerrain object with the new data from text fields
-        currentCour.setMatiere(NOM_MATIERE.getText());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate dateDebut = LocalDate.parse(Date_debut.getAccessibleText(), formatter);
-        LocalDate dateFin = LocalDate.parse(Date_fin.getAccessibleText(), formatter);
+        if (!validateFields()) {
+            return;
+        }
 
-        // Set the LocalDate objects to the currentcour
+        currentCour.setMatiere(NOM_MATIERE.getText());
+
+        LocalDate dateDebut = Date_debut.getValue();
+        LocalDate dateFin = Date_fin.getValue();
+
         currentCour.setDate_debut(Date.valueOf(dateDebut));
         currentCour.setDate_fin(Date.valueOf(dateFin));
 
-
-
-        // Save the updated terrain to the database
         ServiceCour st = new ServiceCour();
         try {
-            st.modifier(currentCour); // Assuming 'modifertr' is the method to save the changes
+            st.modifier(currentCour);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-        // After saving, transition back to the AffichageTerrainController view
-        returnToCourListView();
+        returnToCourListView(event);
     }
 
-    private void returnToCourListView() throws IOException {
+    private void returnToCourListView(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/AfficherCours.fxml"));
+        Scene scene = new Scene(root);
 
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherCours.fxml"));
-            NOM_MATIERE.getScene().setRoot(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-
-        }
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
     void Retour(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/MainWindow.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherCours.fxml"));
             NOM_MATIERE.getScene().setRoot(root);
         } catch (IOException e) {
             System.out.println(e.getMessage());
-
         }
-        // Implémentez la logique pour retourner à la vue précédente (si nécessaire)
     }
 
-    public void setCourData() {
-        setCourData(null);
-    }
+
 
     public void setCourData(Cour cour) {
-        // Sauvegarder l'objet Cour passé
         this.currentCour = cour;
 
         if (cour != null) {
-            // Afficher les données dans les champs de texte ou les étiquettes
             NOM_MATIERE.setText(cour.getMatiere());
-            Date_debut.setAccessibleText(cour.getDate_debut().toString()); // Utiliser toString() pour afficher la date
-            Date_fin.setAccessibleText(cour.getDate_fin().toString()); // Utiliser toString() pour afficher la date
+            Date_debut.setAccessibleText(cour.getDate_debut().toString()); // Assuming date is stored as a string
+            Date_fin.setAccessibleText(cour.getDate_fin().toString()); // Assuming date is stored as a string
         } else {
-            // Effacer les champs de texte ou les étiquettes si cour est null
+
             NOM_MATIERE.setText("");
             Date_debut.setAccessibleText("");
             Date_fin.setAccessibleText("");
         }
     }
-
-    // Méthode pour retourner à la vue précédente (AffichageCours.fxml)
 
 }

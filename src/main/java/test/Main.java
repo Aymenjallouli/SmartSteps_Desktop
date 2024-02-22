@@ -46,5 +46,8 @@ public class Main {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        finally {
+            MyDB.getInstance().closeConnection(); // Fermez la connexion à la base de données une fois les opérations terminées
+        }
     }
 }

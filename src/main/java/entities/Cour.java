@@ -1,9 +1,12 @@
 package entities;
 
+import services.ServiceUnite;
+
 import java.util.Date;
+import java.util.List;
 
 public class Cour {
-    private static int id_cour;
+    private  int id_cour;
     private String matiere;
     private Date date_debut;
     private Date date_fin;
@@ -36,7 +39,7 @@ public class Cour {
                 '}';
     }
 
-    public static int getId_cour() {
+    public int getId_cour() {
         return id_cour;
     }
 

@@ -6,63 +6,53 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.animation.FadeTransition?>
+<?import javafx.util.Duration?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainWindowController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e0e0e0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainWindowController">
    <children>
       <!-- Logo -->
-      <ImageView fitHeight="65.0" fitWidth="108.0">
+      <ImageView fitHeight="100.0" fitWidth="162.0" layoutX="219.0" layoutY="50.0">
          <image>
             <Image url="@images/1.png" />
          </image>
       </ImageView>
 
       <!-- Titre -->
-      <Text layoutX="123.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SmartSteps - Gestion des Cours" wrappingWidth="500.0">
+      <Text layoutX="123.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SmartSteps - Gestion des Cours" wrappingWidth="500.0">
          <font>
-            <Font size="24.0" />
+            <Font name="Arial" size="24.0" />
          </font>
       </Text>
 
-      <!-- Boutons -->
-      <Button fx:id="ajouterCourButton" layoutX="194.0" layoutY="140.0" mnemonicParsing="false" onAction="#AjouterCour" prefHeight="40.0" prefWidth="200.0">
+      <!-- Boutons avec animation -->
+      <Button fx:id="PROF" layoutX="194.0" layoutY="250.0" mnemonicParsing="false" onAction="#PROF" prefHeight="40.0" prefWidth="200.0" text="PROF">
          <style>
-            -fx-background-color: #3498db;
+            -fx-background-color: linear-gradient(to bottom, #3498db, #2980b9);
             -fx-background-radius: 5px;
             -fx-border-radius: 5px;
             -fx-text-fill: white;
             -fx-padding: 8px 16px;
+            -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);
          </style>
-         Ajouter un Cours
+         <text>
+            <Text text="Afficher Liste Cours" />
+         </text>
+
       </Button>
-      <Button fx:id="modifierCourButton" layoutX="194.0" layoutY="200.0" mnemonicParsing="false" onAction="#ModifierCour" prefHeight="40.0" prefWidth="200.0">
+      <Button fx:id="Etudiant" layoutX="194.0" layoutY="331.0" mnemonicParsing="false" onAction="#Etudiant" prefHeight="40.0" prefWidth="200.0" text="ETUDIANT">
          <style>
-            -fx-background-color: #3498db;
+            -fx-background-color: linear-gradient(to bottom, #3498db, #2980b9);
             -fx-background-radius: 5px;
             -fx-border-radius: 5px;
             -fx-text-fill: white;
             -fx-padding: 8px 16px;
+            -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);
          </style>
-         Modifier un Cours
-      </Button>
-      <Button fx:id="afficherCourButton" layoutX="194.0" layoutY="257.0" mnemonicParsing="false" onAction="#AfficherCour" prefHeight="40.0" prefWidth="200.0">
-         <style>
-            -fx-background-color: #3498db;
-            -fx-background-radius: 5px;
-            -fx-border-radius: 5px;
-            -fx-text-fill: white;
-            -fx-padding: 8px 16px;
-         </style>
-         Afficher List Cour
-      </Button>
-      <Button fx:id="Retour" layoutX="194.0" layoutY="317.0" mnemonicParsing="false" onAction="#Retour" prefHeight="40.0" prefWidth="200.0">
-         <style>
-            -fx-background-color: #3498db;
-            -fx-background-radius: 5px;
-            -fx-border-radius: 5px;
-            -fx-text-fill: white;
-            -fx-padding: 8px 16px;
-         </style>
-         Retour
+         <text>
+            <Text text="Retour" />
+         </text>
+
       </Button>
    </children>
 </AnchorPane>

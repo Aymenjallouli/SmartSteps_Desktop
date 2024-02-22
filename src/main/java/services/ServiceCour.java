@@ -59,16 +59,17 @@ public class ServiceCour implements IService<Cour> {
 
     @Override
     public void supprimer(Cour cour) throws SQLException {
+        String req = "DELETE FROM Cour WHERE id_cour = ?";
+        try (PreparedStatement pre = con.prepareStatement(req)) {
+            pre.setInt(1, cour.getId_cour());
+            pre.executeUpdate();
+        } catch (SQLException ex) {
+            throw new SQLException("Erreur lors de la suppression du cours : " + ex.getMessage());
+        }
 
     }
 
-   /* @Override
-    public void supprimer(Cour cour) throws SQLException {
-        String req = "DELETE FROM Cour WHERE id_cour = ?";
-        PreparedStatement pre = con.prepareStatement(req);
-        pre.setInt(1, cour.getId_cour());
-        pre.executeUpdate();
-    }*/
+
 
 
     @Override
@@ -86,18 +87,12 @@ public class ServiceCour implements IService<Cour> {
                 cours.add(a);
             }
         } catch (SQLException e) {
-            // Gérer l'exception ici ou la lancer à l'appelant
+
             throw e;
         }
         return cours;
     }
 
 
-    public void supprimer(int id_cour) throws SQLException {
-        String sql = "delete from Cour where id_cour = ?";
 
-        PreparedStatement preparedStatement = con.prepareStatement(sql);
-        preparedStatement.setInt(1, id_cour);
-        preparedStatement.executeUpdate();
-    }
 }

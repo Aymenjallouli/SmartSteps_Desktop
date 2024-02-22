@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AfficherCoursController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AfficherCourEtudiantController">
     <children>
         <!-- Logo -->
         <ImageView fitHeight="65.0" fitWidth="108.0" layoutX="8.0" layoutY="11.0">
@@ -43,12 +43,12 @@
         </Text>
 
         <!-- Boutons d'action -->
-        <Button fx:id="Retour" layoutX="8.0" layoutY="345.0" onAction="#Retour" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="Retour" /><Button fx:id="SupprimerCour" layoutX="600.0" layoutY="278.0" onAction="#SupprimerCour" prefHeight="33.0" prefWidth="143.0" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="Supprimer" />
-        <Button fx:id="ModifierCour" layoutX="600.0" layoutY="206.0" onAction="#ModifierCour" prefHeight="33.0" prefWidth="143.0" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="Modifier" />
+        <Button fx:id="Retour" layoutX="8.0" layoutY="345.0" onAction="#Retour" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="Retour" />
+
         <Button layoutX="600.0" layoutY="345.0" onAction="#trierParMatiere" prefHeight="33.0" prefWidth="143.0" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="Trier par matière" />
         <Button fx:id="AfficherUnite" layoutX="475.0" layoutY="345.0" onAction="#AfficherUnite" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="Afficher Unite" />
         <Button fx:id="rechercherParMatiere" layoutX="600.0" layoutY="77.0" onAction="#rechercherParMatiere" prefHeight="33.0" prefWidth="143.0" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="Rechercher" />
-        <Button fx:id="ajouterCourButton" layoutX="600.0" layoutY="143.0" onAction="#AjouterCour" prefHeight="33.0" prefWidth="143.0" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="Ajouter Un Cour" />
-      <Button fx:id="actualiserButton" layoutX="601.0" layoutY="10.0" onAction="#actualiserCours" prefHeight="33.0" prefWidth="143.0" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="REFRECH" />
+
+        <Button fx:id="actualiserButton" layoutX="601.0" layoutY="10.0" onAction="#actualiserCours" prefHeight="33.0" prefWidth="143.0" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="REFRECH" />
     </children>
 </AnchorPane>

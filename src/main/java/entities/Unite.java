@@ -1,60 +1,94 @@
 package entities;
 
-import java.util.Date;
-
 public class Unite {
-    public static int num_unite;
-    public static String Titre;
-    public static String Statut;
-    public static String Contenue;
 
-    public Unite(int num_unite, String titre, String statut, String contenue) {
+    private  int num_unite;
+    private String Titre;
+    private String Statut;
+    private String Contenue;
+    private int id_cour;
+    private Cour cour;
+    private byte[] contenuBytes;
+
+    public byte[] getContenuBytes() {
+        return contenuBytes;
+    }
+
+    public Unite(int num_unite, String titre, String statut, byte[] contenuBytes) {
         this.num_unite = num_unite;
         Titre = titre;
         Statut = statut;
+        this.contenuBytes = contenuBytes;
+    }
+
+    public void setContenuBytes(byte[] contenuBytes) {
+        this.contenuBytes = contenuBytes;
+    }
+
+
+
+    public Cour getCour() {
+        return cour;
+    }
+
+    public void setCour(Cour cour) {
+        this.cour = cour;
+    }
+
+    public Unite(int num_unite, String titre, String statut, String contenue) {
+        this.num_unite = num_unite;
+        this.Titre = titre;
+        this.Statut = statut;
+        this.Contenue = contenue;
+    }
+
+    public Unite(String titre, String statut, String contenue, int id_cour) {
+        Titre = titre;
+        Statut = statut;
         Contenue = contenue;
+        this.id_cour = id_cour;
     }
 
-    public Unite() {
-
+    public int getId_cour() {
+        return id_cour;
     }
 
-    public static int getNum_unite() {
+    public void setId_cour(int id_cour) {
+        this.id_cour = id_cour;
+    }
+
+    public Unite() {}
+
+    public int getNum_unite() {
         return num_unite;
     }
-
-    public static String getStatus() {
-        return Statut;
-    }
-
-
 
     public void setNum_unite(int num_unite) {
         this.num_unite = num_unite;
     }
 
-    public static String getTitre() {
+    public String getTitre() {
         return Titre;
     }
 
     public void setTitre(String titre) {
-        Titre = titre;
+        this.Titre = titre;
     }
 
-    public static String getStatut() {
+    public String getStatut() {
         return Statut;
     }
 
     public void setStatut(String statut) {
-        Statut = statut;
+        this.Statut = statut;
     }
 
-    public static String getContenue() {
+    public String getContenue() {
         return Contenue;
     }
 
     public void setContenue(String contenue) {
-        Contenue = contenue;
+        this.Contenue = contenue;
     }
 
     @Override
