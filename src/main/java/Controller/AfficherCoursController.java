@@ -8,8 +8,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import services.ServiceCour;
 
 import java.io.IOException;
@@ -183,21 +185,29 @@ public class AfficherCoursController implements Initializable {
 
 
     @FXML
-    void ModifierCour(ActionEvent event) throws IOException {
+    void ModifierCour(ActionEvent event) {
         Cour selectedCour = listcour.getSelectionModel().getSelectedItem();
         if (selectedCour != null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierCours.fxml"));
-            Parent root = loader.load();
+            try {
+                // Charger le fichier FXML de la vue ModifierCours.fxml
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierCours.fxml"));
+                Parent root = loader.load();
 
-            // Get the ModifierCoursController and set the Cour data
-            ModifierCoursController modifierCoursController = loader.getController();
-            modifierCoursController.SetCourData(selectedCour);
+                // Obtenir le contrôleur du fichier FXML chargé
+                ModifierCoursController modifierCoursController = loader.getController();
 
-            // Now set the scene
-            NomMatiere.getScene().setRoot(root);
-        } else {
-            // Handle case where no Cour is selected
-            // Show alert or log the error
+                // Passer les données du cours sélectionné au contrôleur
+                modifierCoursController.setCourData(selectedCour);
+
+                // Afficher la scène
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.show();
+
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 

@@ -1,7 +1,7 @@
 package services;
 
 import java.sql.SQLException;
-import java.util.List;
+
 import java.util.Set;
 
 public interface IService <T>{

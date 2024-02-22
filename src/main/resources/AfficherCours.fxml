@@ -5,17 +5,31 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AfficherCoursController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AfficherCoursController">
     <children>
-        <ListView fx:id="listcour" layoutX="46.0" layoutY="44.0" prefHeight="278.0" prefWidth="490.0" />
-        <Label layoutX="63.0" layoutY="14.0" text="NomMatiere" />
-        <Label layoutX="228.0" layoutY="14.0" text="Date_Debut" />
-        <Label layoutX="386.0" layoutY="14.0" text="Date_Fin" />
-        <Button fx:id="SupprimerCour" layoutX="208.0" layoutY="329.0" mnemonicParsing="false" onAction="#SupprimerCour" text="Supprimer" />
-        <Button fx:id="ModifierCour" layoutX="316.0" layoutY="329.0" mnemonicParsing="false" onAction="#ModifierCour" text="Modifier" />
-        <TextField fx:id="NomMatiere" layoutX="23.0" layoutY="329.0" />
-        <Button fx:id="Retour" layoutX="409.0" layoutY="329.0" mnemonicParsing="false" onAction="#Retour" text="Retour" />
-    </children>
+        <!-- Titre -->
+        <Label layoutX="50.0" layoutY="14.0" text="Liste des Cours" textFill="#3498db">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
 
+        <!-- Liste des cours -->
+        <ListView fx:id="listcour" layoutX="46.0" layoutY="44.0" prefHeight="278.0" prefWidth="490.0" />
+
+        <!-- Libellés -->
+        <Label layoutX="63.0" layoutY="324.0" text="Nom de la Matière" textFill="#3498db" />
+        <Label layoutX="228.0" layoutY="324.0" text="Date de Début" textFill="#3498db" />
+        <Label layoutX="386.0" layoutY="324.0" text="Date de Fin" textFill="#3498db" />
+
+        <!-- Champ de texte -->
+        <TextField fx:id="NomMatiere" layoutX="23.0" layoutY="344.0" />
+
+        <!-- Boutons -->
+        <Button fx:id="SupprimerCour" layoutX="208.0" layoutY="364.0" mnemonicParsing="false" onAction="#SupprimerCour" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Supprimer" />
+        <Button fx:id="ModifierCour" layoutX="316.0" layoutY="364.0" mnemonicParsing="false" onAction="#ModifierCour" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Modifier" />
+        <Button fx:id="Retour" layoutX="445.0" layoutY="364.0" mnemonicParsing="false" onAction="#Retour" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Retour" />
+    </children>
 </AnchorPane>

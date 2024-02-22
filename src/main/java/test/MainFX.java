@@ -11,11 +11,16 @@ public class MainFX extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/MainWindow.fxml"));
         Parent root = fxmlLoader.load();
-        Scene scene= new Scene(root);
+        Scene scene = new Scene(root);
+
+        // Lier le fichier CSS à la scène
+        scene.getStylesheets().add(getClass().getResource("/Style.css").toExternalForm());
+
         stage.setScene(scene);
-        stage.setTitle("Gerer Cours");
+        stage.setTitle("Gérer Cours");
         stage.show();
     }
+
     public static void main(String[] args){
         launch(args);
     }

@@ -14,6 +14,8 @@ import java.io.IOException;
 public class MainWindowController {
 
     @FXML
+    private Button Retour;
+    @FXML
     private Button AfficherCour;
 
     @FXML
@@ -26,10 +28,10 @@ public class MainWindowController {
     private Button SupprimerCour;
 
     @FXML
-    void AfficherCour(ActionEvent event) throws IOException{
+    void AfficherCour(ActionEvent event) throws IOException {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/AfficherCours.fxml"));
-            Scene scene= new Scene(root);
+            Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
@@ -45,7 +47,7 @@ public class MainWindowController {
     void AjouterCour(ActionEvent event) throws IOException {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/ajouterCours.fxml"));
-            Scene scene= new Scene(root);
+            Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
@@ -61,7 +63,7 @@ public class MainWindowController {
     void ModifierCour(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/ModifierCours.fxml"));
-            Scene scene= new Scene(root);
+            Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
@@ -74,19 +76,8 @@ public class MainWindowController {
     }
 
     @FXML
-    void SupprimerCour(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/SupprimerCours.fxml"));
-            Scene scene= new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
+    void Retour(ActionEvent event) {
 
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-
-        }
 
     }
-
 }

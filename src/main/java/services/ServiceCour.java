@@ -18,12 +18,21 @@ public class ServiceCour implements IService<Cour> {
 
     @Override
     public void ajouter(Cour cour) throws SQLException {
-        String req = "insert into Cour ( Matiere, Date_Debut, Date_fin) values (?, ?, ?, ?)";
-        PreparedStatement pre = con.prepareStatement(req);
-        pre.setString(2, cour.getMatiere());
-        pre.setDate(3, new java.sql.Date(cour.getDate_debut().getTime()));
-        pre.setDate(4, new java.sql.Date(cour.getDate_fin().getTime()));
+        String req = "insert into Cour (Matiere, Date_Debut, Date_fin) values (?, ?, ?)";
+        PreparedStatement pre = con.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
+        pre.setString(1, cour.getMatiere());
+        pre.setDate(2, new java.sql.Date(cour.getDate_debut().getTime()));
+        pre.setDate(3, new java.sql.Date(cour.getDate_fin().getTime()));
+
         pre.executeUpdate();
+
+        ResultSet rs = pre.getGeneratedKeys();
+        if (rs.next()) {
+            int id = rs.getInt(1); // récupérer l'ID généré automatiquement
+            cour.setId_cour(id); // définir l'ID généré automatiquement dans l'objet Cour
+        }
+        rs.close();
+        pre.close();
     }
 
     @Override

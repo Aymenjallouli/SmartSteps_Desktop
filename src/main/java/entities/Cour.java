@@ -14,6 +14,7 @@ public class Cour {
         this.date_debut = date_debut;
         this.date_fin = date_fin;
     }
+
     public Cour(String matiere, Date date_debut, Date date_fin) {
         this.matiere = matiere;
         this.date_debut = date_debut;

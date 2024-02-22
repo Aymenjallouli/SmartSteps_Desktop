@@ -1,27 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ModifierCoursController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ModifierCoursController">
    <children>
-      <Text layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier Cours" textAlignment="CENTER" wrappingWidth="601.0">
+      <!-- Logo -->
+      <ImageView fitHeight="40.0" fitWidth="79.0" layoutX="50.0" layoutY="20.0">
+         <image>
+            <Image url="@images/1.png" />
+         </image>
+      </ImageView>
+
+      <!-- Titre -->
+      <Text layoutX="175.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier Cours" textAlignment="CENTER" wrappingWidth="250.0">
          <font>
-            <Font size="67.0" />
+            <Font name="System Bold" size="32.0" />
          </font>
       </Text>
-      <TextField fx:id="ID_COUR" layoutX="236.0" layoutY="89.0" promptText="ID_COUR" text="ID_COUR" />
-      <TextField fx:id="NOM_MATIERE" layoutX="236.0" layoutY="146.0" promptText="ID_COUR" text="NOM_MATIERE" />
-      <DatePicker fx:id="Date_debut" layoutX="331.0" layoutY="210.0" prefHeight="25.0" prefWidth="18.0" />
-      <DatePicker fx:id="Date_fin" layoutX="331.0" layoutY="273.0" prefHeight="25.0" prefWidth="26.0" />
-      <Text layoutX="236.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATE_DEBUT" wrappingWidth="71.0" />
-      <Text layoutX="240.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATE_FIN" wrappingWidth="71.0" />
-      <Button fx:id="Modifier" layoutX="381.0" layoutY="345.0" mnemonicParsing="false" onAction="#ModifierCour" text="Modifier" />
-      <Button fx:id="Retour" layoutX="188.0" layoutY="345.0" mnemonicParsing="false" onAction="#Retour" text="Retour" />
+
+      <!-- Champ NOM_MATIERE -->
+      <TextField fx:id="NOM_MATIERE" layoutX="150.0" layoutY="177.0" prefWidth="300.0" promptText="NOM_MATIERE" text="NOM_MATIERE">
+         <effect>
+            <DropShadow color="#00000066" radius="5" spread="0.5" />
+         </effect>
+      </TextField>
+
+      <!-- Date de début -->
+      <DatePicker fx:id="Date_debut" layoutX="238.0" layoutY="232.0" prefHeight="25.0" prefWidth="212.0" />
+
+      <!-- Date de fin -->
+      <DatePicker fx:id="Date_fin" layoutX="238.0" layoutY="287.0" prefHeight="25.0" prefWidth="212.0" />
+
+      <!-- Libellé DATE_DEBUT -->
+      <Text layoutX="150.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATE_DEBUT" wrappingWidth="80.0">
+         <effect>
+            <DropShadow color="#00000066" radius="5" spread="0.5" />
+         </effect>
+      </Text>
+
+      <!-- Libellé DATE_FIN -->
+      <Text layoutX="150.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATE_FIN" wrappingWidth="113.0">
+         <effect>
+            <DropShadow color="#00000066" radius="5" spread="0.5" />
+         </effect>
+      </Text>
+
+      <!-- Bouton Modifier -->
+      <Button fx:id="Modifier" layoutX="214.0" layoutY="356.0" mnemonicParsing="false" onAction="#ModifierCour" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-text-fill: white;" text="Modifier">
+         <effect>
+            <DropShadow color="#00000066" radius="5" spread="0.5" />
+         </effect>
+      </Button>
+
+      <!-- Bouton Retour -->
+      <Button fx:id="Retour" layoutX="314.0" layoutY="356.0" mnemonicParsing="false" onAction="#Retour" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-text-fill: white;" text="Retour">
+         <effect>
+            <DropShadow color="#00000066" radius="5" spread="0.5" />
+         </effect>
+      </Button>
    </children>
 </AnchorPane>

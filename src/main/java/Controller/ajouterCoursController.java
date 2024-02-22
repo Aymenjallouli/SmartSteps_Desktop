@@ -5,18 +5,26 @@ import entities.Cour;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import services.ServiceCour;
 
+import javax.swing.text.html.ImageView;
+import java.awt.*;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class ajouterCoursController {
-    ServiceCour serviceCour= new ServiceCour();
+public class ajouterCoursController  {
+    ServiceCour serviceCour = new ServiceCour();
 
 
 
@@ -36,9 +44,6 @@ public class ajouterCoursController {
     private Button Retour;
 
 
-
-
-
     @FXML
     void AjouterCour(ActionEvent event) throws SQLException {
         String matiere = NomMatiere.getText();
@@ -48,19 +53,19 @@ public class ajouterCoursController {
         ServiceCour serviceCour = new ServiceCour();
         try {
             serviceCour.ajouter(new Cour(matiere, dateDebut, dateFin));
-            Alert alert= new Alert(Alert.AlertType.INFORMATION) ;
-            alert. setTitle ("Success");
-            alert. setContentText("Cour ajoute");
-            alert. showAndWait();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setContentText("Cour ajoute");
+            alert.showAndWait();
         } catch (SQLException e) {
             e.printStackTrace();
 
 
-            Alert alert= new Alert(Alert. AlertType. ERROR);
-            alert. setTitle("Error");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
             alert.setContentText(e.getMessage());
-            alert. showAndWait();
-    }
+            alert.showAndWait();
+        }
     }
 
 
@@ -69,11 +74,12 @@ public class ajouterCoursController {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/MainWindow.fxml"));
             NomMatiere.getScene().setRoot(root);
+
         } catch (IOException e) {
             System.out.println(e.getMessage());
 
         }
 
-    }
+    }}
 
-}
+
