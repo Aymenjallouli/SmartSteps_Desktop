@@ -14,6 +14,16 @@ public class User {
         this.typeUser = typeUser;
     }
 
+    public User(int idUser, int num_tel, String nomUser, String prenomUser, String pwd, String email, String typeUser) {
+        this.idUser = idUser;
+        this.num_tel = num_tel;
+        this.nomUser = nomUser;
+        this.prenomUser = prenomUser;
+        this.pwd = pwd;
+        this.email = email;
+        this.typeUser = typeUser;
+    }
+
     public User(int num_tel, String nomUser, String prenomUser, String pwd, String email, String typeUser) {
         this.num_tel = num_tel;
         this.nomUser = nomUser;

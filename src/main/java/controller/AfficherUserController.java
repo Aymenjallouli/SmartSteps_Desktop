@@ -31,6 +31,15 @@ public class AfficherUserController {
     private Button suppUser;
 
     @FXML
+    private Button trieenom;
+
+    @FXML
+    private TextField nomrechercher;
+
+    @FXML
+    private Button recherchenom;
+
+    @FXML
     void initialize() {
         ServiceUser st = new ServiceUser();
         try {
@@ -80,9 +89,6 @@ public class AfficherUserController {
             // Consider showing an alert to the user or logging the error to a file
         }
     }
-
-
-
 
     @FXML
     void modiUser(ActionEvent event) throws IOException {
@@ -148,6 +154,34 @@ public class AfficherUserController {
             alert.setContentText("Please select a user to delete.");
             alert.showAndWait();
         }
+
+    }
+
+    @FXML
+    void trieenom(ActionEvent event) {
+        ObservableList<User> users = listUser.getItems();
+        users.sort(Comparator.comparing(User::getNomUser));
+
+        // Mettez à jour la liste triée dans le ListView
+        listUser.setItems(users);
+
+    }
+
+    @FXML
+    void recherchenom(ActionEvent event) {
+        String nomRecherche = nomrechercher.getText().trim().toLowerCase(); // Obtenez le texte et supprimez les espaces inutiles
+
+        ObservableList<User> users = listUser.getItems();
+        ObservableList<User> result = FXCollections.observableArrayList();
+
+        for (User user : users) {
+            if (user.getNomUser().toLowerCase().contains(nomRecherche)) {
+                result.add(user);
+            }
+        }
+
+        // Mettez à jour la liste filtrée dans le ListView
+        listUser.setItems(result);
 
     }
 

@@ -39,13 +39,10 @@ public class ServiceUser implements IService<User> {
         }
     }
 
-    @Override
-    public void modifier(User user) throws SQLException {
 
-    }
     public void modifertr(User u) {
         try {
-            String query = "UPDATE User SET numTel=?, numUser=?, prenomUser=?, pwd=?, email=?, typeUser=? WHERE idUser=?";
+            String query = "UPDATE User SET numTel=?, nomUser=?, prenomUser=?, pwd=?, email=?, typeUser=? WHERE idUser=?";
             PreparedStatement pstmt = con.prepareStatement(query);
             pstmt.setInt(1, u.getNum_tel());
             pstmt.setString(2, u.getNomUser());
@@ -53,6 +50,7 @@ public class ServiceUser implements IService<User> {
             pstmt.setString(4, u.getPwd());
             pstmt.setString(5, u.getEmail());
             pstmt.setString(6, u.getTypeUser());
+            pstmt.setInt(7, u.getIdUser());
 
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
@@ -63,6 +61,11 @@ public class ServiceUser implements IService<User> {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    @Override
+    public void modifier(User user) throws SQLException {
+
     }
 
 
@@ -96,6 +99,36 @@ public class ServiceUser implements IService<User> {
         return user;
 
     }
+    public User authentifier(String email, String pwd) throws SQLException {
+        String req = "SELECT * FROM user WHERE email = ? AND pwd = ?";
+
+        try (PreparedStatement pre = con.prepareStatement(req)) {
+            pre.setString(1, email);
+            pre.setString(2, pwd);
+
+            try (ResultSet result = pre.executeQuery()) {
+                if (result.next()) {
+                    return mapUser(result);
+                } else {
+                    return null;
+                }
+            }
+        }
+    }
+
+    private User mapUser(ResultSet result) throws SQLException {
+        return new User(
+                result.getInt("idUser"),
+                result.getInt("numTel"),
+                result.getString("nomUser"),
+                result.getString("prenomUser"),
+                result.getString("pwd"),
+                result.getString("email"),
+                result.getString("typeUser")
+
+        );
+    }
+
 }
 
 
