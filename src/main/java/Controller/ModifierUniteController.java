@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.IOException;
 
 import java.sql.SQLException;
+import java.util.Arrays;
 
 
 public class ModifierUniteController {
@@ -23,6 +24,10 @@ public class ModifierUniteController {
     private Button ModifierUnite;
     @FXML
     private Unite currentUnity;
+
+
+    @FXML
+    private ChoiceBox<String> statutField;
 
     @FXML
     private Button Retour;
@@ -35,16 +40,15 @@ public class ModifierUniteController {
 
 
 
-    @FXML
-    private TextField statutField;
+
 
     @FXML
     private TextField titreField;
 
 
     private boolean validateFields() {
-        if ( statutField.getText().isEmpty() || titreField.getText().isEmpty() || contenuField.getText().isEmpty()) {
-            showAlert(Alert.AlertType.WARNING, "Champs obligatoires", "Veuillez remplir tous les champs obligatoires.");
+        if ( statutField.getValue().isEmpty() || titreField.getText().isEmpty() || contenuField.getText().isEmpty()) {
+            showAlert(Alert.AlertType.WARNING, "Champs obligatoires", "OUPS ! Vous Avez Oublié Des Champs Vides ");
             return false;
         }
         return true;
@@ -61,13 +65,13 @@ public class ModifierUniteController {
 
 
             titreField.setText(unite.getTitre());
-            statutField.setText(unite.getStatut());
-            contenuField.setText(unite.getContenue());
+            statutField.setValue(unite.getStatut());
+            contenuField.setText(Arrays.toString(unite.getContenuBytes()));
         } else {
 
 
             titreField.clear();
-            statutField.clear();
+
             contenuField.clear();
         }
     }
@@ -78,13 +82,8 @@ public class ModifierUniteController {
         if (!validateFields()) {
             return;
         }
-
-
-
-
-
         currentUnity.setTitre(titreField.getText());
-        currentUnity.setStatut(statutField.getText());
+        currentUnity.setStatut(statutField.getValue());
 
 
         currentUnity.setContenue(contenuField.getText());
@@ -123,7 +122,7 @@ public class ModifierUniteController {
         }
 
     }
-    public void importFiles(ActionEvent actionEvent) {
+    public void importFiles() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choisir un fichier PDF");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));

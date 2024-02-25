@@ -42,7 +42,7 @@ public class ModifierCoursController {
 
     private boolean validateFields() {
         if (NOM_MATIERE.getText().isEmpty() || Date_debut.getValue() == null || Date_fin.getValue() == null) {
-            showAlert(Alert.AlertType.WARNING, "Champs obligatoires", "Veuillez remplir tous les champs obligatoires.");
+            showAlert(Alert.AlertType.WARNING, "Champs obligatoires", "OUPS ! Vous Avez Oublié Des Champs Vides");
             return false;
         }
         return true;
@@ -105,8 +105,8 @@ public class ModifierCoursController {
 
         if (cour != null) {
             NOM_MATIERE.setText(cour.getMatiere());
-            Date_debut.setAccessibleText(cour.getDate_debut().toString()); // Assuming date is stored as a string
-            Date_fin.setAccessibleText(cour.getDate_fin().toString()); // Assuming date is stored as a string
+            Date_debut.setAccessibleText(cour.getDate_debut().toString());
+            Date_fin.setAccessibleText(cour.getDate_fin().toString());
         } else {
 
             NOM_MATIERE.setText("");

@@ -59,14 +59,23 @@ public class ServiceCour implements IService<Cour> {
 
     @Override
     public void supprimer(Cour cour) throws SQLException {
-        String req = "DELETE FROM Cour WHERE id_cour = ?";
-        try (PreparedStatement pre = con.prepareStatement(req)) {
-            pre.setInt(1, cour.getId_cour());
-            pre.executeUpdate();
+        try {
+
+            String reqDeleteLiens = "DELETE FROM unite WHERE id_cour = ?";
+            try (PreparedStatement preDeleteLiens = con.prepareStatement(reqDeleteLiens)) {
+                preDeleteLiens.setInt(1, cour.getId_cour());
+                preDeleteLiens.executeUpdate();
+            }
+
+
+            String reqDeleteCour = "DELETE FROM Cour WHERE id_cour = ?";
+            try (PreparedStatement preDeleteCour = con.prepareStatement(reqDeleteCour)) {
+                preDeleteCour.setInt(1, cour.getId_cour());
+                preDeleteCour.executeUpdate();
+            }
         } catch (SQLException ex) {
             throw new SQLException("Erreur lors de la suppression du cours : " + ex.getMessage());
         }
-
     }
 
 

@@ -1,0 +1,19 @@
+/* Styles for PROFS button */
+#PROF {
+    -fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF);
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-text-fill: #1B365D;
+    -fx-padding: 8px 16px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);
+}
+
+/* Styles for ETUDIANT button */
+#Etudiant {
+    -fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF);
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-text-fill: #1B365D;
+    -fx-padding: 8px 16px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);
+}

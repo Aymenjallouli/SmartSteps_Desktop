@@ -57,7 +57,7 @@ public class ajouterCoursController  {
 
         // Vérifier si les champs ne sont pas vides
         if (matiere.isEmpty() || dateDebutValue == null || dateFinValue == null) {
-            showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "Veuillez remplir tous les champs.");
+            showAlert(Alert.AlertType.ERROR, "Champs Obligatoires ", "OUPS ! Vous Avez Oublié Des Champs Vides");
             return;
         }
                 Date dateDebut = Date.valueOf(dateDebutValue);
@@ -70,11 +70,25 @@ public class ajouterCoursController  {
 
         try {
             serviceCour.ajouter(new Cour(matiere, dateDebut, dateFin));
-            showAlert(Alert.AlertType.INFORMATION, "Succès", "Cours ajouté avec succès.");
+            showAlert(Alert.AlertType.INFORMATION, "Succès", "Cour ajouté avec succès.");
+            afficherAfficherCour(event);
+
         } catch (SQLException e) {
             showAlert(Alert.AlertType.ERROR, "Erreur SQL", e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
+    private void afficherAfficherCour(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/AfficherCours.fxml"));
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
     private void showAlert(Alert.AlertType type, String title, String contentText) {
         Alert alert = new Alert(type);
         alert.setTitle(title);

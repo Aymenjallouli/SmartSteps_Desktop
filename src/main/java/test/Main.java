@@ -24,7 +24,7 @@ public class Main {
 
         Cour c1 = new Cour(1, "Java", dateDebutC2, dateFinC2);
 
-        Unite u1 = new Unite(1,"Chapitre1","encour","");
+        //Unite u1 = new Unite(1,"Chapitre1","encour","");
         ServiceCour s = new ServiceCour();
         try {
 
@@ -35,11 +35,7 @@ public class Main {
             System.out.println(e.getMessage());
         }
         ServiceUnite u = new ServiceUnite();
-        try {
-            u.ajouter(u1);
-
-        }catch (SQLException e) {
-            System.out.println(e.getMessage());}
+        // u.ajouter(u1);
 
         try {
             s.modifier(c1);

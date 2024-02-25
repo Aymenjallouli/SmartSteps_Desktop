@@ -58,14 +58,14 @@ public class AfficherUniteEtudiantController implements Initializable {
     public void setSelectedCour(Cour selectedCour) {
         this.selectedCour = selectedCour;
         if (selectedCour != null) {
-            lblSelectedCour.setText("Cours sélectionné : " + selectedCour.getMatiere());
+            lblSelectedCour.setText("Cour sélectionné : " + selectedCour.getMatiere());
             try {
                 afficherUnites();
             } catch (SQLException e) {
-                showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible de charger les unités pour ce cours.");
+                showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible de charger les unités pour ce Cour.");
             }
         } else {
-            lblSelectedCour.setText("Aucun cours sélectionné.");
+            lblSelectedCour.setText("Aucun Cour sélectionné.");
         }
     }
 
@@ -92,12 +92,12 @@ public class AfficherUniteEtudiantController implements Initializable {
                     setText(null);
                     setGraphic(null);
                 } else {
-                    Label labelNum_unite = new Label(String.valueOf(unite.getNum_unite()));
+
                     Label labelTitre = new Label(unite.getTitre());
                     Label labelStatut = new Label(unite.getStatut());
 
-                    HBox hbox = new HBox(labelNum_unite,labelTitre, labelStatut);
-                    hbox.setSpacing(10);
+                    HBox hbox = new HBox(labelTitre, labelStatut);
+                    hbox.setSpacing(50);
 
                     HBox hboxDownload = new HBox(downloadButton);
                     hboxDownload.setAlignment(Pos.CENTER_RIGHT);
@@ -133,10 +133,10 @@ public class AfficherUniteEtudiantController implements Initializable {
 
             Desktop.getDesktop().open(tempFile);
 
-            showAlert(Alert.AlertType.INFORMATION, "Téléchargement réussi", "Le contenu a été téléchargé avec succès dans : " + tempFile.getAbsolutePath());
+            showAlert(Alert.AlertType.INFORMATION, "Téléchargement réussi", "Le Contenu a été téléchargé avec succès dans : " + tempFile.getAbsolutePath());
         } catch (IOException e) {
 
-            showAlert(Alert.AlertType.ERROR, "Erreur de téléchargement", "Impossible de télécharger le contenu.");
+            showAlert(Alert.AlertType.ERROR, "Erreur de téléchargement", "Impossible de télécharger le Contenu.");
         }
     }
 
@@ -178,7 +178,7 @@ public class AfficherUniteEtudiantController implements Initializable {
     @FXML
     public void Retour(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCoursEtudiant.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Etudiant.fxml"));
             Parent root = loader.load();
 
             Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -193,7 +193,7 @@ public class AfficherUniteEtudiantController implements Initializable {
         try {
             afficherUnites();
         } catch (SQLException e) {
-            showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible de charger les unités pour ce cours.");
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible de charger les unités pour ce Cour.");
         }
     }
 

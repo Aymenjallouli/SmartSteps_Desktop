@@ -22,6 +22,8 @@ import java.util.ResourceBundle;
 public class AfficherCourEtudiantController implements Initializable {
     @FXML
     private ListView<Cour> listcour;
+    @FXML
+    private Button REFRECH;
 
 
 
@@ -109,7 +111,7 @@ public class AfficherCourEtudiantController implements Initializable {
                 showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible d'afficher les unités.");
             }
         } else {
-            showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Veuillez sélectionner un cours pour afficher les unités.");
+            showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Veuillez sélectionner un cours pour afficher Ces unités.");
         }
     }
 
@@ -144,8 +146,9 @@ public class AfficherCourEtudiantController implements Initializable {
         alert.showAndWait();
     }
 
-    public void actualiserCours()
-    {
+
+
+    public void REFRECH(ActionEvent actionEvent) {
         loadCours();
     }
 }

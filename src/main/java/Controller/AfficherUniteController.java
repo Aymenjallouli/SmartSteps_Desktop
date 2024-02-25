@@ -27,6 +27,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.Comparator;
 import java.util.List;
@@ -65,14 +67,14 @@ public class AfficherUniteController implements Initializable {
     public void setSelectedCour(Cour selectedCour) {
         this.selectedCour = selectedCour;
         if (selectedCour != null) {
-            lblSelectedCour.setText("Cours sélectionné : " + selectedCour.getMatiere());
+            lblSelectedCour.setText("Cour sélectionné : " + selectedCour.getMatiere());
             try {
                 afficherUnites();
             } catch (SQLException e) {
-                showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible de charger les unités pour ce cours.");
+                showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible de charger les unités pour ce Cour.");
             }
         } else {
-            lblSelectedCour.setText("Aucun cours sélectionné.");
+            lblSelectedCour.setText("Aucun Cour sélectionné.");
         }
     }
 
@@ -98,12 +100,12 @@ public class AfficherUniteController implements Initializable {
                     setText(null);
                     setGraphic(null);
                 } else {
-                    Label labelNum_unite = new Label(String.valueOf(unite.getNum_unite()));
-                    Label labelTitre = new Label(unite.getTitre()); // Créer un label pour le titre de l'unité
+
+                    Label labelTitre = new Label(unite.getTitre());
                     Label labelStatut = new Label(unite.getStatut());
 
-                    HBox hbox = new HBox(labelNum_unite,labelTitre, labelStatut);
-                    hbox.setSpacing(10);
+                    HBox hbox = new HBox(labelTitre, labelStatut);
+                    hbox.setSpacing(50);
 
                     HBox hboxDownload = new HBox(downloadButton);
                     hboxDownload.setAlignment(Pos.CENTER_RIGHT);
@@ -136,12 +138,13 @@ public class AfficherUniteController implements Initializable {
 
             Desktop.getDesktop().open(tempFile);
 
-            showAlert(Alert.AlertType.INFORMATION, "Téléchargement réussi", "Le contenu a été téléchargé avec succès dans : " + tempFile.getAbsolutePath());
+            showAlert(Alert.AlertType.INFORMATION, "Téléchargement réussi", "Le Contenu a été téléchargé avec succès dans : " + tempFile.getAbsolutePath());
         } catch (IOException e) {
 
             showAlert(Alert.AlertType.ERROR, "Erreur de téléchargement", "Impossible de télécharger le contenu.");
         }
     }
+
 
     private void showAlert(Alert.AlertType type, String title, String contentText) {
         Alert alert = new Alert(type);
@@ -151,7 +154,7 @@ public class AfficherUniteController implements Initializable {
     }
 
     public void rechercherParTitre() {
-        String recherche = searchField.getText().toLowerCase().trim();
+        String recherche = searchField.getText().toLowerCase();
         ObservableList<Unite> unites = listViewUnites.getItems();
         ObservableList<Unite> resultatRecherche = FXCollections.observableArrayList();
         for (Unite unite : unites) {
@@ -210,7 +213,7 @@ public class AfficherUniteController implements Initializable {
 
     }
 
-    public void trierParNum(ActionEvent actionEvent) {
+    public void trierParNum() {
         ObservableList<Unite> unites = listViewUnites.getItems();
 
 
@@ -237,7 +240,7 @@ public class AfficherUniteController implements Initializable {
         try {
             afficherUnites();
         } catch (SQLException e) {
-            showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible de charger les unités pour ce cours.");
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible de charger les unités pour ce Cour.");
         }
     }
 
@@ -260,7 +263,7 @@ public class AfficherUniteController implements Initializable {
                 showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible d'ajouter une unité.");
             }
         } else {
-            showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Veuillez sélectionner un cours pour ajouter une unité.");
+            showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Veuillez sélectionner un Cour pour ajouter une unité.");
         }
     }
 }

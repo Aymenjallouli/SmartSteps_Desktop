@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Comparator;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AfficherCoursController implements Initializable {
@@ -71,11 +72,11 @@ public class AfficherCoursController implements Initializable {
             stage.setScene(scene);
             stage.show();
 
+
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
-
 
     private void loadCours() {
         ServiceCour serviceCour = new ServiceCour();
@@ -91,14 +92,24 @@ public class AfficherCoursController implements Initializable {
     void SupprimerCour() {
         Cour selectedCour = listcour.getSelectionModel().getSelectedItem();
         if (selectedCour != null) {
-            try {
-                ServiceCour serviceCour = new ServiceCour();
-                serviceCour.supprimer(selectedCour);
 
-                listcour.getItems().remove(selectedCour);
-                showAlert(Alert.AlertType.INFORMATION, "Suppression réussie", "Le cour a été supprimé avec succès.");
-            } catch (SQLException e) {
-                showAlert(Alert.AlertType.ERROR, "Erreur", "Une erreur s'est produite lors de la suppression du cour : " + e.getMessage());
+            Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmationDialog.setTitle("Confirmation de suppression");
+            confirmationDialog.setHeaderText("Supprimer le cours ?");
+            confirmationDialog.setContentText("Voulez-vous vraiment supprimer ce cours ?");
+
+            Optional<ButtonType> result = confirmationDialog.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                try {
+                    ServiceCour serviceCour = new ServiceCour();
+                    serviceCour.supprimer(selectedCour);
+
+
+                    listcour.getItems().remove(selectedCour);
+                    showAlert(Alert.AlertType.INFORMATION, "Suppression réussie", "Le Cour a été supprimé avec succès.");
+                } catch (SQLException e) {
+                    showAlert(Alert.AlertType.ERROR, "Erreur", "Une erreur s'est produite lors de la suppression du cour : " + e.getMessage());
+                }
             }
         } else {
             showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Veuillez sélectionner un cour à supprimer.");
@@ -122,10 +133,10 @@ public class AfficherCoursController implements Initializable {
                 modifierCoursController.setCourData(selectedCour);
             } catch (Exception e) {
                 e.printStackTrace();
-                showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible de modifier le cours.");
+                showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible de modifier le Cour.");
             }
         } else {
-            showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Veuillez sélectionner un cours à modifier.");
+            showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Veuillez sélectionner un Cour à modifier.");
         }
     }
 
@@ -169,7 +180,7 @@ public class AfficherCoursController implements Initializable {
                 showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible d'afficher les unités.");
             }
         } else {
-            showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Veuillez sélectionner un cours pour afficher les unités.");
+            showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Veuillez sélectionner un Cour pour afficher Ces unités.");
         }
     }
 

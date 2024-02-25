@@ -6,16 +6,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 public class MainFX extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/MainWindow.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
-
-        // Lier le fichier CSS à la scène
-        scene.getStylesheets().add(getClass().getResource("/Style.css").toExternalForm());
-
+        //scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Style.css")).toExternalForm());
         stage.setScene(scene);
         stage.setTitle("Gérer Cours");
         stage.show();

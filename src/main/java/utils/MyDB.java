@@ -21,7 +21,7 @@ public class MyDB {
         }
     }
 
-    // Méthode getInstance pour obtenir l'instance unique de MyDB
+
     public static MyDB getInstance() {
         if (instance == null) {
             instance = new MyDB();
@@ -29,12 +29,10 @@ public class MyDB {
         return instance;
     }
 
-    // Méthode pour obtenir la connexion à la base de données
     public Connection getConnection() {
         return connection;
     }
 
-    // Méthode pour fermer la connexion à la base de données
     public void closeConnection() {
         if (connection != null) {
             try {
