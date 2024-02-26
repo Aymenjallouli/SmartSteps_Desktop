@@ -1,0 +1,18 @@
+/* styles.css */
+.action-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-background-radius: 5px; /* Ajout d'un arrondi au bouton */
+    -fx-border-radius: 5px; /* Ajout d'un arrondi au bouton */
+    -fx-padding: 8px 16px; /* Ajout de marge intérieure pour un meilleur aspect */
+    -fx-cursor: hand; /* Changement de curseur au survol */
+    -fx-transition: background-color 0.3s; /* Animation de transition */
+}
+
+.action-button:hover {
+    -fx-background-color: #2980b9; /* Changement de couleur au survol */
+}
+
+.anchor-pane {
+    -fx-background-color: linear-gradient(to bottom, #3498db, #ffffff);
+}
