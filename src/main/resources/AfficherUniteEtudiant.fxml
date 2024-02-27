@@ -12,22 +12,18 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="706.0" style="-fx-background-color: linear-gradient(to bottom, #4F81BD, #1B365D);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AfficherUniteEtudiantController">
     <children>
-        <!-- Logo -->
         <ImageView fitHeight="600" fitWidth="900">
             <Image url="@images/Background.png" />
         </ImageView>
 
-        <!-- Titre -->
         <Text fill="#150eda" layoutX="339.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LISTE DES UNITES" textAlignment="CENTER" wrappingWidth="245.0">
             <font>
                 <Font size="24.0" />
             </font>
         </Text>
 
-        <!-- Zone de recherche -->
         <TextField fx:id="searchField" layoutX="462.0" layoutY="201.0" prefHeight="33.0" prefWidth="152.0" promptText="Recherche par Nom-matière" />
 
-        <!-- Bouton de recherche -->
         <Button fx:id="rechercherParMatiere" layoutX="622.0" layoutY="201.0" onAction="#rechercherParTitre" prefHeight="33.0" prefWidth="117.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Search" />
 
         <Button layoutX="743.0" layoutY="350.0" onAction="#trierParNum" prefHeight="33.0" prefWidth="131.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Trier par Num" />

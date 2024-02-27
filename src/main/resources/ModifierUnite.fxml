@@ -40,10 +40,8 @@
                     </items>
                 </ChoiceBox>
 
-                <!-- Contenu -->
                 <TextArea fx:id="contenuField" prefHeight="100.0" promptText="Contenu" />
 
-                <!-- Label pour le cours sélectionné -->
                 <Label fx:id="lblSelectedCour" />
             </children>
         </VBox>
@@ -54,7 +52,6 @@
             </font>
         </Text>
 
-        <!-- Bouton d'ajout -->
         <Button layoutX="746.0" layoutY="320.0" onAction="#ModifierUnite" prefHeight="33.0" prefWidth="146.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Modifier Unite" />
 
         <Button fx:id="Retour" layoutX="10.0" layoutY="320.0" onAction="#Retour" prefHeight="33.0" prefWidth="146.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Retour" />

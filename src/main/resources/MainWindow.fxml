@@ -9,21 +9,18 @@
 
 <AnchorPane prefHeight="472.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #4F81BD, #1B365D);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainWindowController">
    <children>
-      <!-- Logo -->
       <ImageView fitHeight="100.0" fitWidth="177.0" layoutX="206.0" layoutY="21.0">
          <image>
             <Image url="@images/1.png" />
          </image>
       </ImageView>
 
-      <!-- Title -->
       <Text fill="white" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SmartSteps - Gestion des Cours" textAlignment="CENTER" wrappingWidth="600.0">
          <font>
             <Font name="Arial" size="24.0" />
          </font>
       </Text>
 
-      <!-- Buttons with Improved Style -->
       <Button fx:id="PROF" layoutX="194.0" layoutY="212.0" mnemonicParsing="false" onAction="#PROF" prefHeight="40.0" prefWidth="200.0" text="PROF">
          <style>
             -fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF);

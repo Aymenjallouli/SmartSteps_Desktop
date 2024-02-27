@@ -10,17 +10,14 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="600.0" prefWidth="898.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AfficherCourEtudiantController">
-    <!-- Image de fond -->
     <ImageView fitHeight="600" fitWidth="900">
         <Image url="@images/Background.png" />
     </ImageView>
 
-    <!-- Logo -->
     <ImageView fitHeight="92.0" fitWidth="262.0" layoutX="320.0" layoutY="14.0">
         <Image url="@images/1.png" />
     </ImageView>
 
-    <!-- Titre -->
     <Text fill="#0721a1" layoutX="219.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO ADMIN" textAlignment="CENTER" wrappingWidth="443.09375">
         <font>
             <Font name="Arial" size="24" />

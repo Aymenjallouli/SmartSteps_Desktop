@@ -12,7 +12,6 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="750.0" style="-fx-background-color: linear-gradient(to bottom, #4F81BD, #1B365D);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AfficherCoursController">
-    <!-- Logo -->
     <ImageView fitHeight="600" fitWidth="900">
         <Image url="@images/Background.png" />
     </ImageView>
@@ -24,7 +23,6 @@
         </children>
     </VBox>
 
-    <!-- Ajout des titres de colonne -->
     <Text fill="#150eda" layoutX="190.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom Matière" />
     <Text fill="#150eda" layoutX="305.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Début" />
     <Text fill="#150eda" layoutX="399.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Fin" />

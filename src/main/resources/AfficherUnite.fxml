@@ -12,22 +12,18 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="706.0" style="-fx-background-color: linear-gradient(to bottom, #4F81BD, #1B365D);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AfficherUniteController">
    <children>
-      <!-- Logo -->
       <ImageView fitHeight="600" fitWidth="900">
          <Image url="@images/Background.png" />
       </ImageView>
 
-      <!-- Titre -->
       <Text fill="#150eda" layoutX="339.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LISTE DES UNITES" textAlignment="CENTER" wrappingWidth="245.0">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
 
-      <!-- Zone de recherche -->
       <TextField fx:id="searchField" layoutX="430.0" layoutY="205.0" prefHeight="33.0" prefWidth="152.0" promptText="Recherche par Nom-matière" />
 
-      <!-- Bouton de recherche -->
       <Button fx:id="rechercherParMatiere" layoutX="592.0" layoutY="205.0" onAction="#rechercherParTitre" prefHeight="33.0" prefWidth="144.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Search" />
 
       <Button fx:id="ModifierCour" layoutX="748.0" layoutY="322.0" onAction="#ModifierUnite" prefHeight="33.0" prefWidth="144.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Modifier" />
@@ -42,10 +38,8 @@
 
       <Button fx:id="ajouterUnite" layoutX="748.0" layoutY="267.0" onAction="#ajouterUnite" prefHeight="33.0" prefWidth="144.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Ajouter Unite" />
 
-      <!-- Étiquette "Unité sélectionnée" -->
       <Label fx:id="lblSelectedCour" layoutX="233.0" layoutY="217.0" prefHeight="18.0" prefWidth="245.0" text="Cours sélectionné :" textFill="#150eda" />
 
-      <!-- Liste des unités -->
       <ListView fx:id="listViewUnites" layoutX="233.0" layoutY="244.0" prefHeight="188.0" prefWidth="500.0" />
       <ImageView fitHeight="92.0" fitWidth="262.0" layoutX="340.0" layoutY="34.0">
          <image>
