@@ -14,7 +14,7 @@ public class MainFX extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/MainWindow.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
-        //scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Style.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Style.css")).toExternalForm());
         stage.setScene(scene);
         stage.setTitle("Gérer Cours");
         stage.show();

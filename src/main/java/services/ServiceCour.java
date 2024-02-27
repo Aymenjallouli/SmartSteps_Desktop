@@ -28,8 +28,8 @@ public class ServiceCour implements IService<Cour> {
 
         ResultSet rs = pre.getGeneratedKeys();
         if (rs.next()) {
-            int id = rs.getInt(1); // récupérer l'ID généré automatiquement
-            cour.setId_cour(id); // définir l'ID généré automatiquement dans l'objet Cour
+            int id = rs.getInt(1);
+            cour.setId_cour(id);
         }
         rs.close();
         pre.close();

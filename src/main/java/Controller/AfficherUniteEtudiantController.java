@@ -18,9 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import services.ServiceUnite;
-
 import java.awt.*;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -29,7 +27,6 @@ import java.io.OutputStream;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Comparator;
-
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -39,22 +36,9 @@ public class AfficherUniteEtudiantController implements Initializable {
 
     @FXML
     private ListView<Unite> listViewUnites;
-
-
-
-
-
-
     @FXML
     private TextField searchField;
-
-
-
-
     private Cour selectedCour;
-
-
-
     public void setSelectedCour(Cour selectedCour) {
         this.selectedCour = selectedCour;
         if (selectedCour != null) {
@@ -124,15 +108,10 @@ public class AfficherUniteEtudiantController implements Initializable {
         try {
 
             File tempFile = File.createTempFile(fileName, ".pdf");
-
-
             try (OutputStream outputStream = new FileOutputStream(tempFile)) {
                 outputStream.write(content);
             }
-
-
             Desktop.getDesktop().open(tempFile);
-
             showAlert(Alert.AlertType.INFORMATION, "Téléchargement réussi", "Le Contenu a été téléchargé avec succès dans : " + tempFile.getAbsolutePath());
         } catch (IOException e) {
 
@@ -150,8 +129,6 @@ public class AfficherUniteEtudiantController implements Initializable {
     public void rechercherParTitre() {
         String recherche = searchField.getText().toLowerCase().trim();
         ObservableList<Unite> unites = listViewUnites.getItems();
-
-
         ObservableList<Unite> resultatRecherche = FXCollections.observableArrayList();
         for (Unite unite : unites) {
             if (unite.getTitre().toLowerCase().contains(recherche)) {
@@ -168,10 +145,7 @@ public class AfficherUniteEtudiantController implements Initializable {
 
     public void trierParNum() {
         ObservableList<Unite> unites = listViewUnites.getItems();
-
-
         unites.sort(Comparator.comparing(Unite::getNum_unite));
-
         listViewUnites.setItems(unites);
     }
 
@@ -180,10 +154,8 @@ public class AfficherUniteEtudiantController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Etudiant.fxml"));
             Parent root = loader.load();
-
             Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             currentStage.setScene(new Scene(root));
-
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

@@ -125,22 +125,30 @@ public class AfficherUniteController implements Initializable {
     }
 
 
-    private void downloadContent(byte[] content, String fileName) {
+    private void downloadContent(byte[] contentBytes, String fileName) {
         try {
-
+            // Créer un fichier temporaire avec l'extension .pdf
             File tempFile = File.createTempFile(fileName, ".pdf");
 
-
+            // Écrire les octets du contenu dans le fichier temporaire
             try (OutputStream outputStream = new FileOutputStream(tempFile)) {
-                outputStream.write(content);
+                outputStream.write(contentBytes);
             }
 
+            // Vérifier si le bureau est pris en charge avant d'ouvrir le fichier
+            if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.OPEN)) {
+                // Ouvrir le fichier PDF avec l'application par défaut
+                Desktop.getDesktop().open(tempFile);
+            } else {
+                // Si l'ouverture du fichier n'est pas supportée, afficher un message d'erreur
+                showAlert(Alert.AlertType.ERROR, "Erreur d'ouverture", "Impossible d'ouvrir le fichier PDF. L'ouverture de fichiers n'est pas supportée sur ce système.");
+                return;
+            }
 
-            Desktop.getDesktop().open(tempFile);
-
-            showAlert(Alert.AlertType.INFORMATION, "Téléchargement réussi", "Le Contenu a été téléchargé avec succès dans : " + tempFile.getAbsolutePath());
+            // Afficher une confirmation de téléchargement réussi
+            showAlert(Alert.AlertType.INFORMATION, "Téléchargement réussi", "Le contenu a été téléchargé avec succès et ouvert dans votre visionneuse de PDF.");
         } catch (IOException e) {
-
+            // Afficher une erreur en cas d'échec du téléchargement
             showAlert(Alert.AlertType.ERROR, "Erreur de téléchargement", "Impossible de télécharger le contenu.");
         }
     }

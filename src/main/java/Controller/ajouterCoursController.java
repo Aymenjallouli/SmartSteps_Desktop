@@ -5,7 +5,6 @@ import entities.Cour;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,18 +14,10 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import services.ServiceCour;
-
-import javax.swing.text.html.ImageView;
-import java.awt.*;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
 import java.io.IOException;
-import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ResourceBundle;
-
 public class ajouterCoursController  {
     ServiceCour serviceCour = new ServiceCour();
 
@@ -54,8 +45,6 @@ public class ajouterCoursController  {
         String matiere = NomMatiere.getText().trim();
         LocalDate dateDebutValue = DateDebut.getValue();
         LocalDate dateFinValue = DateFin.getValue();
-
-        // Vérifier si les champs ne sont pas vides
         if (matiere.isEmpty() || dateDebutValue == null || dateFinValue == null) {
             showAlert(Alert.AlertType.ERROR, "Champs Obligatoires ", "OUPS ! Vous Avez Oublié Des Champs Vides");
             return;

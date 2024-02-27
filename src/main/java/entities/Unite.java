@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.Arrays;
+
 public class Unite {
 
     private  int num_unite;
@@ -49,12 +51,10 @@ public class Unite {
         this.id_cour = id_cour;
     }
 
-    public int getId_cour() {
-        return id_cour;
-    }
-
-    public void setId_cour(int id_cour) {
-        this.id_cour = id_cour;
+    public Unite(String titre, String statut, byte[] contenuBytes) {
+        Titre = titre;
+        Statut = statut;
+        this.contenuBytes = contenuBytes;
     }
 
     public Unite() {}
@@ -83,13 +83,12 @@ public class Unite {
         this.Statut = statut;
     }
 
-    public String getContenue() {
-        return Contenue;
-    }
+
 
     public void setContenue(String contenue) {
         this.Contenue = contenue;
     }
+
 
     @Override
     public String toString() {
@@ -97,7 +96,7 @@ public class Unite {
                 "num_unite=" + num_unite +
                 ", Titre='" + Titre + '\'' +
                 ", Statut='" + Statut + '\'' +
-                ", Contenue='" + Contenue + '\'' +
+                ", contenuBytes=" + Arrays.toString(contenuBytes) +
                 '}';
     }
 }

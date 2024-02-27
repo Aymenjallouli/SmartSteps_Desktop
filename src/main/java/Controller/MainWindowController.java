@@ -14,14 +14,10 @@ import java.io.IOException;
 
 public class MainWindowController {
 
-    @FXML
-    private Button Retour;
 
-    @FXML
-    private Button PROF;
 
-    @FXML
-    private Button Etudiant;
+
+
 
 
 
@@ -41,17 +37,6 @@ public class MainWindowController {
         }
 
     }
-
-
-
-
-
-    @FXML
-    void Retour(ActionEvent event) {
-
-
-    }
-
     @FXML
     void Etudiant(ActionEvent event)throws Exception {
         try {
@@ -69,4 +54,19 @@ public class MainWindowController {
 
     }
 
+    public void ADMIN(ActionEvent actionEvent) throws Exception  {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/Admin.fxml"));
+            Scene scene = new Scene(root);
+
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
 }

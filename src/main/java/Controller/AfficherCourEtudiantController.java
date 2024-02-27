@@ -23,19 +23,8 @@ public class AfficherCourEtudiantController implements Initializable {
     @FXML
     private ListView<Cour> listcour;
     @FXML
-    private Button REFRECH;
-
-
-
-
-
-    @FXML
     private TextField searchField;
-
-
     private ObservableList<Cour> coursList;
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         listcour.setCellFactory(listView -> new ListCell<>() {
@@ -53,10 +42,6 @@ public class AfficherCourEtudiantController implements Initializable {
 
         loadCours();
     }
-
-
-
-
     private void loadCours() {
         ServiceCour serviceCour = new ServiceCour();
         try {
@@ -65,11 +50,6 @@ public class AfficherCourEtudiantController implements Initializable {
         } catch (SQLException e) {
             showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors du chargement des cours", e.getMessage());
         }}
-
-
-
-
-
     @FXML
     void Retour(ActionEvent event) {
         try {
@@ -107,7 +87,7 @@ public class AfficherCourEtudiantController implements Initializable {
                 currentStage.setScene(new Scene(root));
 
             } catch (IOException e) {
-                e.printStackTrace();
+
                 showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible d'afficher les unités.");
             }
         } else {
@@ -145,11 +125,10 @@ public class AfficherCourEtudiantController implements Initializable {
         alert.setContentText(contentText);
         alert.showAndWait();
     }
-
-
-
-    public void REFRECH(ActionEvent actionEvent) {
+    public void REFRECH() {
         loadCours();
     }
+
+
 }
 

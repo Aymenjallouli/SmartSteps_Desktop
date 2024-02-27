@@ -23,13 +23,12 @@ public class ServiceUnite implements IService<Unite> {
 
     @Override
     public void ajouter(Unite unite) throws SQLException {
-        String req = "INSERT INTO Unite (num_unite, Titre, Statut, Contenu, id_cour) VALUES (?, ?, ?, ?, ?)";
+        String req = "INSERT INTO Unite ( Titre, Statut, Contenu, id_cour) VALUES (?, ?, ?, ?)";
         try (PreparedStatement pre = con.prepareStatement(req)) {
-            pre.setInt(1, unite.getNum_unite());
-            pre.setString(2, unite.getTitre());
-            pre.setString(3, unite.getStatut());
-            pre.setBytes(4, unite.getContenuBytes()); // Utilisez les données de contenu sous forme de tableau d'octets
-            pre.setInt(5, unite.getCour().getId_cour());
+            pre.setString(1, unite.getTitre());
+            pre.setString(2, unite.getStatut());
+            pre.setBytes(3, unite.getContenuBytes());
+            pre.setInt(4, unite.getCour().getId_cour());
             pre.executeUpdate();
         }
 
@@ -64,8 +63,7 @@ public class ServiceUnite implements IService<Unite> {
         ResultSet rs = stmt.executeQuery(req);
         while (rs.next()) {
             Unite unite = new Unite();
-
-            unite.setNum_unite(rs.getInt("num_unite"));
+            //unite.setNum_unite(rs.getInt("num_unite"));
             unite.setTitre(rs.getString("Titre"));
             unite.setStatut(rs.getString("Statut"));
             unite.setContenue(rs.getString("Contenu"));
@@ -89,12 +87,11 @@ public class ServiceUnite implements IService<Unite> {
                     unite.setNum_unite(rs.getInt("num_unite"));
                     unite.setTitre(rs.getString("Titre"));
                     unite.setStatut(rs.getString("Statut"));
-                    unite.setContenuBytes(rs.getBytes("Contenu")); // Récupérer le contenu sous forme de tableau d'octets
-                    // Si nécessaire, vous pouvez également associer le cours à l'unité ici
+                    unite.setContenuBytes(rs.getBytes("Contenu"));
                     unites.add(unite);
                 }
             } catch (SQLException e) {
-                e.printStackTrace(); // Gérer correctement les exceptions dans votre application
+                e.printStackTrace();
             }
         }
         return unites;

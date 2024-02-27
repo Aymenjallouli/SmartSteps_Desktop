@@ -15,16 +15,20 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import services.ServiceUnite;
+
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 
 
 public class AjouterUniteController {
 
-    @FXML
-    private TextField numUniteField;
+
 
     @FXML
     private TextField titreField;
@@ -41,18 +45,29 @@ public class AjouterUniteController {
         this.selectedCour = selectedCour;
     }
 
-    private byte[] getContentBytes(File selectedFile) throws IOException {
-        if (selectedFile != null) {
-            return Files.readAllBytes(selectedFile.toPath());
-        }
-        return null;
-    }
+
     private boolean validateFields() {
-        if (numUniteField.getText().isEmpty()|| statutField.getValue().isEmpty() || titreField.getText().isEmpty() || contenuField.getText().isEmpty()) {
+        if ( statutField.getValue().isEmpty() || titreField.getText().isEmpty() || contenuField.getText().isEmpty()) {
             showAlert(Alert.AlertType.WARNING, "Champs obligatoires", "OUPS ! Vous Avez Oublié Des Champs Vides ");
             return false;
         }
         return true;
+    }
+    private byte[] lireContenuFichierPDF(String cheminFichier) throws IOException {
+        Path path = Paths.get(cheminFichier);
+        byte[] contenuBytes;
+
+        try (FileInputStream inputStream = new FileInputStream(path.toFile());
+             ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, length);
+            }
+            contenuBytes = outputStream.toByteArray();
+        }
+
+        return contenuBytes;
     }
 
     @FXML
@@ -62,12 +77,13 @@ public class AjouterUniteController {
         }
 
         try {
-            int numUnite = Integer.parseInt(numUniteField.getText());
             String titre = titreField.getText();
             String statut = statutField.getValue();
-            byte[] contenuBytes = contenuField.getText().getBytes();
+            String cheminFichier = contenuField.getText(); // Récupérer le chemin du fichier PDF depuis le TextArea
 
-            Unite unite = new Unite(numUnite, titre, statut, contenuBytes);
+            byte[] contenuBytes = lireContenuFichierPDF(cheminFichier);
+
+            Unite unite = new Unite(titre, statut, contenuBytes);
             unite.setCour(selectedCour);
 
             ServiceUnite serviceUnite = new ServiceUnite();
@@ -79,7 +95,7 @@ public class AjouterUniteController {
 
         } catch (NumberFormatException e) {
             showAlert(Alert.AlertType.ERROR, "Erreur", "Veuillez saisir un numéro d'unité valide.");
-        } catch (SQLException e) {
+        } catch (IOException | SQLException e) {
             showAlert(Alert.AlertType.ERROR, "Erreur", "Échec de l'ajout de l'unité.");
         }
     }
@@ -96,7 +112,7 @@ public class AjouterUniteController {
     }
 
     private void clearFields() {
-        numUniteField.clear();
+
         titreField.clear();
         contenuField.clear();
     }
