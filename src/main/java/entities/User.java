@@ -1,37 +1,12 @@
 package entities;
 
+import java.util.Date;
+
 public class User {
-    int idUser , num_tel;
-    String nomUser , prenomUser , pwd , email , typeUser ;
+    private int idUser , num_tel,isEnabled;
+    private String nomUser , prenomUser , pwd , email , role,image ;
+    private Date dateNai ;
 
-    public User() {
-        this.idUser = idUser;
-        this.num_tel = num_tel;
-        this.nomUser = nomUser;
-        this.prenomUser = prenomUser;
-        this.pwd = pwd;
-        this.email = email;
-        this.typeUser = typeUser;
-    }
-
-    public User(int idUser, int num_tel, String nomUser, String prenomUser, String pwd, String email, String typeUser) {
-        this.idUser = idUser;
-        this.num_tel = num_tel;
-        this.nomUser = nomUser;
-        this.prenomUser = prenomUser;
-        this.pwd = pwd;
-        this.email = email;
-        this.typeUser = typeUser;
-    }
-
-    public User(int num_tel, String nomUser, String prenomUser, String pwd, String email, String typeUser) {
-        this.num_tel = num_tel;
-        this.nomUser = nomUser;
-        this.prenomUser = prenomUser;
-        this.pwd = pwd;
-        this.email = email;
-        this.typeUser = typeUser;
-    }
 
     public int getIdUser() {
         return idUser;
@@ -81,12 +56,36 @@ public class User {
         this.email = email;
     }
 
-    public String getTypeUser() {
-        return typeUser;
+    public int getIsEnabled() {
+        return isEnabled;
     }
 
-    public void setTypeUser(String typeUser) {
-        this.typeUser = typeUser;
+    public void setIsEnabled(int isEnabled) {
+        this.isEnabled = isEnabled;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Date getDateNai() {
+        return dateNai;
+    }
+
+    public void setDateNai(Date dateNai) {
+        this.dateNai = dateNai;
     }
 
     @Override
@@ -94,11 +93,14 @@ public class User {
         return "User{" +
                 "idUser=" + idUser +
                 ", num_tel=" + num_tel +
+                ", isEnabled=" + isEnabled +
                 ", nomUser='" + nomUser + '\'' +
                 ", prenomUser='" + prenomUser + '\'' +
                 ", pwd='" + pwd + '\'' +
                 ", email='" + email + '\'' +
-                ", typeUser='" + typeUser + '\'' +
+                ", role='" + role + '\'' +
+                ", image='" + image + '\'' +
+                ", dateNai=" + dateNai +
                 '}';
     }
 }

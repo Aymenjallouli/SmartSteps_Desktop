@@ -54,7 +54,7 @@ public class ModifierUserContoller {
             prenomUser.setText(user.getPrenomUser());
             pwd.setText(user.getPwd());
             email.setText(user.getEmail());
-            typeUser.setText(user.getTypeUser());
+        //    typeUser.setText(user.getTypeUser());
         }
     }
 
@@ -74,13 +74,13 @@ public class ModifierUserContoller {
         currentUser.setPrenomUser(prenomUser.getText());
         currentUser.setPwd(pwd.getText());
         currentUser.setEmail(email.getText());
-        currentUser.setTypeUser(typeUser.getText());
+      //  currentUser.setTypeUser(typeUser.getText());
 
         //  currentUser.getTypeUser(typeUser.getText());
 
         // Save the updated terrain to the database
         ServiceUser st = new ServiceUser();
-        st.modifertr(currentUser); // Assuming 'modifertr' is the method to save the changes
+        //st.modifertr(currentUser); // Assuming 'modifertr' is the method to save the changes
 
         // After saving, transition back to the AffichageTerrainController view
         returnToUserListView();

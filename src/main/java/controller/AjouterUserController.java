@@ -1,138 +1,114 @@
 package controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-import entities.User;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import services.ServiceUser;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
+import javafx.util.converter.IntegerStringConverter;
 
-public class AjouterUserController {
+import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
 
-    private final ServiceUser ST = new ServiceUser();
+
+public class AjouterUserController  implements Initializable {
+
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private Button affUser;
-
-    @FXML
-    private Button aj;
+    private DatePicker date;
 
     @FXML
     private TextField email;
 
     @FXML
+    private ImageView img;
+
+    @FXML
     private AnchorPane iv_photo;
 
     @FXML
-    private TextField nomUser;
+    private TextField nom;
 
     @FXML
-    private TextField numTel;
+    private TextField pas;
 
     @FXML
-    private TextField prenomUser;
+    private TextField prenom;
 
     @FXML
-    private TextField pwd;
+    private ChoiceBox<?> role;
 
     @FXML
-    private TextField typeUser;
+    private TextField tel;
+    int c;
+    int file;
+    File pDir;
+    File pfile;
+    String lien;
+
 
     @FXML
-    void affUser(ActionEvent event) throws IOException {
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherUser.fxml"));
-        Parent root = loader.load();
-        AfficherUserController a = loader.getController();
-        nomUser.getScene().setRoot(root);
+    void ajt(ActionEvent event) {
 
     }
 
     @FXML
-    void ajt(ActionEvent event) throws IOException {
+    void uploadImage(ActionEvent event) throws MalformedURLException {
 
-        ServiceUser sm = new ServiceUser() ;
-        User c = new User() ;
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choisir une image: ");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("JPEG", "*.jpeg"),
+                new FileChooser.ExtensionFilter("PNG", "*.png"),
+                new FileChooser.ExtensionFilter("BMP", "*.bmp")
+        );
+        Window stage = null;
+        pfile = fileChooser.showOpenDialog(stage);
 
-
-        StringBuilder errors=new StringBuilder();
-
-        if(numTel.getText().trim().isEmpty()&&nomUser.getText().trim().isEmpty()){
-            errors.append("svp entrer le numTel et le nom de user\n");
+        /* - draw image */
+        if (pfile != null) {
+            file=1;
+            Image image = new Image(pfile.toURI().toURL().toExternalForm());
+            img.setImage(image);
         }
+    }
 
-        if(errors.length()>0){
-            Alert alert=new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setContentText(errors.toString());
-            alert.showAndWait();
-        } else {
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setContentText("Activite is added successfully!");
-            alert.show();
-
-            try {
-                int numTelValue = Integer.parseInt(numTel.getText());
-                c.setNum_tel(numTelValue);
-            } catch (NumberFormatException e) {
-                System.err.println("Erreur de conversion de la chaîne en entier.");
-                // Gérer l'erreur selon vos besoins, par exemple, afficher un message d'erreur à l'utilisateur
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        UnaryOperator<TextFormatter.Change> integerFilter = change -> {
+            String newText = change.getControlNewText();
+            if (newText.matches("-?([1-9][0-9]*)?")) {
+                return change;
             }
+            return null;
+        };
+        tel.setTextFormatter(new TextFormatter<Integer>(new IntegerStringConverter(), 0, integerFilter));
+    }
 
-
-            c.setNomUser(nomUser.getText());
-            c.setPrenomUser(prenomUser.getText());
-            c.setPwd(pwd.getText());
-            c.setEmail(email.getText());
-            c.setTypeUser(typeUser.getText());
-            //c.setActivite_id(Integer.parseInt(aid.getText()));
-
-
-
-            sm.ajouter(c);
-
-            // Réinitialisation des champs
-            numTel.setText("");
-            nomUser.setText("");
-            prenomUser.setText("");
-            pwd.setText("");
-            email.setText("");
-            typeUser.setText("");
+    public static boolean copier(File source, File dest) {
+        try (InputStream sourceFile = new java.io.FileInputStream(source);
+             OutputStream destinationFile = new FileOutputStream(dest)) {
+            // Lecture par segment de 0.5Mo
+            byte buffer[] = new byte[512 * 1024];
+            int nbLecture;
+            while ((nbLecture = sourceFile.read(buffer)) != -1) {
+                destinationFile.write(buffer, 0, nbLecture);
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            return false; // Erreur
         }
-
-
+        return true; // Résultat OK
     }
-
-
-
-    @FXML
-    void initialize() {
-        assert affUser != null : "fx:id=\"affUser\" was not injected: check your FXML file 'AjouterUser.fxml'.";
-        assert aj != null : "fx:id=\"aj\" was not injected: check your FXML file 'AjouterUser.fxml'.";
-        assert email != null : "fx:id=\"email\" was not injected: check your FXML file 'AjouterUser.fxml'.";
-        assert iv_photo != null : "fx:id=\"iv_photo\" was not injected: check your FXML file 'AjouterUser.fxml'.";
-        assert nomUser != null : "fx:id=\"nomUser\" was not injected: check your FXML file 'AjouterUser.fxml'.";
-        assert numTel != null : "fx:id=\"numTel\" was not injected: check your FXML file 'AjouterUser.fxml'.";
-        assert prenomUser != null : "fx:id=\"prenomUser\" was not injected: check your FXML file 'AjouterUser.fxml'.";
-        assert pwd != null : "fx:id=\"pwd\" was not injected: check your FXML file 'AjouterUser.fxml'.";
-        assert typeUser != null : "fx:id=\"typeUser\" was not injected: check your FXML file 'AjouterUser.fxml'.";
-
-    }
-
 }

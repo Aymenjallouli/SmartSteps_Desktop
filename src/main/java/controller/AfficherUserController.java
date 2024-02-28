@@ -65,10 +65,10 @@ public class AfficherUserController {
                         pwdLabel.setMinWidth(100); // Set minimum width for the label
                         Label emailLabel = new Label(user.getEmail());
                         emailLabel.setMinWidth(100); // Set minimum width for the label
-                        Label typeUserLabel = new Label(user.getTypeUser());
-                        typeUserLabel.setMinWidth(100); // Set minimum width for the label
+                     //   Label typeUserLabel = new Label(user.getTypeUser());
+                     //   typeUserLabel.setMinWidth(100); // Set minimum width for the label
 
-                        hbox.getChildren().addAll(numTelLabel, nomUserLabel, prenomUserLabel, pwdLabel, emailLabel, typeUserLabel);
+                        hbox.getChildren().addAll(numTelLabel, nomUserLabel, prenomUserLabel, pwdLabel, emailLabel, null);
                         setGraphic(hbox); // Set the custom layout as the graphic of the list cell
                     }
                 }

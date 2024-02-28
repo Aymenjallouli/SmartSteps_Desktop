@@ -2,20 +2,22 @@ package services;
 
 import entities.User;
 import utils.MyDB;
-import utils.MyDB;
 
 import java.sql.*;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ServiceUser implements IService<User> {
 
-    private Connection con = MyDB.getInstance().getConnection();
+    private final Connection con = MyDB.getInstance().getConnection();
 
     public ServiceUser() {
     }
 
-
+/*
     @Override
     public void ajouter(User user) {
         try {
@@ -128,7 +130,134 @@ public class ServiceUser implements IService<User> {
 
         );
     }
+*/
 
+    @Override
+    public User signIn(String email) {
+
+        User user = new User();
+
+        try {
+            String requete = "select * from user where email='"+email+"'";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(requete);
+            int count = 0;
+            while(rs.next()){
+                count ++;
+                user.setIdUser(rs.getInt("idUser"));
+                user.setNomUser(rs.getString("nomUser"));
+                user.setPrenomUser(rs.getString("prenomUser"));
+                user.setEmail(rs.getString("email"));
+                user.setRole(rs.getString("role"));
+                user.setDateNai(rs.getDate("dateNai"));
+                user.setImage(rs.getString("image"));
+                user.setNum_tel(rs.getInt("numTel"));
+                user.setIsEnabled(rs.getInt("isEnable"));
+                user.setPwd(rs.getString("pwd"));
+            }
+
+            if(count == 0){
+                return null ;
+            }else{
+                return user;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceUser.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
+    }
+
+    @Override
+
+    public boolean validerEmail(String s) {
+        Pattern p = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
+        Matcher m = p.matcher(s);
+        if (m.find() && m.group().equals(s)) {
+            return false;
+        } else {
+
+            return true;
+
+
+        }
+
+    }
+
+    @Override
+    public boolean checkEmailExist(String email)
+    {
+        int count = 0;
+
+        String requete="select * from user where email='"+email+"'";
+        try{
+            Statement st = con.createStatement();
+            ResultSet rsl = st.executeQuery(requete);
+            while(rsl.next())
+            {
+                count++;
+            }
+            if(count == 0){
+                return false;
+            }else{
+                return true;
+            }
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(ServiceUser.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
+
+
+    @Override
+    public boolean ajouter(User user) {
+
+        int verf = 0 ;
+        try{
+            String req ;
+
+            req="INSERT INTO user (nomUser,prenomUser,email,pwd,role,numTel,isEnable,dateNai,image) VALUES (?,?,?,?,?,?,?,?,1,?)";
+            PreparedStatement res=con.prepareStatement(req);
+
+            res.setString(1, user.getNomUser());
+            res.setString(2, user.getPrenomUser());
+            res.setString(3, user.getEmail());
+            res.setString(4, user.getPwd());
+            res.setString(5, user.getRole());
+            res.setInt(6, user.getNum_tel());
+            res.setInt(7, user.getIsEnabled());
+            res.setDate(8, (Date) user.getDateNai());
+            res.setString(9, user.getImage());
+
+            verf=res.executeUpdate();
+
+
+        }
+        catch(SQLException e ){
+            Logger.getLogger(ServiceUser.class.getName()).log(Level.SEVERE,null,e);
+
+        }
+        if (verf==0)
+        {return false;}
+        else {return true;}
+    }
+
+    @Override
+    public void modifier(User user) throws SQLException {
+
+    }
+
+    @Override
+    public void supprimer(int idUser) throws SQLException {
+
+    }
+
+    @Override
+    public Set<User> afficher() throws SQLException {
+        return null;
+    }
 }
 
 

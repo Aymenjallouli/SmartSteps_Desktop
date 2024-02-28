@@ -4,6 +4,7 @@ module WorkshopJDB.JavaFX {
     requires java.sql;
     requires org.controlsfx.controls;
     requires javafx.graphics;
+    requires jbcrypt;
     exports test;
     exports controller;
     opens test to javafx.fxml; // Opens the test package for FXMLLoader

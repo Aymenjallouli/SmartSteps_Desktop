@@ -1,31 +1,31 @@
 package controller;
 
+import entities.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.Scene;
 
 import javafx.stage.Stage;
-import utils.MyDB;
+import services.ServiceUser;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import org.mindrot.jbcrypt.BCrypt;
+import utils.Sessions;
 
 public class LoginUserController implements Initializable {
     @FXML
     private Button inscrire;
-
+    static int IdOfUser;
     @FXML
     private Button login;
 
@@ -33,12 +33,12 @@ public class LoginUserController implements Initializable {
     private TextField tf_email;
 
     @FXML
-    private TextField tf_pwd;
+    private PasswordField tf_pwd;
 
     @FXML
     void inscrire(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AjouterUser.fxml"));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/AjouterUser.fxml")));
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
@@ -53,41 +53,97 @@ public class LoginUserController implements Initializable {
 
     @FXML
     void login(ActionEvent event) {
-        PreparedStatement st= null;
-        ResultSet rs = null;
-        Connection con = MyDB.getInstance().getConnection();
-        try{
-            st= con.prepareStatement("SELECT * FROM User  WHERE email =? AND pwd =?");
-            st.setString(1,tf_email.getText());
-            st.setString(2,tf_pwd.getText());
-            rs = st.executeQuery();
-            if (rs.next()){
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"login succesfully ", ButtonType.OK);
-                alert.show();
-                try {
-                    Parent root = FXMLLoader.load(getClass().getResource("/AjouterUser.fxml"));
-                    Scene scene = new Scene(root);
-                    Stage stage = new Stage();
-                    stage.setScene(scene);
-                    stage.show();
 
 
-                } catch (IOException e) {
-                    System.out.println(e.getMessage());
+        if(tf_email.getText().equals("") || tf_pwd.getText().equals("")){
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Complete vos cordnner", ButtonType.OK);
+            alert.showAndWait();
+        }else {
+
+            User U = new User();
+            ServiceUser daoU = new ServiceUser();
+            User result = daoU.signIn(tf_email.getText());
+            System.out.println(result);
+            if (result == null){
+                Alert alert = new Alert(Alert.AlertType.ERROR, "vérifier vos cordoe", ButtonType.OK);
+                alert.showAndWait();
+            }
+            else{
+                //       System.out.println(result.getBanned());
+                if (BCrypt.checkpw(tf_pwd.getText(), result.getPwd().replaceFirst("y","a")))
+                {
+
+                    if(result.getRole().equals("[\"ROLE_ADMIN\"]")){
+                        Sessions.setLoggedInUser(result);
+                        System.out.println(result.getRole());
+                        // TODO: Proceed to other page
+                        Parent root;
+                        IdOfUser=result.getIdUser();
+                        try {
+                            root = FXMLLoader.load(getClass().getResource("/Gui/AdminFirstPage.fxml"));
+                            Stage myWindow = (Stage) tf_email.getScene().getWindow();
+                            Scene sc = new Scene(root);
+                            myWindow.setScene(sc);
+                            myWindow.setTitle("page name");
+                            //myWindow.setFullScreen(true);
+                            myWindow.show();
+                        } catch (IOException ex) {
+                            Logger.getLogger(LoginUserController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+
+                    else if (result.getRole().equals("[\"ROLE_MANAGER\"]")){
+                        Sessions.setLoggedInUser(result);
+                        System.out.println(result.getRole());
+                        // TODO: Proceed to other page
+                        Parent root;
+                        IdOfUser=result.getIdUser();
+                        try {
+                            root = FXMLLoader.load(getClass().getResource("/Gui/ManagerFirstPage.fxml"));
+                            Stage myWindow = (Stage) tf_email.getScene().getWindow();
+                            Scene sc = new Scene(root);
+                            myWindow.setScene(sc);
+                            myWindow.setTitle("page name");
+                            //myWindow.setFullScreen(true);
+                            myWindow.show();
+                        } catch (IOException ex) {
+                            Logger.getLogger(LoginUserController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+
+                    else {
+                        Sessions.setLoggedInUser(result);
+                        // TODO: Proceed to other page
+                        Parent root;
+                        IdOfUser=0;
+                        try {
+                            root = FXMLLoader.load(getClass().getResource("/Gui/AcceuilUser.fxml"));
+                            Stage myWindow = (Stage) tf_email.getScene().getWindow();
+                            Scene sc = new Scene(root);
+                            myWindow.setScene(sc);
+                            myWindow.setTitle("page name");
+                            //myWindow.setFullScreen(true);
+                            myWindow.show();
+                        } catch (IOException ex) {
+                            Logger.getLogger(LoginUserController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+
                 }
 
 
-            }else {
-                Alert alert=new Alert(Alert.AlertType.WARNING,"Login Error",ButtonType.OK);
-                alert.show();
+                else{
+
+                    Alert alert22 = new Alert(Alert.AlertType.ERROR, "vérifier vos cordoe", ButtonType.OK);
+                    alert22.showAndWait();
+
+                }
+
             }
-
-        }catch (SQLException e){
-            throw new RuntimeException(e);
-
         }
 
-}
+
+    }
 
 
 
