@@ -53,22 +53,6 @@ public class AjouterUniteController {
         }
         return true;
     }
-    private byte[] lireContenuFichierPDF(String cheminFichier) throws IOException {
-        Path path = Paths.get(cheminFichier);
-        byte[] contenuBytes;
-
-        try (FileInputStream inputStream = new FileInputStream(path.toFile());
-             ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
-            byte[] buffer = new byte[1024];
-            int length;
-            while ((length = inputStream.read(buffer)) != -1) {
-                outputStream.write(buffer, 0, length);
-            }
-            contenuBytes = outputStream.toByteArray();
-        }
-
-        return contenuBytes;
-    }
 
     @FXML
     void ajouterUnite(ActionEvent event) {
@@ -79,11 +63,9 @@ public class AjouterUniteController {
         try {
             String titre = titreField.getText();
             String statut = statutField.getValue();
-            String cheminFichier = contenuField.getText(); // Récupérer le chemin du fichier PDF depuis le TextArea
+            String Contenue = contenuField.getText(); // Récupérer le chemin du fichier depuis le TextArea
 
-            byte[] contenuBytes = lireContenuFichierPDF(cheminFichier);
-
-            Unite unite = new Unite(titre, statut, contenuBytes);
+            Unite unite = new Unite(titre, statut, Contenue); // Utiliser le chemin du fichier comme le contenu
             unite.setCour(selectedCour);
 
             ServiceUnite serviceUnite = new ServiceUnite();
@@ -92,10 +74,7 @@ public class AjouterUniteController {
             showAlert(Alert.AlertType.INFORMATION, "Succès", "L'unité a été ajoutée avec succès.");
 
             clearFields();
-
-        } catch (NumberFormatException e) {
-            showAlert(Alert.AlertType.ERROR, "Erreur", "Veuillez saisir un numéro d'unité valide.");
-        } catch (IOException | SQLException e) {
+        } catch (SQLException e) {
             showAlert(Alert.AlertType.ERROR, "Erreur", "Échec de l'ajout de l'unité.");
         }
     }
@@ -107,7 +86,7 @@ public class AjouterUniteController {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
         File selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) {
-            contenuField.setText(selectedFile.getAbsolutePath());
+            contenuField.setText(selectedFile.getAbsolutePath()); // Mettre le chemin du fichier dans le TextArea
         }
     }
 

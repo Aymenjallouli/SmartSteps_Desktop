@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import services.ServiceUnite;
 
@@ -25,14 +26,16 @@ import java.awt.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import static java.nio.file.Paths.get;
 
 public class AfficherUniteController implements Initializable {
     @FXML
@@ -91,7 +94,7 @@ public class AfficherUniteController implements Initializable {
         listViewUnites.setItems(observableUnites);
 
         listViewUnites.setCellFactory(param -> new ListCell<>() {
-            private final Button downloadButton = new Button("Télécharger");
+            private final Button downloadButton = new Button("Ouvrir");
 
             @Override
             protected void updateItem(Unite unite, boolean empty) {
@@ -103,6 +106,8 @@ public class AfficherUniteController implements Initializable {
 
                     Label labelTitre = new Label(unite.getTitre());
                     Label labelStatut = new Label(unite.getStatut());
+
+
 
                     HBox hbox = new HBox(labelTitre, labelStatut);
                     hbox.setSpacing(50);
@@ -117,7 +122,7 @@ public class AfficherUniteController implements Initializable {
                     setGraphic(vbox);
 
                     downloadButton.setOnAction(event -> {
-                        downloadContent(unite.getContenuBytes(), unite.getTitre());
+                        downloadContent(unite.getContenue(), unite.getTitre());
                     });
                 }
             }
@@ -125,34 +130,43 @@ public class AfficherUniteController implements Initializable {
     }
 
 
-    private void downloadContent(byte[] contentBytes, String fileName) {
-        try {
-            // Créer un fichier temporaire avec l'extension .pdf
-            File tempFile = File.createTempFile(fileName, ".pdf");
 
-            // Écrire les octets du contenu dans le fichier temporaire
-            try (OutputStream outputStream = new FileOutputStream(tempFile)) {
-                outputStream.write(contentBytes);
+    // Example usage:
+    private void downloadContent(String contenue, String titre) {
+        String filePath = contenue;
+        String fileName = titre + ".pdf"; // Utilisez le titre de l'unité comme nom de fichier
+        File file = new File(filePath);
+
+        if (file.exists()) {
+            try {
+                // Ouvre le fichier dans le lecteur PDF par défaut du système
+                Desktop.getDesktop().open(file);
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Affiche un message d'erreur en cas d'échec d'ouverture du fichier
+                showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible d'ouvrir le fichier.");
             }
-
-            // Vérifier si le bureau est pris en charge avant d'ouvrir le fichier
-            if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.OPEN)) {
-                // Ouvrir le fichier PDF avec l'application par défaut
-                Desktop.getDesktop().open(tempFile);
-            } else {
-                // Si l'ouverture du fichier n'est pas supportée, afficher un message d'erreur
-                showAlert(Alert.AlertType.ERROR, "Erreur d'ouverture", "Impossible d'ouvrir le fichier PDF. L'ouverture de fichiers n'est pas supportée sur ce système.");
-                return;
-            }
-
-            // Afficher une confirmation de téléchargement réussi
-            showAlert(Alert.AlertType.INFORMATION, "Téléchargement réussi", "Le contenu a été téléchargé avec succès et ouvert dans votre visionneuse de PDF.");
-        } catch (IOException e) {
-            // Afficher une erreur en cas d'échec du téléchargement
-            showAlert(Alert.AlertType.ERROR, "Erreur de téléchargement", "Impossible de télécharger le contenu.");
+        } else {
+            // Si le fichier n'existe pas, affiche un message d'avertissement
+            showAlert(Alert.AlertType.WARNING, "Fichier introuvable", "Le fichier n'existe pas à l'emplacement spécifié.");
         }
     }
 
+    // Cette méthode ouvre le fichier téléchargé
+    private void openFile(String filePath) {
+        File file = new File(filePath);
+        if (file.exists()) {
+            try {
+                // Vous pouvez implémenter ici la logique pour ouvrir le fichier dans un lecteur PDF par exemple
+                // Par exemple, en utilisant la bibliothèque Desktop de Java
+                java.awt.Desktop.getDesktop().open(file);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Le fichier n'existe pas.");
+        }
+    }
 
     private void showAlert(Alert.AlertType type, String title, String contentText) {
         Alert alert = new Alert(type);

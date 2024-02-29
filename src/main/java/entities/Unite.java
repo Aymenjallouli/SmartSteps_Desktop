@@ -1,5 +1,6 @@
 package entities;
 
+import java.sql.Date;
 import java.util.Arrays;
 
 public class Unite {
@@ -11,7 +12,7 @@ public class Unite {
     private int id_cour;
     private Cour cour;
     private byte[] contenuBytes;
-
+    private Date DateDepot;
     public byte[] getContenuBytes() {
         return contenuBytes;
     }
@@ -23,11 +24,27 @@ public class Unite {
         this.contenuBytes = contenuBytes;
     }
 
+    public Date getDateDepot() {
+        return DateDepot;
+    }
+
+    public Unite(String titre, String statut, Date dateDepot) {
+        Titre = titre;
+        Statut = statut;
+        DateDepot = dateDepot;
+    }
+
+    public void setDateDepot(Date dateDepot) {
+        DateDepot = dateDepot;
+    }
+
     public void setContenuBytes(byte[] contenuBytes) {
         this.contenuBytes = contenuBytes;
     }
 
-
+    public String getContenue() {
+        return Contenue;
+    }
 
     public Cour getCour() {
         return cour;
@@ -42,6 +59,12 @@ public class Unite {
         this.Titre = titre;
         this.Statut = statut;
         this.Contenue = contenue;
+    }
+
+    public Unite(String titre, String statut, String contenue) {
+        Titre = titre;
+        Statut = statut;
+        Contenue = contenue;
     }
 
     public Unite(String titre, String statut, String contenue, int id_cour) {

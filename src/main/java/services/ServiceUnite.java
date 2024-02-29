@@ -12,7 +12,7 @@ import java.util.Set;
 
 public class ServiceUnite implements IService<Unite> {
     private final Connection con;
-    private Cour cour;
+
 
 
 
@@ -23,28 +23,31 @@ public class ServiceUnite implements IService<Unite> {
 
     @Override
     public void ajouter(Unite unite) throws SQLException {
-        String req = "INSERT INTO Unite ( Titre, Statut, Contenu, id_cour) VALUES (?, ?, ?, ?)";
+        String req = "INSERT INTO Unite (Titre, Statut, Contenu, id_cour, DateDepot) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement pre = con.prepareStatement(req)) {
             pre.setString(1, unite.getTitre());
             pre.setString(2, unite.getStatut());
-            pre.setBytes(3, unite.getContenuBytes());
+            pre.setString(3, unite.getContenue());
             pre.setInt(4, unite.getCour().getId_cour());
+
+            // Ajouter la date actuelle
+            java.sql.Date dateDepot = new java.sql.Date(System.currentTimeMillis());
+            pre.setDate(5, dateDepot);
+
             pre.executeUpdate();
         }
-
     }
 
     @Override
     public void modifier(Unite unite) throws SQLException {
-        String req = "update Unite set  Titre=?, Statut=?, Contenu=? where num_unite=?";
-        PreparedStatement pre = con.prepareStatement(req);
-
-        pre.setString(1, unite.getTitre());
-        pre.setString(2, unite.getStatut());
-        pre.setBytes(3, unite.getContenuBytes());
-        pre.setInt(4, unite.getNum_unite());
-
-        pre.executeUpdate();
+        String req = "UPDATE Unite SET Titre=?, Statut=?, Contenu=? WHERE num_unite=?";
+        try (PreparedStatement pre = con.prepareStatement(req)) {
+            pre.setString(1, unite.getTitre());
+            pre.setString(2, unite.getStatut());
+            pre.setString(3, unite.getContenue());
+            pre.setInt(4, unite.getNum_unite());
+            pre.executeUpdate();
+        }
     }
 
     @Override
@@ -63,10 +66,11 @@ public class ServiceUnite implements IService<Unite> {
         ResultSet rs = stmt.executeQuery(req);
         while (rs.next()) {
             Unite unite = new Unite();
-            //unite.setNum_unite(rs.getInt("num_unite"));
             unite.setTitre(rs.getString("Titre"));
             unite.setStatut(rs.getString("Statut"));
             unite.setContenue(rs.getString("Contenu"));
+            java.sql.Date dateDepot = rs.getDate("DateDepot");
+            unite.setDateDepot(Date.valueOf(dateDepot.toLocalDate()));
             unites.add(unite);
         }
         return unites;
@@ -87,7 +91,7 @@ public class ServiceUnite implements IService<Unite> {
                     unite.setNum_unite(rs.getInt("num_unite"));
                     unite.setTitre(rs.getString("Titre"));
                     unite.setStatut(rs.getString("Statut"));
-                    unite.setContenuBytes(rs.getBytes("Contenu"));
+                    unite.setContenue(rs.getString("Contenu"));
                     unites.add(unite);
                 }
             } catch (SQLException e) {

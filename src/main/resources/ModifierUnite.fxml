@@ -23,8 +23,6 @@
 
         <VBox layoutX="226.0" layoutY="194.0" prefHeight="217.0" prefWidth="478.0" spacing="10.0">
             <children>
-                <!-- Numéro d'unité -->
-                <TextField fx:id="numUniteField" promptText="Numéro d'unité" />
 
                 <!-- Titre -->
                 <TextField fx:id="titreField" promptText="Titre" />

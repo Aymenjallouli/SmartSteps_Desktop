@@ -66,7 +66,7 @@ public class ModifierUniteController {
 
             titreField.setText(unite.getTitre());
             statutField.setValue(unite.getStatut());
-            contenuField.setText(Arrays.toString(unite.getContenuBytes()));
+            contenuField.setText(unite.getContenue());
         } else {
 
 
