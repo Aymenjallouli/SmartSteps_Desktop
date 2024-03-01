@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="statPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="563.0" prefWidth="893.0" style="-fx-background-color: linear-gradient(to bottom, #3b5998, #1B365D);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.StatistiquesController">
+    <children>
+        <LineChart fx:id="lineChartForum" layoutX="25.0" layoutY="25.0" prefHeight="523.0" prefWidth="823.0">
+            <xAxis>
+                <CategoryAxis tickLabelFill="WHITE" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis side="LEFT" tickLabelFill="WHITE" />
+            </yAxis>
+        </LineChart>
+    </children>
+</AnchorPane>
