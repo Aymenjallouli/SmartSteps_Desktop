@@ -18,7 +18,7 @@
       </ImageView>
 
       <Text fill="#150eda" layoutX="214.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom de la matière " />
-      <TextField fx:id="NomMatiere" layoutX="364.0" layoutY="231.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #87CEFA;" />
+      <TextField fx:id="NOM_MATIERE" layoutX="364.0" layoutY="231.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #87CEFA;" />
 
       <Text fill="#150eda" layoutX="214.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de début " wrappingWidth="112.23958587646484" />
       <DatePicker fx:id="DateDebut" layoutX="364.0" layoutY="281.0" prefWidth="200.0" />
@@ -66,7 +66,7 @@
             <Image url="@images/1.png" />
          </image>
       </ImageView>
-      <Text fill="#150eda" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AJOUTER COUR" textAlignment="CENTER" wrappingWidth="900.0">
+      <Text fill="#150eda" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MODIFIER COUR" textAlignment="CENTER" wrappingWidth="900.0">
          <font>
             <Font size="33.0" />
          </font>

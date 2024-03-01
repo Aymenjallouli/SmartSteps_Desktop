@@ -1,5 +1,15 @@
 package Controller;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Properties;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Transport;
+
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 import entities.Cour;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,25 +18,17 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import services.ServiceCour;
-
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-
-public class ajouterCoursController  {
+public class ajouterCoursController {
     ServiceCour serviceCour = new ServiceCour();
-
-
-
-    @FXML
-    private Button AjouterCour;
 
     @FXML
     private DatePicker DateDebut;
@@ -36,10 +38,6 @@ public class ajouterCoursController  {
 
     @FXML
     private TextField NomMatiere;
-
-    @FXML
-    private Button Retour;
-
 
 
     @FXML
@@ -62,6 +60,17 @@ public class ajouterCoursController  {
         try {
             Cour newCour = new Cour(matiere, dateDebut, dateFin);
             serviceCour.ajouter(newCour);
+            //sendSMS("+21629082917",newCour);
+            String recipientEmail = "smartstepsaymen@gmail.com";
+            String subject = "New Course Added: " + newCour.getMatiere();
+            String body = "Dear User,\n\nA new course has been added with the following details:\n\n" +
+                    "Matiere: " + newCour.getMatiere() + "\n" +
+                    "Date Debut: " + newCour.getDate_debut() + "\n" +
+                    "Date Fin: " + newCour.getDate_fin() + "\n\n" +
+                    "Thank you.\n";
+
+
+            //sendMail(newCour, recipientEmail, subject, body);
 
             showAlert(Alert.AlertType.INFORMATION, "Succès", "Cour ajouté avec succès.");
             afficherAfficherCour(event);
@@ -72,14 +81,12 @@ public class ajouterCoursController  {
             throw new RuntimeException(e);
         }
     }
-
-    /*void sendSMS(String recipientNumber, Cour newCour) {
+    void sendSMS(String recipientNumber, Cour newCour) {
         // Initialize Twilio library with your account information
         String ACCOUNT_SID = "AC5a00099393bbfce3013249fdc7af6d60";
-        String AUTH_TOKEN = "2efd9aed6b028eaeceed7944d9354c92";
+        String AUTH_TOKEN = "8ca2fbc6e6a890d086fd0900405cd487";
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-
-        // Customize your SMS message
+       // recipientNumber = "+21629082917";
         String message = "Bonjour Mr(s),\n"
                 + "Nous sommes ravis de vous informer qu'un nouveau cours a été ajouté.\n "
                 + "Matière: " + newCour.getMatiere() + "\n "
@@ -87,7 +94,7 @@ public class ajouterCoursController  {
                 + "Date Fin: " + newCour.getDate_fin()+ "\n "
                 + "Merci de votre fidélité et à bientôt.\n"
                 + "Cordialement,\n"
-                + "Votre établissement";
+                + "SmartSteps";
 
         // Send the SMS message
         Message twilioMessage = Message.creator(
@@ -97,14 +104,14 @@ public class ajouterCoursController  {
                 message).create();
 
         System.out.println("SMS envoyé : " + twilioMessage.getSid());
-    }*/
+    }
 
-    /* private void sendEmailToUsers(List<String> userEmails, Cour newCour) {
-        // SMTP server configuration (change accordingly)
+    /* void sendMail(Cour newCour, String recipientEmail, String subject, String body) {
+        // SMTP server configuration
         String host = "smtp.gmail.com"; // For Gmail
         String port = "465"; // SSL Port
-        String username = "aymenbog9@gmail.com"; // Your email address
-        String password = "boog0914K+"; // Your email password
+        String username = "jallouliaymen97@gmail.com"; // Your email address
+        String password = "++652100"; // Your email password
 
         // Email properties
         Properties properties = new Properties();
@@ -114,41 +121,34 @@ public class ajouterCoursController  {
         properties.put("mail.smtp.auth", "true");
 
         // Create a Session object with authentication
-        Session session;
-        session = Session.getInstance(properties, new Authenticator() {
+        Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(username, password.toCharArray());
+                return new PasswordAuthentication(username, password);
             }
         });
 
         try {
-            for (String email : userEmails) {
-                // Create a MimeMessage object
-                Message message = new MimeMessage(session);
-                // Set the sender's email address
-                message.setFrom(new InternetAddress(username));
-                // Set the recipient's email address
-                message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
-                // Set the email subject
-                message.setSubject("New Course Added: " + newCour.getMatiere());
-                // Set the email content
-                String messageBody = "Dear User,\n\nA new course has been added with the following details:\n\n" +
-                        "Matiere: " + newCour.getMatiere() + "\n" +
-                        "Date Debut: " + newCour.getDateDebut() + "\n" +
-                        "Date Fin: " + newCour.getDateFin() + "\n\n" +
-                        "Thank you.\n";
-                message.setText(messageBody);
+            // Create a MimeMessage object
+            MimeMessage message = new MimeMessage(session);
+            // Set the sender's email address
+            message.setFrom(new InternetAddress(username));
+            // Set the recipient's email address
+            message.addRecipient(javax.mail.Message.RecipientType.TO, new InternetAddress(recipientEmail));
+            // Set the email subject
+            message.setSubject(subject);
+            // Set the email content
+            message.setText(body);
 
-                // Send the email
-                Transport.send(message);
-                System.out.println("Email sent successfully to: " + email);
-            }
+            // Send the email
+            Transport.send(message);
+            System.out.println("Email sent successfully to: " + recipientEmail);
         } catch (MessagingException e) {
-            e.printStackTrace();
             System.err.println("Failed to send email: " + e.getMessage());
+            throw new RuntimeException(e); // Re-throw exception for handling higher up in the call stack
         }
     }*/
+
     private void afficherAfficherCour(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/AfficherCours.fxml"));
         Scene scene = new Scene(root);
@@ -157,7 +157,6 @@ public class ajouterCoursController  {
         stage.setScene(scene);
         stage.show();
     }
-
 
     private void showAlert(Alert.AlertType type, String title, String contentText) {
         Alert alert = new Alert(type);
@@ -180,6 +179,5 @@ public class ajouterCoursController  {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-    }}
-
-
+    }
+}

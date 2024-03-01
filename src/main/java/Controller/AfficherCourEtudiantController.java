@@ -11,12 +11,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import services.ServiceCour;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.sql.SQLException;
-import java.util.Comparator;
-import java.util.ResourceBundle;
+import java.util.*;
 
 
 public class AfficherCourEtudiantController implements Initializable {
@@ -25,6 +32,13 @@ public class AfficherCourEtudiantController implements Initializable {
     @FXML
     private TextField searchField;
     private ObservableList<Cour> coursList;
+    @FXML
+    private TextArea chatOutput;
+
+    @FXML
+    private TextField chatInput;
+    private static final String OPENAI_API_KEY = "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";
+    private static final String MODEL_NAME = "gpt-3.5-turbo-0125";
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         listcour.setCellFactory(listView -> new ListCell<>() {
@@ -41,6 +55,54 @@ public class AfficherCourEtudiantController implements Initializable {
 
 
         loadCours();
+    }
+    @FXML
+    void Submit() {
+        String userInput = chatInput.getText().trim();
+
+        try {
+            String botResponse = sendChatRequest(userInput);
+            JSONObject jsonResponse = new JSONObject(botResponse);
+            JSONArray choices = jsonResponse.getJSONArray("choices");
+            if (choices.length() > 0) {
+                JSONObject message = choices.getJSONObject(0).getJSONObject("message");
+                String botMessage = message.getString("content");
+                chatOutput.appendText("You: " + userInput + "\n");
+                chatOutput.appendText("SmartStepsBot: " + botMessage + "\n");
+            } else {
+                showAlert(Alert.AlertType.ERROR, "Error", "No response from the chatbot.");
+            }
+        } catch (IOException | InterruptedException | URISyntaxException | JSONException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Error", "An error occurred while communicating with the chatbot.");
+        }
+
+        chatInput.clear();
+    }
+
+    public static String sendChatRequest(String userInput) throws IOException, InterruptedException, URISyntaxException {
+        String url = "https://api.openai.com/v1/chat/completions";
+
+        Map<Object, Object> data = new HashMap<>();
+        data.put("model", MODEL_NAME);
+        data.put("messages", new ArrayList<Map<String, String>>() {{
+            add(new HashMap<String, String>() {{
+                put("role", "user");
+                put("content", userInput);
+            }});
+        }});
+
+        HttpClient httpClient = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(new URI(url))
+                .header("Content-Type", "application/json")
+                .header("Authorization", "Bearer " + OPENAI_API_KEY)
+                .POST(HttpRequest.BodyPublishers.ofString(new JSONObject(data).toString()))
+                .build();
+
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+
+        return response.body();
     }
     private void loadCours() {
         ServiceCour serviceCour = new ServiceCour();

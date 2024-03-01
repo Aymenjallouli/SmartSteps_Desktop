@@ -24,7 +24,7 @@ public class MainWindowController {
     @FXML
     void PROF(ActionEvent event) throws IOException {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherCours.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/MenuGestionsProf.fxml"));
             Scene scene = new Scene(root);
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -40,7 +40,7 @@ public class MainWindowController {
     @FXML
     void Etudiant(ActionEvent event)throws Exception {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Etudiant.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/MenuGestionsEtudiant.fxml"));
             Scene scene = new Scene(root);
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -56,7 +56,7 @@ public class MainWindowController {
 
     public void ADMIN(ActionEvent actionEvent) throws Exception  {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Admin.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/MenuGestionsAdmin.fxml"));
             Scene scene = new Scene(root);
 
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

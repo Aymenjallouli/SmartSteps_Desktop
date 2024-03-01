@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="898.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuGestionAdminController">
+    <ImageView fitHeight="600" fitWidth="900">
+        <Image url="@images/Background.png" />
+    </ImageView>
+
+    <ImageView fitHeight="165.0" fitWidth="248.0" layoutX="346.0" layoutY="6.0">
+        <Image url="@images/1.png" />
+    </ImageView>
+
+    <Text fill="#0721a1" layoutX="236.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO ADMIN" textAlignment="CENTER" wrappingWidth="443.09375">
+        <font>
+            <Font name="Arial" size="24" />
+        </font>
+    </Text>
+    <Button fx:id="Gestion_Evaluation" layoutX="360.0" layoutY="465.0" onAction="#Gestion_Evaluation" prefHeight="47.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Gestion Evaluation" />
+    <Button fx:id="Gestion_Forum" layoutX="361.0" layoutY="383.0" onAction="#Gestion_Forum" prefHeight="47.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Gestion Forum" />
+    <Button fx:id="Gestion_Cours" layoutX="360.0" layoutY="304.0" onAction="#Gestion_Cours" prefHeight="47.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Gestion Cours" />
+    <Button fx:id="Gestion_User" layoutX="361.0" layoutY="230.0" onAction="#Gestion_User" prefHeight="47.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Gestion User" />
+    <ImageView fitHeight="47.0" fitWidth="34.0" layoutX="360.0" layoutY="467.0">
+        <image>
+            <Image url="@images/GestionEvaluation.png" />
+        </image>
+    </ImageView>
+    <ImageView fitHeight="47.0" fitWidth="40.0" layoutX="361.0" layoutY="385.0">
+        <image>
+            <Image url="@images/GestionForum.png" />
+        </image>
+    </ImageView>
+    <ImageView fitHeight="47.0" fitWidth="49.0" layoutX="361.0" layoutY="232.0">
+        <image>
+            <Image url="@images/GestionUser.png" />
+        </image>
+    </ImageView>
+    <ImageView fitHeight="47.0" fitWidth="40.0" layoutX="360.0" layoutY="304.0">
+        <image>
+            <Image url="@images/GestionCour.png" />
+        </image>
+    </ImageView>
+   <ImageView fitHeight="211.0" fitWidth="260.0" layoutX="642.0" layoutY="190.0">
+      <image>
+         <Image url="@images/elearning.jpg" />
+      </image>
+   </ImageView>
+   <Button fx:id="Retour" layoutX="8.0" layoutY="311.0" onAction="#Retour" prefHeight="33.0" prefWidth="127.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Retour" />
+   <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="9.0" layoutY="313.0">
+      <image>
+         <Image url="@images/back.png" />
+      </image>
+   </ImageView>
+
+</AnchorPane>

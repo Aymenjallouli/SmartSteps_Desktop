@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="706.0" style="-fx-background-color: linear-gradient(to bottom, #4F81BD, #1B365D);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AfficherUniteController">
+<AnchorPane prefHeight="400.0" prefWidth="706.0" style="-fx-background-color: linear-gradient(to bottom, #4F81BD, #1B365D);" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AfficherUniteController">
    <children>
       <ImageView fitHeight="600" fitWidth="900">
          <Image url="@images/Background.png" />
@@ -22,25 +17,25 @@
          </font>
       </Text>
 
-      <TextField fx:id="searchField" layoutX="430.0" layoutY="205.0" prefHeight="33.0" prefWidth="152.0" promptText="Recherche par Nom-matière" />
+      <TextField fx:id="searchField" layoutX="508.0" layoutY="207.0" prefHeight="33.0" prefWidth="201.0" promptText="Recherche par Nom-matière" />
 
-      <Button fx:id="rechercherParMatiere" layoutX="592.0" layoutY="205.0" onAction="#rechercherParTitre" prefHeight="33.0" prefWidth="144.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Search" />
+      <Button fx:id="rechercherParMatiere" layoutX="742.0" layoutY="207.0" onAction="#rechercherParTitre" prefHeight="33.0" prefWidth="144.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Search" />
 
-      <Button fx:id="ModifierCour" layoutX="748.0" layoutY="322.0" onAction="#ModifierUnite" prefHeight="33.0" prefWidth="144.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Modifier" />
+      <Button fx:id="ModifierCour" layoutX="358.0" layoutY="462.0" onAction="#ModifierUnite" prefHeight="33.0" prefWidth="144.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Modifier" />
 
-      <Button fx:id="SupprimerCour" layoutX="748.0" layoutY="367.0" onAction="#SupprimerUnite" prefHeight="33.0" prefWidth="144.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Supprimer" />
+      <Button fx:id="SupprimerCour" layoutX="358.0" layoutY="507.0" onAction="#SupprimerUnite" prefHeight="33.0" prefWidth="144.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Supprimer" />
 
-      <Button layoutX="592.0" layoutY="443.0" onAction="#trierParNum" prefHeight="33.0" prefWidth="144.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Trier par Num" />
+      <Button layoutX="552.0" layoutY="465.0" onAction="#trierParNum" prefHeight="33.0" prefWidth="144.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Trier par Num" />
 
       <Button fx:id="Retour" layoutX="30.0" layoutY="383.0" onAction="#Retour" prefHeight="33.0" prefWidth="117.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Retour" />
 
-      <Button fx:id="actualiserButton" layoutX="592.0" layoutY="166.0" onAction="#actualiserIHM" prefHeight="33.0" prefWidth="144.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Refrech" />
+      <Button fx:id="actualiserButton" layoutX="742.0" layoutY="168.0" onAction="#actualiserIHM" prefHeight="33.0" prefWidth="144.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Refrech" />
 
-      <Button fx:id="ajouterUnite" layoutX="748.0" layoutY="267.0" onAction="#ajouterUnite" prefHeight="33.0" prefWidth="144.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Ajouter Unite" />
+      <Button fx:id="ajouterUnite" layoutX="752.0" layoutY="359.0" onAction="#ajouterUnite" prefHeight="33.0" prefWidth="144.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Ajouter Unite" />
 
-      <Label fx:id="lblSelectedCour" layoutX="233.0" layoutY="217.0" prefHeight="18.0" prefWidth="245.0" text="Cours sélectionné :" textFill="#150eda" />
+      <Label fx:id="lblSelectedCour" layoutX="152.0" layoutY="217.0" prefHeight="18.0" prefWidth="245.0" text="Cours sélectionné :" textFill="#150eda" />
 
-      <ListView fx:id="listViewUnites" layoutX="233.0" layoutY="244.0" prefHeight="188.0" prefWidth="500.0" />
+      <ListView fx:id="listViewUnites" layoutX="152.0" layoutY="244.0" prefHeight="208.0" prefWidth="349.0" />
       <ImageView fitHeight="92.0" fitWidth="262.0" layoutX="340.0" layoutY="34.0">
          <image>
             <Image url="@images/1.png" />
@@ -51,34 +46,51 @@
             <Image url="@images/back.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="592.0" layoutY="168.0">
+      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="742.0" layoutY="170.0">
          <image>
             <Image url="@images/refrech.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="595.0" layoutY="211.0">
+      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="745.0" layoutY="213.0">
          <image>
             <Image url="@images/Search.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="748.0" layoutY="269.0">
+      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="752.0" layoutY="361.0">
          <image>
             <Image url="@images/add.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="748.0" layoutY="324.0">
+      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="358.0" layoutY="464.0">
          <image>
             <Image url="@images/update.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="748.0" layoutY="368.0">
+      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="358.0" layoutY="508.0">
          <image>
             <Image url="@images/Delete.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="592.0" layoutY="445.0">
+      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="552.0" layoutY="467.0">
          <image>
             <Image url="@images/sort_icon.png" />
+         </image>
+      </ImageView>
+      <VBox layoutX="511.0" layoutY="246.0" prefHeight="208.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <Text fill="#1b65c6" text="SmartStepsBot" textAlignment="CENTER" wrappingWidth="200.8173828125">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="chatInput" prefWidth="200" promptText="Message SmartStepsBot" />
+            <TextArea fx:id="chatOutput" editable="false" prefHeight="162.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+      <Button fx:id="Submit" layoutX="744.0" layoutY="284.0" onAction="#Submit" prefHeight="33.0" prefWidth="144.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Submit" />
+      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="752.0" layoutY="286.0">
+         <image>
+            <Image url="@images/Submit.png" />
          </image>
       </ImageView>
 

@@ -15,25 +15,33 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import services.ServiceUnite;
 
 import java.awt.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.SQLException;
-import java.util.Comparator;
+import java.util.*;
 import java.util.List;
-import java.util.ResourceBundle;
 
 import static java.nio.file.Paths.get;
 
@@ -63,7 +71,14 @@ public class AfficherUniteController implements Initializable {
     private Button actualiserButton;
     @FXML
     private Button ajouterUnite;
+    @FXML
+    private TextArea chatOutput;
+
+    @FXML
+    private TextField chatInput;
     private Cour selectedCour;
+    private static final String OPENAI_API_KEY = "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";
+    private static final String MODEL_NAME = "gpt-3.5-turbo-0125";
 
 
 
@@ -84,6 +99,54 @@ public class AfficherUniteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    }
+    @FXML
+    void Submit() {
+        String userInput = chatInput.getText().trim();
+
+        try {
+            String botResponse = sendChatRequest(userInput);
+            JSONObject jsonResponse = new JSONObject(botResponse);
+            JSONArray choices = jsonResponse.getJSONArray("choices");
+            if (choices.length() > 0) {
+                JSONObject message = choices.getJSONObject(0).getJSONObject("message");
+                String botMessage = message.getString("content");
+                chatOutput.appendText("You: " + userInput + "\n");
+                chatOutput.appendText("SmartStepsBot: " + botMessage + "\n");
+            } else {
+                showAlert(Alert.AlertType.ERROR, "Error", "No response from the chatbot.");
+            }
+        } catch (IOException | InterruptedException | URISyntaxException | JSONException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Error", "An error occurred while communicating with the chatbot.");
+        }
+
+        chatInput.clear();
+    }
+
+    public static String sendChatRequest(String userInput) throws IOException, InterruptedException, URISyntaxException {
+        String url = "https://api.openai.com/v1/chat/completions";
+
+        Map<Object, Object> data = new HashMap<>();
+        data.put("model", MODEL_NAME);
+        data.put("messages", new ArrayList<Map<String, String>>() {{
+            add(new HashMap<String, String>() {{
+                put("role", "user");
+                put("content", userInput);
+            }});
+        }});
+
+        HttpClient httpClient = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(new URI(url))
+                .header("Content-Type", "application/json")
+                .header("Authorization", "Bearer " + OPENAI_API_KEY)
+                .POST(HttpRequest.BodyPublishers.ofString(new JSONObject(data).toString()))
+                .build();
+
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+
+        return response.body();
     }
 
 
@@ -134,39 +197,24 @@ public class AfficherUniteController implements Initializable {
     // Example usage:
     private void downloadContent(String contenue, String titre) {
         String filePath = contenue;
-        String fileName = titre + ".pdf"; // Utilisez le titre de l'unité comme nom de fichier
+        String fileName = titre + ".pdf";
         File file = new File(filePath);
 
         if (file.exists()) {
             try {
-                // Ouvre le fichier dans le lecteur PDF par défaut du système
+
                 Desktop.getDesktop().open(file);
             } catch (IOException e) {
                 e.printStackTrace();
-                // Affiche un message d'erreur en cas d'échec d'ouverture du fichier
+
                 showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible d'ouvrir le fichier.");
             }
         } else {
-            // Si le fichier n'existe pas, affiche un message d'avertissement
+
             showAlert(Alert.AlertType.WARNING, "Fichier introuvable", "Le fichier n'existe pas à l'emplacement spécifié.");
         }
     }
 
-    // Cette méthode ouvre le fichier téléchargé
-    private void openFile(String filePath) {
-        File file = new File(filePath);
-        if (file.exists()) {
-            try {
-                // Vous pouvez implémenter ici la logique pour ouvrir le fichier dans un lecteur PDF par exemple
-                // Par exemple, en utilisant la bibliothèque Desktop de Java
-                java.awt.Desktop.getDesktop().open(file);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            System.out.println("Le fichier n'existe pas.");
-        }
-    }
 
     private void showAlert(Alert.AlertType type, String title, String contentText) {
         Alert alert = new Alert(type);
@@ -288,4 +336,6 @@ public class AfficherUniteController implements Initializable {
             showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Veuillez sélectionner un Cour pour ajouter une unité.");
         }
     }
+
+
 }

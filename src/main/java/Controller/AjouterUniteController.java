@@ -63,9 +63,9 @@ public class AjouterUniteController {
         try {
             String titre = titreField.getText();
             String statut = statutField.getValue();
-            String Contenue = contenuField.getText(); // Récupérer le chemin du fichier depuis le TextArea
+            String Contenue = contenuField.getText();
 
-            Unite unite = new Unite(titre, statut, Contenue); // Utiliser le chemin du fichier comme le contenu
+            Unite unite = new Unite(titre, statut, Contenue);
             unite.setCour(selectedCour);
 
             ServiceUnite serviceUnite = new ServiceUnite();
@@ -86,7 +86,7 @@ public class AjouterUniteController {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
         File selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) {
-            contenuField.setText(selectedFile.getAbsolutePath()); // Mettre le chemin du fichier dans le TextArea
+            contenuField.setText(selectedFile.getAbsolutePath());
         }
     }
 
