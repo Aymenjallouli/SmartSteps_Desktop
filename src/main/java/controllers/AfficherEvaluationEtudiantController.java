@@ -99,11 +99,11 @@ public class AfficherEvaluationEtudiantController implements Initializable {
         Evaluation selectedEvaluation = listevaluation.getSelectionModel().getSelectedItem();
         if (selectedEvaluation != null) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherQuestion.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherQuestionEtudiant.fxml"));
                 Parent root = loader.load();
-                afficherQuestionController questionController = loader.getController();
-                questionController.setSelectedEvaluation(selectedEvaluation);
-                questionController.shit();
+                AfficherQuestionEtudiantController questionEtudiantController = loader.getController();
+                questionEtudiantController.setSelectedEvaluation(selectedEvaluation);
+                questionEtudiantController.shit();
                 Stage currentStage = (Stage) listevaluation.getScene().getWindow();
                 currentStage.setScene(new Scene(root));
 

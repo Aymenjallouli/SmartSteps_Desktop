@@ -2,7 +2,7 @@ package entities;
 import java.sql.Date;
 
 public class Evaluation {
-    int id , duree;
+    int id , duree, nb_questions;
     String titre;
     Date date_limite;
 
@@ -11,6 +11,7 @@ public class Evaluation {
         this.titre = titre;
         this.date_limite = date_limite;
         this.duree = duree;
+        this.nb_questions=0;
     }
 
     public Evaluation() {
@@ -63,5 +64,11 @@ public class Evaluation {
 
     public void setDuree(int duree) {
         this.duree = duree;
+    }
+    public int getNb_questions() {
+        return nb_questions;
+    }
+    public void setNb_questions(int nb_questions) {
+        this.nb_questions = nb_questions++;
     }
 }

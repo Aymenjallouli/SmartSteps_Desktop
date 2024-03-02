@@ -64,7 +64,7 @@ public class Question {
     }
 
     public void setNum(int num) {
-        this.num = id;
+        this.num = num;
     }
 
     public String getType() {

@@ -47,6 +47,7 @@ public class ServiceQuestion implements IService<Question> {
         String req = "delete from question where id=?";
         PreparedStatement pre = con.prepareStatement(req);
         pre.setInt(1, question.getId());
+        pre.executeUpdate();
     }
 
     @Override
@@ -79,13 +80,15 @@ public class ServiceQuestion implements IService<Question> {
         PreparedStatement pre = con.prepareStatement(req);
         pre.setInt(1, id);
         pre.setInt(2, num);
+        System.out.println("ddddddddddddddddddddddddddddddddddddddddddddddddddddddd");
+        System.out.println(num);
         ResultSet res = pre.executeQuery();
         while (res.next()) {
             Question q = new Question();
-            q.setId(res.getInt(1));
-            q.setId_evaluation(res.getInt(2));
-            q.setNum(res.getInt(3));
-            q.setType(res.getString(4));
+            q.setId(res.getInt("id"));
+            q.setId_evaluation(res.getInt("id_evaluation"));
+            q.setNum(res.getInt("num"));
+            q.setType(res.getString("type"));
             q.setEnonce(res.getString("enonce"));
             q.setOptions(res.getString("options"));
             q.setSolution(res.getString("solution"));

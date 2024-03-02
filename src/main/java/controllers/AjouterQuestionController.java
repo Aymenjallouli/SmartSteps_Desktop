@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import services.ServiceEvaluation;
 import services.ServiceQuestion;
 
 import java.io.IOException;
@@ -19,6 +20,7 @@ import javafx.scene.control.Button;
 
 public class AjouterQuestionController {
     ServiceQuestion serviceQuestion= new ServiceQuestion();
+    ServiceEvaluation serviceEvaluation= new ServiceEvaluation();
 
     @FXML
     private Button Retour;
@@ -63,6 +65,7 @@ public class AjouterQuestionController {
     @FXML
     void AjouterQuestion(ActionEvent event) {
         String options, solution;
+
         if(tf_a.isSelected()) {solution=tf_opt1.getText();}
         else if (tf_b.isSelected()) {solution=tf_opt2.getText();}
         else if (tf_c.isSelected()) {solution=tf_opt3.getText();}
@@ -73,6 +76,8 @@ public class AjouterQuestionController {
             Alert alert= new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Success");
             alert.setContentText("question ajoutee");
+            selectedEvaluation.setNb_questions(selectedEvaluation.getNb_questions()+1);
+            serviceEvaluation.modifier(selectedEvaluation);
             alert.showAndWait();
         } catch (SQLException e) {
             Alert alert= new Alert(Alert.AlertType.ERROR);

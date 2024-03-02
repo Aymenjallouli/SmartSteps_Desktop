@@ -82,15 +82,15 @@ public class afficherQuestionController {
     private ImageView previous;
     Evaluation selectedEvaluation;
     int num=1;
+    Question q;
     public void shit(){
         loadQuestion();
     }
     private void loadQuestion() {
         try {
-            ServiceQuestion serviceEvaluation = new ServiceQuestion();
+            ServiceQuestion serviceQuestion = new ServiceQuestion();
             //System.out.println("hahahahhahahhfqhhahahahhahahahahahahahhahaha");
-            //System.out.println(serviceEvaluation.toString());
-            Question q= serviceEvaluation.afficherQuestion(selectedEvaluation.getId(), num);
+            q= serviceQuestion.afficherQuestion(selectedEvaluation.getId(), num);
             String[] resultArray = q.getOptions().split(",");
             lbl_num.setText(String.valueOf(q.getNum())+"."
             );
@@ -98,7 +98,15 @@ public class afficherQuestionController {
             lbl_o1.setText(resultArray[0]);
             lbl_o2.setText(resultArray[1]);
             lbl_o3.setText(resultArray[2]);
-            //lbl_o4.setText(resultArray[3]);
+            lbl_o4.setText(resultArray[3]);
+            tf_a.setSelected(false);
+            tf_b.setSelected(false);
+            tf_c.setSelected(false);
+            tf_d.setSelected(false);
+           if(q.getSolution().equals(resultArray[0])){tf_a.setSelected(true);}
+           if(q.getSolution().equals(resultArray[1])){tf_b.setSelected(true);}
+           if(q.getSolution().equals(resultArray[2])){tf_c.setSelected(true);}
+           if(q.getSolution().equals(resultArray[3])){tf_d.setSelected(true);}
         } catch (Exception e) {
             showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors du chargement de la question", e.getMessage());
         }}
