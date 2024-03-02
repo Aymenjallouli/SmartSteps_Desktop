@@ -54,7 +54,7 @@ public class itemForumController implements Initializable {
         labelTitreForum.setText(forum.getTitre());
         labelDateForum.setText(String.valueOf(forum.getDateCreation()));
         labelDescriptionForum.setText(forum.getDescription());
-        imgLabel.setImage(new Image("file:///" + "C:\\Users\\HP\\Downloads\\AzizForum\\AzizForum\\ForumAziz\\src\\main\\java\\uploads\\"+forum.getImage()));
+        imgLabel.setImage(new Image("file:///" + "C:\\Users\\HP\\IdeaProjects\\AzizForum\\AzizForum\\ForumAziz\\src\\main\\java\\uploads\\"+forum.getImage()));
     }
 
 

@@ -152,7 +152,7 @@ public class ajouterForumController implements Initializable {
     void send_SMS (){
         // Initialisation de la bibliothèque Twilio avec les informations de votre compte
         String ACCOUNT_SID = "AC1181a9c37f5f02f520c0d0a5aa9809ab";
-        String AUTH_TOKEN = "e7b75ffa96be909a54a6460be6601d42";
+        String AUTH_TOKEN = "86f1be2c90331fb3482989f4e8a5254d";
 
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
