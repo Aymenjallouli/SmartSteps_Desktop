@@ -29,80 +29,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MenuGestionsEtudiantController {
-    @FXML
-    private TextArea chatOutput;
+
     @FXML
     private Button rec;
 
-    @FXML
-    private Button rec1;
 
 
-    @FXML
-    private TextField chatInput;
-    private static final String OPENAI_API_KEY = "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";
-    private static final String MODEL_NAME = "gpt-3.5-turbo-0125";
 
 
-    @FXML
-    void Submit() {
-        String userInput = chatInput.getText().trim();
-
-        try {
-            String botResponse = sendChatRequest(userInput);
-            JSONObject jsonResponse = new JSONObject(botResponse);
-            JSONArray choices = jsonResponse.getJSONArray("choices");
-            if (choices.length() > 0) {
-                JSONObject message = choices.getJSONObject(0).getJSONObject("message");
-                String botMessage = message.getString("content");
-                chatOutput.appendText("You: " + userInput + "\n");
-                chatOutput.appendText("SmartStepsBot: " + botMessage + "\n");
-            } else {
-                showAlert(Alert.AlertType.ERROR, "Error", "No response from the chatbot.");
-            }
-        } catch (IOException | InterruptedException | URISyntaxException | JSONException e) {
-            e.printStackTrace();
-            showAlert(Alert.AlertType.ERROR, "Error", "An error occurred while communicating with the chatbot.");
-        }
-
-        chatInput.clear();
-    }
-    private void showAlert(Alert.AlertType type, String title, String contentText) {
-        showAlert(type, title, null, contentText);
-    }
-
-    private void showAlert(Alert.AlertType type, String title, String headerText, String contentText) {
-        Alert alert = new Alert(type);
-        alert.setTitle(title);
-        alert.setHeaderText(headerText);
-        alert.setContentText(contentText);
-        alert.showAndWait();
-    }
-
-    public static String sendChatRequest(String userInput) throws IOException, InterruptedException, URISyntaxException {
-        String url = "https://api.openai.com/v1/chat/completions";
-
-        Map<Object, Object> data = new HashMap<>();
-        data.put("model", MODEL_NAME);
-        data.put("messages", new ArrayList<Map<String, String>>() {{
-            add(new HashMap<String, String>() {{
-                put("role", "user");
-                put("content", userInput);
-            }});
-        }});
-
-        HttpClient httpClient = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(url))
-                .header("Content-Type", "application/json")
-                .header("Authorization", "Bearer " + OPENAI_API_KEY)
-                .POST(HttpRequest.BodyPublishers.ofString(new JSONObject(data).toString()))
-                .build();
-
-        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-
-        return response.body();
-    }
     @FXML
     void Profil(ActionEvent event) {
 

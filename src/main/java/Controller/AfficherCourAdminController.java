@@ -38,7 +38,7 @@ public class AfficherCourAdminController implements Initializable {
 
     @FXML
     private TextField chatInput;
-    private static final String OPENAI_API_KEY = "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";
+    private static final String OPENAI_API_KEY = "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";
     private static final String MODEL_NAME = "gpt-3.5-turbo-0125";
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

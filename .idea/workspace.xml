@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="142a97dc-8c26-4209-a287-9acecd2b7eed" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AfficherCourAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AfficherCourAdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AfficherCourEtudiantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AfficherCourEtudiantController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AfficherCoursController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AfficherCoursController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AfficherUniteAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AfficherUniteAdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AfficherUniteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AfficherUniteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AfficherUniteEtudiantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AfficherUniteEtudiantController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MenuGestionsEtudiantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MenuGestionsEtudiantController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/MenuGestionsEtudiant.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MenuGestionsEtudiant.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +66,8 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Aymen Jallouli\Desktop\USER\src\main\resources" />
+      <recent name="C:\Users\Aymen Jallouli\Desktop\USER\src\main\java\Controller" />
+      <recent name="C:\Users\Aymen Jallouli\Desktop\USER\src\main\java\entities" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="services" />
@@ -101,7 +110,7 @@
       <workItem from="1709385643457" duration="8000" />
       <workItem from="1709385696711" duration="1921000" />
       <workItem from="1709476606214" duration="7181000" />
-      <workItem from="1709487482279" duration="1672000" />
+      <workItem from="1709487482279" duration="4263000" />
     </task>
     <servers />
   </component>
