@@ -3,6 +3,7 @@ package services;
 import entities.Note;
 import utils.MyDB;
 
+import javax.sound.midi.MidiSystem;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -66,6 +67,22 @@ public class ServiceNote implements IService<Note> {
         }
 
         return null; // Return null if no matching row is found
+    }
+
+    public List<Integer> getIdEval(int idEtudiant) throws SQLException {
+        String query = "SELECT id_evaluation FROM note WHERE id_etudiant = ?";
+
+        try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setInt(1, idEtudiant);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                List<Integer> ids = new ArrayList<>();
+                while (resultSet.next()) {
+                    ids.add(resultSet.getInt("id_evaluation"));
+                }
+                return ids;
+            }
+            }
+
     }
 
 }

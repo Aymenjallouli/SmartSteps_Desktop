@@ -47,5 +47,7 @@
         <Button layoutX="473.0" layoutY="345.0" onAction="#trierParTitre" prefHeight="33.0" prefWidth="120.0" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="Trier par titre" />
         <Button fx:id="AfficherQuestion" layoutX="334.0" layoutY="345.0" onAction="#AfficherQuestion" prefWidth="130.0" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="Afficher question" />
         <Button fx:id="rechercherParMatiere" layoutX="444.0" layoutY="76.0" onAction="#rechercherParTitre" prefHeight="33.0" prefWidth="143.0" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="Rechercher" />
+      <Button fx:id="progres" layoutX="236.0" layoutY="345.0" onAction="#evalStat" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="Progrès" />
+      <Button fx:id="certificat" layoutX="497.0" layoutY="24.0" onAction="#imprimerCertif" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="Certificat" />
     </children>
 </AnchorPane>

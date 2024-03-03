@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import services.NotifApi;
 
 import java.io.IOException;
 
@@ -55,6 +56,8 @@ public class MainWindowController {
     @FXML
     void Etudiant(ActionEvent event)throws Exception {
         try {
+            NotifApi notifApi = new NotifApi();
+            notifApi.scheduleNotification();
             Parent root = FXMLLoader.load(getClass().getResource("/AfficherEvaluationEtudiant.fxml"));
             Scene scene = new Scene(root);
 

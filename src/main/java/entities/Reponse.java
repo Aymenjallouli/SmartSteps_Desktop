@@ -69,5 +69,4 @@ public class Reponse {
 
     public void setId_question(int id_question) {
         this.id_question = id_question;
-    }
-}
+    }}

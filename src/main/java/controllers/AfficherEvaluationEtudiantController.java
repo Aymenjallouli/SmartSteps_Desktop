@@ -10,15 +10,20 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import services.ServiceEvaluation;
 
+import java.sql.*;
+
+import utils.MyDB;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.Comparator;
 import java.util.ResourceBundle;
+import services.PdfApi;
+
 
 public class AfficherEvaluationEtudiantController implements Initializable {
 
@@ -31,6 +36,8 @@ public class AfficherEvaluationEtudiantController implements Initializable {
     @FXML
     private Button Retour;
 
+    @FXML
+    private Button progres;
 
     @FXML
     private Button SupprimerEvaluation;
@@ -40,7 +47,15 @@ public class AfficherEvaluationEtudiantController implements Initializable {
     @FXML
     private Button AfficherQuestion;
 
+    @FXML
+    private Button certificat;
+
     private ObservableList<Evaluation> evaluationList;
+
+    private Connection cnx;
+    int idd=1;
+    private Statement st;
+    private ResultSet rs;
 
 
     @Override
@@ -134,6 +149,51 @@ public class AfficherEvaluationEtudiantController implements Initializable {
         listevaluation.setItems(filteredList);
     }
 
+
+    @FXML
+    void evalStat(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/EvalStat.fxml"));
+            Parent root = loader.load();
+            Stage currentStage = (Stage) listevaluation.getScene().getWindow();
+            currentStage.setScene(new Scene(root));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible d'afficher votre progrès.");
+        }
+    }
+
+
+
+    @FXML
+    void imprimerCertif(ActionEvent event) {
+        cnx = MyDB.getInstance().getConnection();
+        try{String query = "SELECT note FROM note WHERE id_etudiant = ?";
+        PreparedStatement PreparedStatement = cnx.prepareStatement(query);
+        PreparedStatement.setInt(1, idd);
+        rs = PreparedStatement.executeQuery();
+            int i=0;
+            int total = 0;
+            while (rs.next()) {
+                int result = rs.getInt("note");
+                total +=result;
+                i++;
+            }
+            total = (int) ((double) total / i);
+            if(total>=70){
+                PdfApi pdfApi = new PdfApi();
+                pdfApi.generateCertificate("mohamed", String.valueOf(total));
+            }
+            else{
+                showAlert(Alert.AlertType.INFORMATION, "", "Completez vos évaluations pour obtenir un certificat");
+
+            }
+
+        }catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
     private void showAlert(Alert.AlertType type, String title, String contentText) {
         showAlert(type, title, null, contentText);
     }

@@ -163,7 +163,7 @@ public class AfficherQuestionEtudiantController {
     public void publierReponse(ActionEvent actionEvent){
         ServiceNote serviceNote = new ServiceNote();
         try{if(serviceNote.getNote(id_etudiant, selectedEvaluation.getId())!=null){
-            showAlert(Alert.AlertType.ERROR, "Erreur", "Vous avez deja publier votre réponse", null);
+            showAlert(Alert.AlertType.INFORMATION, "", "Vous avez déjà publié votre réponse!", null);
             return;}
         }
         catch(SQLException e){}

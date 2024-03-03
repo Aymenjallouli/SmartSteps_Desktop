@@ -66,4 +66,31 @@ public class ServiceEvaluation implements IService<Evaluation> {
 
         return evals;
     }
+    public List<Evaluation> afficherById(List<Integer> ids) {
+        List<Evaluation> evals = new ArrayList<>();
+        String notInValues = ids.stream()
+                .map(String::valueOf)
+                .reduce((value1, value2) -> value1 + ", " + value2)
+                .orElse("");
+
+        String query = "SELECT * FROM evaluation" +
+                (notInValues.isEmpty() ? "" : " WHERE id NOT IN (" + notInValues + ")");
+
+        try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            ResultSet res = preparedStatement.executeQuery();
+            while (res.next()){
+                Evaluation r = new Evaluation();
+                r.setId(res.getInt(1));
+                r.setTitre(res.getString("titre"));
+                r.setDate_limite(res.getDate(3));
+                r.setDuree(res.getInt("duree"));
+                r.setNb_questions(res.getInt("nb_questions"));
+                evals.add(r);
+            }
+            return  evals;
+        } catch (SQLException e) {
+        }
+        return evals;
+
+    }
 }
