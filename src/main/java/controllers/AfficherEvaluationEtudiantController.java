@@ -10,7 +10,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import services.ServiceEvaluation;
@@ -183,7 +182,7 @@ public class AfficherEvaluationEtudiantController implements Initializable {
             total = (int) ((double) total / i);
             if(total>=70){
                 PdfApi pdfApi = new PdfApi();
-                pdfApi.generateCertificate("mohamed", String.valueOf(total));
+                pdfApi.certif("mohamed", String.valueOf(total));
             }
             else{
                 showAlert(Alert.AlertType.INFORMATION, "", "Completez vos évaluations pour obtenir un certificat");
