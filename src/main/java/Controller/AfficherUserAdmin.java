@@ -1,6 +1,8 @@
 package Controller;
 
 import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 import entities.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,8 +18,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import services.ServiceUser;
-import com.twilio.rest.api.v2010.account.Message;
-import com.twilio.type.PhoneNumber;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLDataException;

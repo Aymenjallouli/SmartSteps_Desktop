@@ -6,11 +6,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.*;
 import javafx.scene.Scene;
-
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import org.mindrot.jbcrypt.BCrypt;
 import services.ServiceUser;
+import utils.Sessions;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,9 +19,6 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import org.mindrot.jbcrypt.BCrypt;
-import utils.Sessions;
 
 public class LoginUserController implements Initializable {
     @FXML

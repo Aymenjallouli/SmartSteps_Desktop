@@ -15,7 +15,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.util.converter.IntegerStringConverter;
-import org.mindrot.jbcrypt.BCrypt;
 import services.ServiceUser;
 import utils.Sessions;
 
@@ -124,7 +123,7 @@ public class ProfilUserController implements Initializable {
 
 
     public static void copier(File source, File dest) {
-        try (InputStream sourceFile = new java.io.FileInputStream(source);
+        try (InputStream sourceFile = new FileInputStream(source);
              OutputStream destinationFile = new FileOutputStream(dest)) {
             // Lecture par segment de 0.5Mo
             byte[] buffer = new byte[512 * 1024];
@@ -152,7 +151,7 @@ public class ProfilUserController implements Initializable {
 
             User user = new User();
             user.setEmail(email.getText());
-            user.setDateNai(new java.sql.Date(new java.util.Date(date.getEditor().getText()).getTime()));
+            user.setDateNai(new Date(new java.util.Date(date.getEditor().getText()).getTime()));
 
             user.setPrenomUser(prenom.getText());
             user.setNomUser(nom.getText());

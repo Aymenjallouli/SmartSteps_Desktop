@@ -160,7 +160,7 @@ public class AjouterUserController  implements Initializable {
 
 
     public static void copier(File source, File dest) {
-        try (InputStream sourceFile = new java.io.FileInputStream(source);
+        try (InputStream sourceFile = new FileInputStream(source);
              OutputStream destinationFile = new FileOutputStream(dest)) {
             // Lecture par segment de 0.5Mo
             byte[] buffer = new byte[512 * 1024];

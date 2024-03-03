@@ -1,9 +1,5 @@
 package Controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import entities.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +8,10 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import services.ServiceUser;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class ModifierUserContoller {
 
