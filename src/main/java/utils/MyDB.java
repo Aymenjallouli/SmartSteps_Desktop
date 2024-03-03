@@ -6,32 +6,38 @@ import java.sql.SQLException;
 
 public class MyDB {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/smartsteps";
-    private static final String USERNAME = "root";
 
-    private static MyDB instance;
+
+    public final String URL = "jdbc:mysql://localhost:3306/smartsteps";
+    public final String USERNAME = "root";
+    public final String PWD = "";
+    //2 creer une variable de m type que la classe
+    public static MyDB instance;
+
     private Connection connection;
 
-    public MyDB() {
+    //1 Rendre le constructeur Prive
+    private MyDB() {
+
         try {
-            connection = DriverManager.getConnection(URL, USERNAME, null);
-            System.out.println("Connected to database.");
+            connection = DriverManager.getConnection(URL,USERNAME,PWD);
+            System.out.println("Connected");
         } catch (SQLException e) {
-            System.out.println("Failed to connect to database: " + e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
 
-
-    public static MyDB getInstance() {
-        if (instance == null) {
+    //3 creer une methode getInstance
+    public static MyDB getInstance(){
+        if(instance==null){
             instance = new MyDB();
         }
         return instance;
+
     }
 
     public Connection getConnection() {
         return connection;
     }
-
-
 }
+

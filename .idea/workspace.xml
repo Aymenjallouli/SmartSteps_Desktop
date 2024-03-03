@@ -5,44 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="142a97dc-8c26-4209-a287-9acecd2b7eed" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/MyListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/StatistiquesController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/ajouterCommentaireController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/ajouterForumController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/itemCommentaireController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/itemForumController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/listCommentaireController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/listForumController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/listForumFrontCardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/listForumFrontController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/updateCommentaireController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/updateForumController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Commentaire.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/CrudCommentaire.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/CrudForum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Forum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/CommentaireService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/ForumService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ajouterCommentaire.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ajouterForum.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/delete.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/edit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/itemCommentaire.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/itemForum.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/listCommentaire.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/listForum.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/listForumFront.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/listForumFrontCard.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/statistiques.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/updateCommentaire.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/updateForum.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/AfficherEvaluationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/AfficherEvaluationEtudiantController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/AfficherQuestionEtudiantController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/AjouterQuestionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/EvaluationStatController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/MainWindowController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/ModifierEvaluationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/ModifierQuestionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/afficherQuestionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/ajouterEvaluationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Evaluation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Note.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Question.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Reponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/NotifApi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/PdfApi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/ServiceEvaluation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/ServiceNote.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/ServiceQuestion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/ServiceReponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/AfficherEvaluation.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/AfficherEvaluationEtudiant.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/AfficherQuestion.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/AfficherQuestionEtudiant.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/AjouterQuestion.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/EvalStat.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ModifierEvaluation.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ModifierQuestion.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ajouterEvaluation.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MenuGestionAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MenuGestionAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MenuGestionsEtudiantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MenuGestionsEtudiantController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MenuGestionsProfController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MenuGestionsProfController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/IService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/IService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/test/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/MainFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/MyDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/MyDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MainWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +80,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Integration",
+    "git-widget-placeholder": "Merging Integration",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/medyassinemessaoud/Documents/EspritSim/aziz/SmartSteps_Desktop",
     "node.js.detected.package.eslint": "true",

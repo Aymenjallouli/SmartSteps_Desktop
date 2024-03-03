@@ -10,12 +10,14 @@
 <AnchorPane prefHeight="472.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #4F81BD, #1B365D);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainWindowController">
    <children>
       <ImageView fitHeight="100.0" fitWidth="177.0" layoutX="206.0" layoutY="21.0">
+
          <image>
             <Image url="@images/1.png" />
          </image>
       </ImageView>
 
       <Text fill="white" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SmartSteps - Gestion des Cours" textAlignment="CENTER" wrappingWidth="600.0">
+
          <font>
             <Font name="Arial" size="24.0" />
          </font>
