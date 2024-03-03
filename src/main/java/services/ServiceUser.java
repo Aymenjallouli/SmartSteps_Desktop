@@ -18,9 +18,6 @@ public class ServiceUser implements IServiceU<User> {
     public ServiceUser() {
     }
 
-
-
-
     @Override
     public void modifer(User u) {
         try {
@@ -44,14 +41,6 @@ public class ServiceUser implements IServiceU<User> {
             System.out.println(ex.getMessage());
         }
     }
-
-
-
-
-
-
-
-
 
 
     @Override
@@ -208,6 +197,110 @@ public class ServiceUser implements IServiceU<User> {
         }
     }
 
+
+    public void block(int u) {
+        try {
+            String query = "UPDATE user SET isEnable=0 WHERE idUser=?";
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setInt(1, u);
+
+            System.out.println("REQ"+pstmt);
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Le User est modifié !");
+            } else {
+                System.out.println("Aucun User n'a été modifié.");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void Deblock(int u) {
+        try {
+            String query = "UPDATE user SET isEnable=1 WHERE idUser=?";
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setInt(1, u);
+
+            System.out.println("REQ"+pstmt);
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Le User est modifié !");
+            } else {
+                System.out.println("Aucun User n'a été modifié.");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+
+    public User getUserById(int id) {
+
+        User user = new User();
+
+        try {
+            String requete = "select * from user where idUser="+id;
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(requete);
+            int count = 0;
+            while(rs.next()){
+                count ++;
+                user.setIdUser(rs.getInt("idUser"));
+                user.setNomUser(rs.getString("nomUser"));
+                user.setPrenomUser(rs.getString("prenomUser"));
+                user.setEmail(rs.getString("email"));
+                user.setRole(rs.getString("role"));
+                user.setDateNai(rs.getDate("dateNai"));
+                user.setImage(rs.getString("image"));
+                user.setNum_tel(rs.getInt("numTel"));
+                user.setIsEnabled(rs.getInt("isEnable"));
+                user.setPwd(rs.getString("pwd"));
+            }
+
+            if(count == 0){
+                return null ;
+            }else{
+                return user;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceUser.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
+    }
+
+    public boolean modifiePassword(User d) {
+        String query = "UPDATE `user` SET `pwd`=? WHERE `idUser` = ?";
+
+        try {
+            PreparedStatement st = this.con.prepareStatement(query);
+            st.setString(1, d.getPwd());
+            st.setInt(2, d.getIdUser());
+            st.executeUpdate();
+            return true;
+        } catch (SQLException var5) {
+            Logger.getLogger(ServiceUser.class.getName()).log(Level.SEVERE, null, var5);
+            return false;
+        }
+    }
+
+
+    public int getNbrUserBlockOrDeblocker(int isEnable) throws SQLException {
+
+        int count =0;
+
+        String requete="select * from user where isEnable="+isEnable;
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery(requete);
+        while (rs.next()){
+            count++;
+        }
+        return count;
+
+
+
+    }
 }
 
 

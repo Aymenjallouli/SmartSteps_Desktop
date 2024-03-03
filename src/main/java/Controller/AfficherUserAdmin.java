@@ -1,5 +1,6 @@
 package Controller;
 
+import com.twilio.Twilio;
 import entities.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,13 +12,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import services.ServiceUser;
-
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLDataException;
@@ -26,6 +26,7 @@ import java.util.*;
 import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 
 public class AfficherUserAdmin implements Initializable {
 
@@ -53,6 +54,8 @@ public class AfficherUserAdmin implements Initializable {
     private TableView<User> table;
     @FXML
     private TextField rech;
+
+    public static int idU ;
 
     private final ObservableList<User> UserData = FXCollections.observableArrayList();
 
@@ -113,7 +116,7 @@ public class AfficherUserAdmin implements Initializable {
     void back(ActionEvent event) {
         Parent root;
         try {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/MenuGestionsAdmin.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/AdminFirstPage.fxml")));
             Stage myWindow = (Stage) table.getScene().getWindow();
             Scene sc = new Scene(root);
             myWindow.setScene(sc);
@@ -162,7 +165,6 @@ public class AfficherUserAdmin implements Initializable {
 
 
 
-        List<User> list = serviceUser.afficher();;
 
         //tableview.setItems(observablelist);
 
@@ -201,14 +203,6 @@ public class AfficherUserAdmin implements Initializable {
 
     }
 
-    @FXML
-    void supprimer(ActionEvent event) throws SQLException {
-
-        int id =  table.getSelectionModel().getSelectedItem().getIdUser();
-        serviceUser.supprimer(id);
-        resetTableData();
-
-    }
 
     private void resetTableData() throws SQLException {
         List<User> lisre = new ArrayList<>();
@@ -218,4 +212,70 @@ public class AfficherUserAdmin implements Initializable {
     }
 
 
+    @FXML
+    void block(ActionEvent event) throws SQLException {
+        User userSelec = table.getSelectionModel().getSelectedItem();
+        idU = userSelec.getIdUser();
+        if (serviceUser.getUserById(idU).getIsEnabled() == 0) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "L'utiliasteur est blocké déja", ButtonType.OK);
+            alert.showAndWait();
+        }else {
+            serviceUser.block(idU);
+            sendSMS("+21699687215");
+            resetTableData();
+        }
+    }
+
+    @FXML
+    void deblock(ActionEvent event) throws SQLException {
+        User userSelec = table.getSelectionModel().getSelectedItem();
+        idU = userSelec.getIdUser();
+        if (serviceUser.getUserById(idU).getIsEnabled() == 1) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "L'utiliasteur est Activé déja", ButtonType.OK);
+            alert.showAndWait();
+        }else {
+            serviceUser.Deblock(idU);
+            sendSMS("+21699687215");
+            resetTableData();
+        }
+    }
+
+
+    @FXML
+    void stat(ActionEvent event) {
+
+        Parent root;
+        try {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Statistique.fxml")));
+            Stage myWindow = new Stage();
+            Scene sc = new Scene(root);
+            myWindow.setScene(sc);
+            myWindow.setTitle("Statistique");
+            //myWindow.setFullScreen(true);
+            myWindow.show();
+        } catch (IOException ex) {
+            Logger.getLogger(LoginUserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+
+    void sendSMS(String recipientNumber) {
+        String ACCOUNT_SID = "AC1358688ef4a8790eb174dd42165d2837";
+        String AUTH_TOKEN = "790e85b1f785ce8e64f2631789f89af1";
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+        String message = "Bonjour Mr(s),\n"
+                + "Votre Compt est blocker.\n "
+                + "SmartSteps";
+
+        // Send the SMS message
+        Message twilioMessage = Message.creator(
+                new PhoneNumber(recipientNumber),
+                new PhoneNumber("+12524295345"),
+                message).create();
+
+        System.out.println("SMS envoyé : " + twilioMessage.getSid());
+
+    }
 }

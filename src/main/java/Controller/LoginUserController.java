@@ -50,6 +50,20 @@ public class LoginUserController implements Initializable {
         }
 
     }
+    @FXML
+    void modifier(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/ResetPassword.fxml"));
+            Scene scene = new Scene(root);
+            Stage myWindow = (Stage) tf_email.getScene().getWindow();
+            myWindow.setScene(scene); // Change scene to the new one
+            myWindow.setTitle("Reset Password");
+            myWindow.show();
+        } catch (IOException ex) {
+            Logger.getLogger(LoginUserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 
     @FXML
     void login(ActionEvent event) {
@@ -145,21 +159,6 @@ public class LoginUserController implements Initializable {
 
     }
 
-    @FXML
-    void back(ActionEvent event) {
-        Parent root;
-        try {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/LoginUser.fxml")));
-            Stage myWindow = (Stage) tf_email.getScene().getWindow();
-            Scene sc = new Scene(root);
-            myWindow.setScene(sc);
-            myWindow.setTitle("Login");
-            //myWindow.setFullScreen(true);
-            myWindow.show();
-        } catch (IOException ex) {
-            Logger.getLogger(LoginUserController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 
 
     @Override

@@ -10,10 +10,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="468.0" prefWidth="893.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AfficherUserAdmin" style="-fx-background-color: linear-gradient(to bottom, #4F81BD, #1B365D);">
+<AnchorPane prefHeight="468.0" prefWidth="893.0" style="-fx-background-color: linear-gradient(to bottom, #4F81BD, #1B365D);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AfficherUserAdmin">
 
     <!-- Ajout de l'image de fond -->
-    <ImageView fitWidth="893.0" fitHeight="468.0">
+    <ImageView fitHeight="468.0" fitWidth="893.0">
         <Image url="@img/Background.png" />
     </ImageView>
 
@@ -33,7 +33,9 @@
             <Font name="System Bold" size="25.0" />
         </font>
     </Label>
-    <Button layoutX="49.0" layoutY="59.0" mnemonicParsing="false" onAction="#back" text="Back" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" />
+    <Button layoutX="49.0" layoutY="59.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Back" />
     <TextField fx:id="rech" layoutX="687.0" layoutY="59.0" onAction="#rechercher" />
-    <Button layoutX="583.0" layoutY="390.0" mnemonicParsing="false" onAction="#supprimer" text="Supprimer" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" />
+    <Button layoutX="323.0" layoutY="397.0" mnemonicParsing="false" onAction="#deblock" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Deblocker" />
+    <Button layoutX="467.0" layoutY="397.0" mnemonicParsing="false" onAction="#block" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Blocker" />
+    <Button layoutX="184.0" layoutY="397.0" mnemonicParsing="false" onAction="#stat" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Statistique" />
 </AnchorPane>

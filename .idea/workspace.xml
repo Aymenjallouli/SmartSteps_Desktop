@@ -5,110 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="142a97dc-8c26-4209-a287-9acecd2b7eed" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/templateLanguages.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/AdminFirstPageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/AfficherCourAdminController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/AfficherCourEtudiantController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/AfficherCoursController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/AfficherUniteAdminController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/AfficherUniteController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/AfficherUniteEtudiantController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/AfficherUserAdmin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/AjouterUniteController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/EnseignantFirstPageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/MainWindowController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/MenuGestionAdminController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/MenuGestionsEtudiantController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/MenuGestionsProfController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/ModifierCoursController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/ModifierUniteController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/ProfilUserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/UserFirstPageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/ajouterCoursController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Cour.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Unite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/IServiceU.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/ServiceCour.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/ServiceUnite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Admin.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AdminFirstPage.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AfficherCours.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AfficherCoursAdmin.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AfficherUnite.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AfficherUniteAdmin.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AfficherUniteEtudiant.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AfficherUserAdmin.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AjouterUnite.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/EnseignantFirstPage.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Etudiant.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/MainWindow.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/MenuGestionsAdmin.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/MenuGestionsEtudiant.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/MenuGestionsProf.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ModifierCours.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ModifierUnite.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ProfilUser.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/UserFirstPage.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ajouterCours.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/buttonStyles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Delete.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/GestionCour.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/GestionEvaluation.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/GestionForum.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/GestionUser.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Import.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Submit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/add.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/add_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/back.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/back_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/elearning.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/encour.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/refrech.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/refresh_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/search_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/show_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/sort_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/update.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/1.png.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/Background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/user13589.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/user157642.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/user163018.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/user19630.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/user227777.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/user247963.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/user252821.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/user28192.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/user293554.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/user294497.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/img/user88944.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AfficherUserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AjouterUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AjouterUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LoginUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/LoginUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ModifierUserContoller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ModifierUserContoller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/IService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/IService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/ServiceUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/ServiceUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/test/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/MainFX.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/MyDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/MyDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherUser.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AjouterUser.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/LoginUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LoginUser.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifierUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ModifierUser.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +44,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging GestionCour",
+    "git-widget-placeholder": "Integration",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Aymen Jallouli/Desktop/USER/src/main/resources",
     "node.js.detected.package.eslint": "true",
@@ -204,6 +102,7 @@
       <workItem from="1709385643457" duration="8000" />
       <workItem from="1709385696711" duration="1921000" />
       <workItem from="1709476606214" duration="7181000" />
+      <workItem from="1709487482279" duration="644000" />
     </task>
     <servers />
   </component>
