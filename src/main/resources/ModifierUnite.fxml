@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="628.0" style="-fx-background-color: linear-gradient(to bottom, #3b5998, #1B365D);" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ModifierUniteController">
+    <children>
+        <!-- Logo -->
+        <ImageView fitHeight="600" fitWidth="900">
+            <Image url="@images/Background.png" />
+        </ImageView>
+
+        <VBox layoutX="226.0" layoutY="194.0" prefHeight="217.0" prefWidth="478.0" spacing="10.0">
+            <children>
+
+                <!-- Titre -->
+                <TextField fx:id="titreField" promptText="Titre" />
+
+                <!-- Statut -->
+                <ChoiceBox fx:id="statutField" prefHeight="25.0" prefWidth="501.0">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="EN COURS" />
+                            <String fx:value="A FAIRE" />
+                            <String fx:value="TERMINÉ" />
+                        </FXCollections>
+                    </items>
+                </ChoiceBox>
+
+                <TextArea fx:id="contenuField" prefHeight="100.0" promptText="Contenu" />
+
+                <Label fx:id="lblSelectedCour" />
+            </children>
+        </VBox>
+
+        <Text fill="#150eda" fontSmoothingType="LCD" layoutX="306.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MODIFIER UNITE" wrappingWidth="354.13671875">
+            <font>
+                <Font size="44.0" />
+            </font>
+        </Text>
+
+        <Button layoutX="746.0" layoutY="320.0" onAction="#ModifierUnite" prefHeight="33.0" prefWidth="146.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Modifier Unite" />
+
+        <Button fx:id="Retour" layoutX="10.0" layoutY="320.0" onAction="#Retour" prefHeight="33.0" prefWidth="146.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Retour" />
+
+        <Button layoutX="531.0" layoutY="431.0" onAction="#importFiles" prefHeight="33.0" prefWidth="173.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Importer des fichiers" />
+        <ImageView fitHeight="29.0" fitWidth="32.0" layoutX="746.0" layoutY="322.0">
+            <image>
+                <Image url="@images/update.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="14.0" layoutY="322.0">
+            <image>
+                <Image url="@images/back.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="132.0" fitWidth="250.0" layoutX="340.0">
+            <image>
+                <Image url="@images/1.png" />
+            </image>
+        </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="26.0" layoutX="531.0" layoutY="433.0">
+         <image>
+            <Image url="@images/Import.png" />
+         </image>
+      </ImageView>
+    </children>
+</AnchorPane>

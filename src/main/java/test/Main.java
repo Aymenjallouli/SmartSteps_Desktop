@@ -1,7 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
 
 package test;
 
@@ -29,9 +25,9 @@ public class Main {
 
         // System.out.println( t.afficher().toString());
 
-       // User c = new User(2374,"nkklok","okdjjd","ldlakdkjj","ija@djdd","prof");
+        // User c = new User(2374,"nkklok","okdjjd","ldlakdkjj","ija@djdd","prof");
 
-    //    u.ajouter(c);
+        //    u.ajouter(c);
 
 
         //Reservation z = new Reservation(3,1,2, maintenant,"sss");
@@ -58,6 +54,4 @@ public class Main {
         }
 */
 
-
-    }
-}
+    }}

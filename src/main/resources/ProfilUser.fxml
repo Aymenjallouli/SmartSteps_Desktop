@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="898.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProfilUserController">
+    <!-- Image de fond -->
+    <ImageView fitHeight="600" fitWidth="900">
+        <Image url="@img/Background.png" />
+    </ImageView>
+
+    <!-- Logo -->
+    <ImageView fitHeight="92.0" fitWidth="262.0" layoutX="320.0" layoutY="14.0">
+        <Image url="@img/1.png.png" />
+    </ImageView>
+
+    <!-- Titre -->
+
+
+    <TextField fx:id="nom" layoutX="380.0" layoutY="195.0" />
+    <TextField fx:id="prenom" layoutX="382.0" layoutY="244.0" />
+    <TextField fx:id="email" layoutX="380.0" layoutY="300.0" />
+    <Button layoutX="394.0" layoutY="463.0" mnemonicParsing="false" onAction="#ajt" prefHeight="34.0" prefWidth="128.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Profil" />
+    <Button layoutX="599.0" layoutY="333.0" mnemonicParsing="false" onAction="#uploadImage" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Upload" />
+    <ImageView fx:id="img" fitHeight="109.0" fitWidth="149.0" layoutX="567.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true" />
+    <DatePicker fx:id="date" layoutX="383.0" layoutY="350.0" prefHeight="25.0" prefWidth="150.0" />
+    <Label layoutX="230.0" layoutY="199.0" text="First Name" />
+    <Label layoutX="230.0" layoutY="254.0" text="Last Name" />
+    <Label layoutX="242.0" layoutY="304.0" text="Email" />
+    <Label layoutX="232.0" layoutY="363.0" prefHeight="17.0" prefWidth="74.0" text="Date of Birth" />
+    <TextField fx:id="tel" layoutX="388.0" layoutY="402.0" />
+    <Label layoutX="236.0" layoutY="419.0" text="Phone Number" />
+    <Label layoutX="409.0" layoutY="124.0" text="Profil" textFill="#0d0d0d">
+        <font>
+            <Font name="System Bold" size="27.0" />
+        </font>
+    </Label>
+    <Button layoutX="214.0" layoutY="72.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Back" />
+</AnchorPane>

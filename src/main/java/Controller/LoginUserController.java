@@ -1,4 +1,4 @@
-package controller;
+package Controller;
 
 import entities.User;
 import javafx.event.ActionEvent;
@@ -73,14 +73,14 @@ public class LoginUserController implements Initializable {
                 if (BCrypt.checkpw(tf_pwd.getText(), result.getPwd().replaceFirst("y","a")))
                 {
 
-                    if(result.getRole().equals("[\"ROLE_ADMIN\"]")){
+                    if(result.getRole().equals("admin")){
                         Sessions.setLoggedInUser(result);
                         System.out.println(result.getRole());
                         // TODO: Proceed to other page
                         Parent root;
                         IdOfUser=result.getIdUser();
                         try {
-                            root = FXMLLoader.load(getClass().getResource("/Gui/AdminFirstPage.fxml"));
+                            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/MenuGestionsAdmin.fxml")));
                             Stage myWindow = (Stage) tf_email.getScene().getWindow();
                             Scene sc = new Scene(root);
                             myWindow.setScene(sc);
@@ -92,14 +92,14 @@ public class LoginUserController implements Initializable {
                         }
                     }
 
-                    else if (result.getRole().equals("[\"ROLE_MANAGER\"]")){
+                    else if (result.getRole().equals("Enseignant")){
                         Sessions.setLoggedInUser(result);
                         System.out.println(result.getRole());
                         // TODO: Proceed to other page
                         Parent root;
                         IdOfUser=result.getIdUser();
                         try {
-                            root = FXMLLoader.load(getClass().getResource("/Gui/ManagerFirstPage.fxml"));
+                            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/MenuGestionsProf.fxml")));
                             Stage myWindow = (Stage) tf_email.getScene().getWindow();
                             Scene sc = new Scene(root);
                             myWindow.setScene(sc);
@@ -117,7 +117,7 @@ public class LoginUserController implements Initializable {
                         Parent root;
                         IdOfUser=0;
                         try {
-                            root = FXMLLoader.load(getClass().getResource("/Gui/AcceuilUser.fxml"));
+                            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/MenuGestionsEtudiant.fxml")));
                             Stage myWindow = (Stage) tf_email.getScene().getWindow();
                             Scene sc = new Scene(root);
                             myWindow.setScene(sc);
@@ -145,6 +145,21 @@ public class LoginUserController implements Initializable {
 
     }
 
+    @FXML
+    void back(ActionEvent event) {
+        Parent root;
+        try {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/LoginUser.fxml")));
+            Stage myWindow = (Stage) tf_email.getScene().getWindow();
+            Scene sc = new Scene(root);
+            myWindow.setScene(sc);
+            myWindow.setTitle("Login");
+            //myWindow.setFullScreen(true);
+            myWindow.show();
+        } catch (IOException ex) {
+            Logger.getLogger(LoginUserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 
     @Override

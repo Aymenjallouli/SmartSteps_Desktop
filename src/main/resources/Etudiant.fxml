@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="898.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AfficherCourEtudiantController">
+    <ImageView fitHeight="600" fitWidth="900">
+        <Image url="@images/Background.png" />
+    </ImageView>
+
+    <ImageView fitHeight="92.0" fitWidth="262.0" layoutX="320.0" layoutY="14.0">
+        <Image url="@images/1.png" />
+    </ImageView>
+    <TextField fx:id="searchField" layoutX="497.0" layoutY="196.0" prefHeight="33.0" prefWidth="170.0" promptText="Recherche par Nom-matière" />
+   <Text fill="#150eda" layoutX="1.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LIST COURS" textAlignment="CENTER" wrappingWidth="900.0">
+      <font>
+         <Font size="33.0" />
+      </font>
+   </Text>
+   <Button fx:id="Retour" layoutX="18.0" layoutY="360.0" onAction="#Retour" prefHeight="33.0" prefWidth="127.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Retour" />
+   <Button layoutX="500.0" layoutY="509.0" onAction="#trierParMatiere" prefHeight="33.0" prefWidth="143.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Trier par matière" />
+   <Button fx:id="AfficherUnite" layoutX="716.0" layoutY="317.0" onAction="#AfficherUnite" prefHeight="33.0" prefWidth="127.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Afficher Unite" />
+   <Button fx:id="rechercherParMatiere" layoutX="714.0" layoutY="196.0" onAction="#rechercherParMatiere" prefHeight="33.0" prefWidth="127.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Search" />
+   <Button fx:id="REFRECH" layoutX="714.0" layoutY="146.0" onAction="#REFRECH" prefHeight="33.0" prefWidth="127.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="REFRECH" />
+   <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="18.0" layoutY="362.0">
+      <image>
+         <Image url="@images/back.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="496.0" layoutY="512.0">
+      <image>
+         <Image url="@images/sort_icon.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="716.0" layoutY="319.0">
+      <image>
+         <Image url="@images/show_icon.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="714.0" layoutY="148.0">
+      <image>
+         <Image url="@images/refrech.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="714.0" layoutY="198.0">
+      <image>
+         <Image url="@images/Search.png" />
+      </image>
+   </ImageView>
+   <VBox layoutX="482.0" layoutY="235.0" prefHeight="230.0" prefWidth="200.0" spacing="10.0">
+      <children>
+         <Text fill="#1b65c6" text="SmartStepsBot" textAlignment="CENTER" wrappingWidth="200.8173828125">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Text>
+         <TextField fx:id="chatInput" prefHeight="47.0" prefWidth="180.0" promptText="Message SmartStepsBot" />
+         <TextArea fx:id="chatOutput" editable="false" prefHeight="162.0" prefWidth="200.0" />
+      </children>
+   </VBox>
+   <Button fx:id="Submit" layoutX="714.0" layoutY="260.0" onAction="#Submit" prefHeight="33.0" prefWidth="127.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Submit" />
+   <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="714.0" layoutY="262.0">
+      <image>
+         <Image url="@images/Submit.png" />
+      </image>
+   </ImageView>
+   <VBox fx:id="CoursVbox" layoutX="136.0" layoutY="193.0" prefHeight="282.0" prefWidth="335.0">
+      <children>
+          <Text fill="#150eda" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom Matière                 Date_Début                Date_Fin" wrappingWidth="335.5234375" />
+          <ListView fx:id="listcour" prefHeight="264.0" prefWidth="336.0" />
+      </children>
+   </VBox>
+
+</AnchorPane>

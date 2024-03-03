@@ -1,0 +1,97 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+
+.l{
+    -fx-background-color : #99b8ce;
+
+    -fx-background-radius: 30;
+
+}
+
+.l:hover{
+    -fx-background-color : #6ecff6;
+
+    -fx-background-radius: 30;
+    -fx-border-color:#231f20;
+    -fx-border-width:1px;
+    -fx-border-style:solid;
+    -fx-border-radius: 30;
+
+}
+
+.m{
+    -fx-background-color : #99b8ce;
+    -fx-border-color:#231f20;
+    -fx-border-width:1px;
+    -fx-border-style:solid;
+
+}
+
+.t{
+    -fx-background-color : #2596be;
+    -fx-border-color:#231f20;
+    -fx-border-width:1px;
+    -fx-border-style:solid;
+}
+
+.x{-fx-border-color:#231f20;
+    -fx-border-width:1px;
+    -fx-border-style:solid;}
+
+
+.other_button {
+    -fx-background-color : #e6efef;
+    -fx-border-color:#231f20;
+    -fx-border-width:0.5px;
+    -fx-border-style:solid;
+
+}
+
+.other_button:hover{
+    -fx-background-color : #6ecff6;
+    -fx-border-color:#002366 ;
+    -fx-border-width:2px;
+    -fx-border-style:solid;
+
+}
+.other_button:pressed{
+    -fx-background-color : #6ecff6;
+    -fx-border-color:#002366 ;
+    -fx-border-width:4px;
+    -fx-border-style:solid;
+
+}
+
+.button_add{
+    -fx-background-color :  #99b8ce;
+    -fx-background-radius: 30;
+}
+
+.button_add:hover{
+    -fx-background-color : #6ecff6;
+    -fx-border-color:#002366 ;
+    -fx-border-width:2px;
+    -fx-border-radius: 30;
+    -fx-border-style:solid;
+}
+
+.button_add:pressed{
+    -fx-background-color : #6ecff6;
+    -fx-border-color:#002366 ;
+    -fx-border-width:4px;
+    -fx-border-radius: 30;
+    -fx-border-style:solid;
+
+}
+
+.side_anchor{
+    -fx-background-color :#99b8ce ;
+    -fx-border-color:#002366 ;
+
+}
+
+.dark_blue_back{
+    -fx-background-color : #111f2d;
+}

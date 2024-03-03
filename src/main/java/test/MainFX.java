@@ -6,20 +6,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Objects;
 
 public class MainFX extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("/AjouterUser.fxml"));
-        Parent root= fxmlLoader.load();
-        Scene scene= new Scene(root);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/LoginUser.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Style.css")).toExternalForm());
         stage.setScene(scene);
-        stage.setTitle("Gerer user");
+        stage.setTitle("Gérer Cours");
         stage.show();
     }
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args){
         launch(args);
     }
 }

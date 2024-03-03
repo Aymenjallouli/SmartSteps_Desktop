@@ -6,49 +6,32 @@ import java.sql.SQLException;
 
 public class MyDB {
 
+    private static final String URL = "jdbc:mysql://localhost:3306/smartsteps";
+    private static final String USERNAME = "root";
 
-    public final String URL = "jdbc:mysql://localhost:3306/smartsteps";
-    public final String USERNAME = "root";
-    public final String PWD = "";
-
-    //2 creer une variable de m type que la classe
-    public static MyDB instance;
-
+    private static MyDB instance;
     private Connection connection;
 
-    //1 Rendre le constructeur Prive
-    private MyDB() {
-
+    public MyDB() {
         try {
-            connection = DriverManager.getConnection(URL,USERNAME,null);
-            System.out.println("Connected");
+            connection = DriverManager.getConnection(URL, USERNAME, null);
+            System.out.println("Connected to database.");
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Failed to connect to database: " + e.getMessage());
         }
     }
 
-    //3 creer une methode getInstance
-    public static MyDB getInstance(){
-        if(instance==null){
+
+    public static MyDB getInstance() {
+        if (instance == null) {
             instance = new MyDB();
         }
         return instance;
-
     }
 
     public Connection getConnection() {
-        try {
-            // Check if the connection is closed or null
-            if (connection == null || connection.isClosed()) {
-                // Reconnect if closed or null
-                connection = DriverManager.getConnection(URL, USERNAME, PWD);
-                System.out.println("Connected");
-            }
-        } catch (SQLException e) {
-            // Handle the exception appropriately, e.g., logging or throwing a custom exception
-            System.out.println("Error connecting to the database: " + e.getMessage());
-        }
-
         return connection;
     }
+
+
 }

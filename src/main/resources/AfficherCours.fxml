@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="750.0" style="-fx-background-color: linear-gradient(to bottom, #4F81BD, #1B365D);" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AfficherCoursController">
+    <ImageView fitHeight="600" fitWidth="900" layoutX="-7.0" layoutY="-8.0">
+        <Image url="@images/Background.png" />
+    </ImageView>
+
+    <!-- Espace pour le chatbot -->
+    <VBox layoutX="529.0" layoutY="223.0" prefHeight="252.0" prefWidth="200.0" spacing="10.0">
+        <!-- Titre du chatbot -->
+        <Text fill="#1b65c6" text="SmatStepsBot" textAlignment="CENTER" wrappingWidth="202.8173828125">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <!-- Zone d'écriture personnalisée pour le chatbot -->
+        <TextField fx:id="chatInput" prefWidth="200" promptText="Message SmartStepsBot" />
+        <!-- Ajout de la zone d'écriture pour le chatbot -->
+        <TextArea fx:id="chatOutput" editable="false" prefHeight="162.0" prefWidth="200.0" />
+    </VBox>
+    <!-- Fin de l'espace pour le chatbot -->
+
+    <Text fill="#150eda" layoutX="190.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom Matière" />
+    <Text fill="#150eda" layoutX="305.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Début" />
+    <Text fill="#150eda" layoutX="399.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Fin" />
+
+    <TextField fx:id="searchField" layoutX="529.0" layoutY="188.0" prefHeight="33.0" prefWidth="203.0" promptText="Recherche par Nom-matière" />
+
+    <ListView fx:id="listcour" layoutX="184.0" layoutY="233.0" prefHeight="221.0" prefWidth="334.0" />
+
+    <Text fill="#150eda" layoutX="351.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LISTE DES COURS" wrappingWidth="198.0">
+        <font>
+            <Font size="24.0" />
+        </font>
+    </Text>
+
+    <Button fx:id="SupprimerCour" layoutX="383.0" layoutY="521.0" onAction="#SupprimerCour" prefHeight="33.0" prefWidth="136.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Supprimer" />
+    <Button fx:id="ModifierCour" layoutX="382.0" layoutY="471.0" onAction="#ModifierCour" prefHeight="33.0" prefWidth="136.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Modifier" />
+    <Button layoutX="543.0" layoutY="471.0" onAction="#trierParMatiere" prefHeight="33.0" prefWidth="155.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Trier par matière" />
+    <Button fx:id="AfficherUnite" layoutX="743.0" layoutY="367.0" onAction="#AfficherUnite" prefHeight="33.0" prefWidth="136.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Afficher Unite" />
+    <Button fx:id="rechercherParMatiere" layoutX="744.0" layoutY="196.0" onAction="#rechercherParMatiere" prefHeight="33.0" prefWidth="136.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Search" />
+    <Button fx:id="ajouterCourButton" layoutX="743.0" layoutY="313.0" onAction="#AjouterCour" prefHeight="33.0" prefWidth="136.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Ajouter Cour" />
+    <Button fx:id="actualiserButton" layoutX="744.0" layoutY="151.0" onAction="#actualiserCours" prefHeight="33.0" prefWidth="136.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Refrech" />
+    <ImageView fitHeight="92.0" fitWidth="262.0" layoutX="319.0" layoutY="26.0">
+        <image>
+            <Image url="@images/1.png" />
+        </image>
+    </ImageView>
+    <Button fx:id="Retour" layoutX="14.0" layoutY="356.0" onAction="#Retour" prefHeight="33.0" prefWidth="127.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Retour" />
+    <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="544.0" layoutY="473.0">
+        <image>
+            <Image url="@images/sort_icon.png" />
+        </image>
+    </ImageView>
+    <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="15.0" layoutY="358.0">
+        <image>
+            <Image url="@images/back.png" />
+        </image>
+    </ImageView>
+    <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="744.0" layoutY="369.0">
+        <image>
+            <Image url="@images/show_icon.png" />
+        </image>
+    </ImageView>
+    <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="744.0" layoutY="198.0">
+        <image>
+            <Image url="@images/Search.png" />
+        </image>
+    </ImageView>
+    <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="744.0" layoutY="153.0">
+        <image>
+            <Image url="@images/refrech.png" />
+        </image>
+    </ImageView>
+    <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="384.0" layoutY="523.0">
+        <image>
+            <Image url="@images/Delete.png" />
+        </image>
+    </ImageView>
+    <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="744.0" layoutY="315.0">
+        <image>
+            <Image url="@images/add.png" />
+        </image>
+    </ImageView>
+    <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="383.0" layoutY="473.0">
+        <image>
+            <Image url="@images/update.png" />
+        </image>
+    </ImageView>
+   <Button fx:id="Submit" layoutX="743.0" layoutY="252.0" onAction="#Submit" prefHeight="33.0" prefWidth="136.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Submit" />
+   <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="743.0" layoutY="254.0">
+      <image>
+         <Image url="@images/Submit.png" />
+      </image>
+   </ImageView>
+</AnchorPane>

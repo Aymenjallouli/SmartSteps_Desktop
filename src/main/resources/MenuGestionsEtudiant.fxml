@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="898.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuGestionsEtudiantController">
+    <ImageView fitHeight="600" fitWidth="900">
+        <Image url="@images/Background.png" />
+    </ImageView>
+
+    <ImageView fitHeight="165.0" fitWidth="248.0" layoutX="346.0" layoutY="6.0">
+        <Image url="@images/1.png" />
+    </ImageView>
+
+    <Text fill="#0721a1" layoutX="240.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO STUDENT" textAlignment="CENTER" wrappingWidth="443.09375">
+        <font>
+            <Font name="Arial" size="24" />
+        </font>
+    </Text>
+    <Button fx:id="Evaluation" layoutX="367.0" layoutY="401.0" onAction="#Evaluation" prefHeight="47.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Evaluation" />
+    <Button fx:id="Forum" layoutX="367.0" layoutY="319.0" onAction="#Forum" prefHeight="47.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Forum" />
+    <Button fx:id="Cours" layoutX="366.0" layoutY="237.0" onAction="#Cours" prefHeight="47.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Cours" />
+    <ImageView fitHeight="47.0" fitWidth="34.0" layoutX="367.0" layoutY="403.0">
+        <image>
+            <Image url="@images/GestionEvaluation.png" />
+        </image>
+    </ImageView>
+    <ImageView fitHeight="47.0" fitWidth="40.0" layoutX="367.0" layoutY="321.0">
+        <image>
+            <Image url="@images/GestionForum.png" />
+        </image>
+    </ImageView>
+    <ImageView fitHeight="47.0" fitWidth="40.0" layoutX="366.0" layoutY="237.0">
+        <image>
+            <Image url="@images/GestionCour.png" />
+        </image>
+    </ImageView>
+   <ImageView fitHeight="211.0" fitWidth="260.0" layoutX="642.0" layoutY="190.0">
+      <image>
+         <Image url="@images/elearning.jpg" />
+      </image>
+   </ImageView>
+   <VBox prefHeight="293.0" prefWidth="327.0" spacing="10.0" style="-fx-background-color: #FFFFFF;">
+      <children>
+         <Text fill="#1b65c6" text="SmartStepsBot" textAlignment="CENTER" wrappingWidth="326.8173828125">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Text>
+         <TextField fx:id="chatInput" prefWidth="200" promptText="Message SmartStepsBot" />
+         <TextArea fx:id="chatOutput" editable="false" prefHeight="255.0" prefWidth="327.0" />
+      </children>
+   </VBox>
+   <Button fx:id="Submit" layoutX="60.0" layoutY="321.0" onAction="#Submit" prefHeight="47.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Submit" />
+   <ImageView fitHeight="47.0" fitWidth="34.0" layoutX="62.0" layoutY="321.0">
+      <image>
+         <Image url="@images/Submit.png" />
+      </image>
+   </ImageView>
+   <Button fx:id="rec1" layoutX="8.0" layoutY="508.0" mnemonicParsing="false" onAction="#logout" prefHeight="57.0" prefWidth="273.0" styleClass="l" stylesheets="@fxml.css" text="Logout" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="21.0" />
+      </font>
+      <effect>
+         <Reflection />
+      </effect>
+   </Button>
+   <Button fx:id="rec" layoutX="615.0" layoutY="508.0" mnemonicParsing="false" onAction="#Profil" prefHeight="57.0" prefWidth="273.0" styleClass="l" stylesheets="@fxml.css" text="Profil" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="21.0" />
+      </font>
+      <effect>
+         <Reflection />
+      </effect>
+   </Button>
+
+</AnchorPane>

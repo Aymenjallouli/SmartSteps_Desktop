@@ -4,21 +4,41 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginUserController">
-   <children>
-      <TextField fx:id="tf_email" layoutX="235.0" layoutY="138.0" promptText="email" />
-      <Button fx:id="login" layoutX="334.0" layoutY="322.0" mnemonicParsing="false" onAction="#login" text="se connecter" />
-      <Button fx:id="inscrire" layoutX="212.0" layoutY="322.0" mnemonicParsing="false" onAction="#inscrire" text="s'inscrire" />
-      <PasswordField fx:id="tf_pwd" layoutX="235.0" layoutY="215.0" />
-      <Label layoutX="145.0" layoutY="142.0" text="Email" />
-      <Label layoutX="145.0" layoutY="219.0" text="Password" />
-      <Label layoutX="249.0" layoutY="28.0" text="Sign In">
-         <font>
-            <Font name="System Bold" size="31.0" />
-         </font>
-      </Label>
-   </children>
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginUserController">
+   <!-- Image de fond -->
+   <ImageView fitHeight="600" fitWidth="900">
+      <Image url="@img/Background.png" />
+   </ImageView>
+
+   <!-- Logo -->
+   <ImageView fitHeight="92.0" fitWidth="262.0" layoutX="320.0" layoutY="14.0">
+      <Image url="@img/1.png.png" />
+   </ImageView>
+
+   <!-- Titre -->
+   <Label layoutX="399.0" layoutY="160.0" text="Sign In">
+      <font>
+         <Font name="System Bold" size="31.0" />
+      </font>
+   </Label>
+
+   <TextField fx:id="tf_email" layoutX="385.0" layoutY="256.0" promptText="Email" />
+   <PasswordField fx:id="tf_pwd" layoutX="385.0" layoutY="320.0" promptText="Password" />
+
+   <Button fx:id="login" layoutX="498.0" layoutY="391.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D; -fx-font-size: 14px; -fx-font-weight: bold;" text="Se connecter" />
+
+   <Button fx:id="inscrire" layoutX="298.0" layoutY="391.0" mnemonicParsing="false" onAction="#inscrire" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D; -fx-font-size: 14px; -fx-font-weight: bold;" text="S'inscrire" />
+
+   <Label layoutX="298.0" layoutY="260.0" text="Email" textFill="#0d0d0d" />
+   <Label layoutX="298.0" layoutY="324.0" text="Password" textFill="#0d0d0d" />
+   <ImageView fitHeight="211.0" fitWidth="260.0" layoutX="642.0" layoutY="183.0">
+      <image>
+         <Image url="@images/elearning.jpg" />
+      </image>
+   </ImageView>
 </AnchorPane>
