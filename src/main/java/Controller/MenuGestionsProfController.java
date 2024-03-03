@@ -24,6 +24,19 @@ public class MenuGestionsProfController {
     }
 
     public void Forum(ActionEvent actionEvent) {
+
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/ajouterForum.fxml"));
+            Scene scene = new Scene(root);
+
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @FXML

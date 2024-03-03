@@ -78,7 +78,18 @@ public void Evaluation(ActionEvent actionEvent) {
     }
 
     public void Forum(ActionEvent actionEvent) {
+        try {
+            Parent page2 = FXMLLoader.load(getClass().getResource("/ajouterCommentaire.fxml"));
+
+            Scene scene2 = new Scene(page2);
+            Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            app_stage.setScene(scene2);
+            app_stage.show();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
+
 
     public void Cours(ActionEvent actionEvent) {
         try {

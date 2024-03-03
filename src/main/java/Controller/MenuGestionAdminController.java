@@ -23,8 +23,13 @@ public class MenuGestionAdminController {
     public void Gestion_Evaluation(ActionEvent actionEvent) {
     }
 
-    public void Gestion_Forum(ActionEvent actionEvent) {
+    public void Gestion_Forum(ActionEvent actionEvent) throws IOException {
+        Parent page2 = FXMLLoader.load(getClass().getResource("/listForumFront.fxml"));
 
+        Scene scene2 = new Scene(page2);
+        Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        app_stage.setScene(scene2);
+        app_stage.show();
     }
 
     public void Gestion_Cours(ActionEvent actionEvent) {

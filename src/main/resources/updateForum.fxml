@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="updateForum" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #3b5998, #1B365D);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.updateForumController">
+
+    <children>
+
+        <!-- Nom de la matière -->
+        <Text fill="white" layoutX="115.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre" />
+        <TextField fx:id="txtTitreForum" layoutX="286.0" layoutY="92.0" prefHeight="25.0" prefWidth="200.0" promptText="Titre Forum" />
+
+        <!-- Date de début -->
+        <Text fill="white" layoutX="115.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
+
+        <!-- Bouton "Retour" -->
+        <Button fx:id="btnAnnuler" layoutX="127.0" layoutY="342.0" mnemonicParsing="false" onAction="#clearFieldsForum" prefHeight="30.0" prefWidth="169.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-text-fill: #1B365D;" text="Annuler">
+            <style>
+                -fx-background-color: linear-gradient(to bottom, #5a88c1, #1f3b63);
+                -fx-text-fill: white;
+            </style>
+            <effect>
+                <DropShadow />
+            </effect>
+            Retour
+        </Button>
+
+        <!-- Bouton "Ajouter cours" -->
+        <Button fx:id="btnModifier" layoutX="326.0" layoutY="342.0" mnemonicParsing="false" onAction="#updateForum" prefHeight="30.0" prefWidth="169.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-text-fill: #1B365D;" text="Modifier Forum">
+            <style>
+                -fx-background-color: linear-gradient(to bottom, #5a88c1, #1f3b63);
+                -fx-text-fill: white;
+            </style>
+            <effect>
+                <DropShadow />
+            </effect>
+            Ajouter cours
+        </Button>
+        <TextArea fx:id="txtDescriptionForum" layoutX="286.0" layoutY="243.0" prefHeight="77.0" prefWidth="200.0" promptText="DescriptionForum" />
+        <Text fill="white" layoutX="249.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier Forum">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Text>
+        <Label layoutX="114.0" layoutY="141.0" text="Image" textFill="WHITE" />
+        <ImageView fx:id="imgInput" fitHeight="68.0" fitWidth="200.0" layoutX="286.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true" />
+        <Label layoutX="286.0" layoutY="131.0" text="Choisir l'image :" textFill="WHITE" />
+        <Button fx:id="btnImport" layoutX="416.0" layoutY="127.0" mnemonicParsing="false" onAction="#ajouterImage" text="Import" />
+      <ImageView fitHeight="104.0" fitWidth="162.0" layoutX="-6.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/logo.png" />
+         </image>
+      </ImageView>
+
+    </children>
+</AnchorPane>

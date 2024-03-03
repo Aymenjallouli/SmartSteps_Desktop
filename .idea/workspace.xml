@@ -5,14 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="142a97dc-8c26-4209-a287-9acecd2b7eed" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AfficherCourAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AfficherCourAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AfficherCourEtudiantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AfficherCourEtudiantController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AfficherCoursController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AfficherCoursController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AfficherUniteAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AfficherUniteAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AfficherUniteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AfficherUniteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AfficherUniteEtudiantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AfficherUniteEtudiantController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/MyListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/StatistiquesController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/ajouterCommentaireController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/ajouterForumController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/itemCommentaireController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/itemForumController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/listCommentaireController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/listForumController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/listForumFrontCardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/listForumFrontController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/updateCommentaireController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/updateForumController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Commentaire.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/CrudCommentaire.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/CrudForum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Forum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/CommentaireService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/ForumService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ajouterCommentaire.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ajouterForum.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/delete.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/edit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/itemCommentaire.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/itemForum.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/listCommentaire.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/listForum.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/listForumFront.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/listForumFrontCard.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/statistiques.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/updateCommentaire.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/updateForum.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MenuGestionAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MenuGestionAdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MenuGestionsEtudiantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MenuGestionsEtudiantController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/MenuGestionsEtudiant.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MenuGestionsEtudiant.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MenuGestionsProfController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MenuGestionsProfController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/MainFX.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,13 +82,13 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "Integration",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Aymen Jallouli/Desktop/USER/src/main/resources",
+    "last_opened_file_path": "/Users/medyassinemessaoud/Documents/EspritSim/aziz/SmartSteps_Desktop",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.30689654",
     "vue.rearranger.settings.migration": "true"
   }
@@ -68,6 +98,13 @@
       <recent name="C:\Users\Aymen Jallouli\Desktop\USER\src\main\resources" />
       <recent name="C:\Users\Aymen Jallouli\Desktop\USER\src\main\java\Controller" />
       <recent name="C:\Users\Aymen Jallouli\Desktop\USER\src\main\java\entities" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/uploads" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/src/main/resources/img" />
+      <recent name="$PROJECT_DIR$/src/main/java/Controller" />
+      <recent name="$PROJECT_DIR$/src/main/java/services" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="services" />
@@ -93,6 +130,13 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.9-jbr-17.0.9-4caba194b151-f5d63804" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -111,6 +155,7 @@
       <workItem from="1709385696711" duration="1921000" />
       <workItem from="1709476606214" duration="7181000" />
       <workItem from="1709487482279" duration="4263000" />
+      <workItem from="1709491537838" duration="8509000" />
     </task>
     <servers />
   </component>
