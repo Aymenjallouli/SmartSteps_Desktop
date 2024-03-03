@@ -189,7 +189,7 @@ public class AfficherEvaluationController implements Initializable {
                 showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible d'afficher les questions.");
             }
         } else {
-            showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Veuillez sélectionner une evaluation pour afficher les questions.");
+            showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Veuillez sélectionner une evaluation pour ajouter une question.");
         }
     }
     @FXML

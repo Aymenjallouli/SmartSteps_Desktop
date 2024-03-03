@@ -6,53 +6,84 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherEvaluationController">
-    <children>
-        <!-- Logo -->
-        <ImageView fitHeight="65.0" fitWidth="108.0" layoutX="8.0" layoutY="11.0">
-            <image>
-                <Image url="@images/1.png" />
-            </image>
-        </ImageView>
-
-        <VBox layoutX="31.0" layoutY="21.0" spacing="10.0">
-            <children>
-                <HBox spacing="10.0" />
-                <HBox spacing="10.0" />
-            </children>
-        </VBox>
-
-        <!-- Ajout des titres de colonne -->
-        <Text layoutX="7.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre" />
-        <Text layoutX="122.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Limite" />
-        <Text layoutX="232.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duree" />
-
-        <TextField fx:id="searchField" layoutX="417.0" layoutY="75.0" prefHeight="33.0" prefWidth="170.0" promptText="Recherche par Titre" />
-
-        <ListView fx:id="listevaluation" layoutY="122.0" prefHeight="200.0" prefWidth="600.0" />
-
-        <Text layoutX="292.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Evaluations" wrappingWidth="132.39996337890625">
-            <font>
-                <Font size="24.0" />
-            </font>
-        </Text>
-
-        <!-- Boutons d'action -->
-        <Button fx:id="Retour" layoutX="8.0" layoutY="345.0" onAction="#Retour" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="Retour" /><Button fx:id="SupprimerEvaluation" layoutX="600.0" layoutY="236.0" onAction="#SupprimerEvaluation" prefHeight="33.0" prefWidth="143.0" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="Supprimer" />
-        <Button fx:id="ModifierEvaluation" layoutX="600.0" layoutY="188.0" onAction="#ModifierEvaluation" prefHeight="33.0" prefWidth="143.0" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="Modifier" />
-        <Button layoutX="600.0" layoutY="73.0" onAction="#trierParTitre" prefHeight="33.0" prefWidth="143.0" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="Trier par Titre" />
-        <Button fx:id="AfficherQuestion" layoutX="444.0" layoutY="328.0" onAction="#AfficherQuestion" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="Afficher Questions" />
-        <Button fx:id="rechercherParTitre" layoutX="600.0" layoutY="25.0" onAction="#rechercherParTitre" prefHeight="33.0" prefWidth="143.0" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="Rechercher" />
-        <Button fx:id="ajouterEvaluationButton" layoutX="600.0" layoutY="143.0" onAction="#AjouterEvaluation" prefHeight="33.0" prefWidth="143.0" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="Ajouter une évaluation">
+<AnchorPane prefHeight="400.0" prefWidth="750.0" style="-fx-background-color: linear-gradient(to bottom, #4F81BD, #1B365D);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherEvaluationController">
+   <children>
+      <ImageView fitHeight="600" fitWidth="900" layoutX="-7.0" layoutY="-8.0">
+         <image>
+            <Image url="@images/Background.png" />
+         </image>
+      </ImageView>
+      <Text fill="#150eda" layoutX="299.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre" />
+      <Text fill="#150eda" layoutX="414.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date limite" />
+      <Text fill="#150eda" layoutX="508.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duree" />
+      <TextField fx:id="searchField" layoutX="70.0" layoutY="219.0" prefHeight="33.0" prefWidth="203.0" promptText="Recherche par Nom-matière" />
+      <ListView fx:id="listevaluation" layoutX="293.0" layoutY="219.0" prefHeight="221.0" prefWidth="334.0" />
+      <Text fill="#150eda" layoutX="351.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EVALUATIONS" wrappingWidth="198.0">
          <font>
-            <Font size="10.0" />
-         </font></Button>
-      <Button fx:id="actualiserButton" layoutX="80.0" layoutY="345.0" onAction="#actualiserEvaluation" prefHeight="34.0" prefWidth="82.0" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="REFRECH" />
-      <Button fx:id="AjouterQuestion" layoutX="581.0" layoutY="328.0" onAction="#AjouterQuestion" style="-fx-background-color: linear-gradient(to bottom, #3498db, #2980b9); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: white; -fx-padding: 8px 16px;" text="Ajouter Question" />
-    </children>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Button fx:id="SupprimerEvaluation" layoutX="744.0" layoutY="356.0" onAction="#SupprimerEvaluation" prefHeight="33.0" prefWidth="136.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Supprimer" />
+      <Button fx:id="ModifierEvaluation" layoutX="744.0" layoutY="301.0" onAction="#ModifierEvaluation" prefHeight="33.0" prefWidth="136.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Modifier" />
+      <Button layoutX="743.0" layoutY="202.0" onAction="#trierParTitre" prefHeight="33.0" prefWidth="155.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Trier par matière" />
+      <Button fx:id="AfficherQuestion" alignment="CENTER_RIGHT" layoutX="491.0" layoutY="457.0" onAction="#AfficherQuestion" prefHeight="34.0" prefWidth="101.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Questions" />
+      <Button fx:id="rechercherParTitre" layoutX="78.0" layoutY="267.0" onAction="#rechercherParTitre" prefHeight="33.0" prefWidth="136.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Search" />
+      <Button fx:id="AjouterQuestion" alignment="CENTER_RIGHT" layoutX="346.0" layoutY="457.0" onAction="#AjouterQuestion" prefHeight="34.0" prefWidth="136.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Ajouter question" />
+      <Button fx:id="actualiserButton" layoutX="744.0" layoutY="151.0" prefHeight="33.0" prefWidth="136.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Refrech" />
+      <ImageView fitHeight="92.0" fitWidth="262.0" layoutX="319.0" layoutY="26.0">
+         <image>
+            <Image url="@images/1.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="Retour" layoutX="14.0" layoutY="356.0" onAction="#Retour" prefHeight="33.0" prefWidth="127.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Retour" />
+      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="744.0" layoutY="204.0">
+         <image>
+            <Image url="@images/sort_icon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="15.0" layoutY="358.0">
+         <image>
+            <Image url="@images/back.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="492.0" layoutY="459.0">
+         <image>
+            <Image url="@images/show_icon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="78.0" layoutY="269.0">
+         <image>
+            <Image url="@images/Search.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="744.0" layoutY="153.0">
+         <image>
+            <Image url="@images/refrech.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="745.0" layoutY="358.0">
+         <image>
+            <Image url="@images/Delete.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="346.0" layoutY="459.0">
+         <image>
+            <Image url="@images/add.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="745.0" layoutY="303.0">
+         <image>
+            <Image url="@images/update.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="ajouterEvaluationButton1" layoutX="744.0" layoutY="253.0" onAction="#AjouterEvaluation" prefHeight="34.0" prefWidth="136.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-padding: 8px 16px; -fx-text-fill: #1B365D;" text="Ajouter" />
+      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="744.0" layoutY="255.0">
+         <image>
+            <Image url="@images/add.png" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>

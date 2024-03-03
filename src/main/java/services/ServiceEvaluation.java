@@ -26,13 +26,13 @@ public class ServiceEvaluation implements IService<Evaluation> {
 
     @Override
     public void modifier(Evaluation evaluation) throws SQLException {
-        String req = "update evaluation set titre=? , date_limite=? , duree=?, nb_questions where id=?";
+        String req = "update evaluation set titre=? , date_limite=? , duree=?, nb_questions=? where id=?";
         PreparedStatement pre = con.prepareStatement(req);
         pre.setString(1,evaluation.getTitre());
         pre.setDate(2,evaluation.getDate_limite());
         pre.setInt(3,evaluation.getDuree());
-        pre.setInt(3,evaluation.getNb_questions());
-        pre.setInt(4,evaluation.getId());
+        pre.setInt(4,evaluation.getNb_questions());
+        pre.setInt(5,evaluation.getId());
         pre.executeUpdate();
 
 

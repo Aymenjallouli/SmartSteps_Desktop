@@ -98,8 +98,9 @@ public class AfficherQuestionEtudiantController {
     private void loadQuestion() {
         try {
             ServiceQuestion serviceQuestion = new ServiceQuestion();
-            //System.out.println("hahahahhahahhfqhhahahahhahahahahahahahhahaha");
             q= serviceQuestion.afficherQuestion(selectedEvaluation.getId(), num);
+            System.out.println("hahahahhahahhfqhhahahahhahahahahahahahhahaha");
+            System.out.println(q);
             String[] resultArray = q.getOptions().split(",");
             lbl_num.setText(String.valueOf(q.getNum())+"."
             );

@@ -29,14 +29,14 @@ public class ServiceQuestion implements IService<Question> {
         String req = "update question set id_evaluation=?, num=?, type=? , enonce=?, options=?, solution=?, concept=?, max_score=? where id=?";
         PreparedStatement pre = con.prepareStatement(req);
         pre.setInt(1, question.getId_evaluation());
-        pre.setInt(1, question.getNum());
-        pre.setString(1, question.getType());
-        pre.setString(2, question.getEnonce());
-        pre.setString(3, question.getOptions());
-        pre.setString(4, question.getSolution());
-        pre.setString(5, question.getConcept());
-        pre.setInt(6, question.getMax_score());
-        pre.setInt(7, question.getId());
+        pre.setInt(2, question.getNum());
+        pre.setString(3, question.getType());
+        pre.setString(4, question.getEnonce());
+        pre.setString(5, question.getOptions());
+        pre.setString(6, question.getSolution());
+        pre.setString(7, question.getConcept());
+        pre.setInt(8, question.getMax_score());
+        pre.setInt(9, question.getId());
         pre.executeUpdate();
 
 

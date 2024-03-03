@@ -7,62 +7,51 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="tf_NomMatiere" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ajouterEvaluationController">
-
+<AnchorPane fx:id="tf_NomMatiere" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #3b5998, #1B365D);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ajouterEvaluationController">
    <children>
-      <!-- Logo en haut à gauche -->
-      <ImageView fitHeight="45.0" fitWidth="70.0" layoutX="10.0" layoutY="10.0">
+      <ImageView fitHeight="600" fitWidth="900">
+         <image>
+            <Image url="@images/Background.png" />
+         </image>
+      </ImageView>
+      <Text fill="#150eda" layoutX="214.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre :" />
+      <TextField fx:id="Titre" layoutX="364.0" layoutY="231.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #87CEFA;" />
+      <Text fill="#150eda" layoutX="214.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Limite :" wrappingWidth="112.23958587646484" />
+      <DatePicker fx:id="DateLimite" layoutX="364.0" layoutY="281.0" prefWidth="200.0" />
+      <Text fill="#150eda" layoutX="214.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duree : " wrappingWidth="112.23958587646484" />
+      <Button fx:id="AjouterEvaluation" layoutX="717.0" layoutY="319.0" mnemonicParsing="false" onAction="#AjouterEvaluation" prefHeight="30.0" prefWidth="169.0" style="&#10;         " text="Ajouter Evaluation">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <Button fx:id="Retour" layoutX="9.0" layoutY="319.0" mnemonicParsing="false" onAction="#Retour" prefHeight="30.0" prefWidth="169.0" style="&#10;         " text="Retour">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <ImageView fitHeight="29.0" fitWidth="32.0" layoutX="717.0" layoutY="319.0">
+         <image>
+            <Image url="@images/add.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="7.0" layoutY="320.0">
+         <image>
+            <Image url="@images/back.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="92.0" fitWidth="262.0" layoutX="319.0" layoutY="30.0">
          <image>
             <Image url="@images/1.png" />
          </image>
       </ImageView>
-
-      <!-- Nom de la matière -->
-      <Text layoutX="212.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre : " />
-      <TextField fx:id="Titre" layoutX="190.0" layoutY="85.0" prefWidth="200.0" />
-
-      <!-- Date de début -->
-      <Text layoutX="210.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Limite : " />
-      <DatePicker fx:id="DateLimite" layoutX="190.0" layoutY="152.0" prefWidth="200.0" />
-
-      <!-- Date de fin -->
-      <Text layoutX="209.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Durée :" />
-
-      <!-- Bouton "Ajouter cour" -->
-      <Button fx:id="AjouterEvaluation" layoutX="217.0" layoutY="267.0" mnemonicParsing="false" onAction="#AjouterEvaluation" prefHeight="29.0" prefWidth="134.0" text="Ajouter évaluation">
-         <style>
-            -fx-background-color: #3498db;
-            -fx-text-fill: white;
-         </style>
-         <effect>
-            <DropShadow />
-         </effect>
-         Ajouter cour
-      </Button>
-
-      <!-- Bouton "Retour" -->
-      <Button fx:id="Retour" layoutX="217.0" layoutY="326.0" mnemonicParsing="false" onAction="#Retour" prefHeight="29.0" prefWidth="134.0">
-         <style>
-            -fx-background-color: #3498db;
-            -fx-text-fill: white;
-         </style>
-         <effect>
-            <DropShadow />
-         </effect>
-         Retour
-      </Button>
-      <ImageView fitHeight="29.0" fitWidth="32.0" layoutX="184.0" layoutY="267.0">
-         <image>
-            <Image url="@images/add_icon.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="35.0" fitWidth="32.0" layoutX="184.0" layoutY="323.0">
-         <image>
-            <Image url="@images/back_icon.png" />
-         </image>
-      </ImageView>
-      <TextField fx:id="Duree" layoutX="190.0" layoutY="215.0" prefWidth="200.0" />
+      <Text fill="#150eda" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AJOUTER EVALUATION" textAlignment="CENTER" wrappingWidth="900.0">
+         <font>
+            <Font size="33.0" />
+         </font>
+      </Text>
+      <TextField fx:id="Duree" layoutX="364.0" layoutY="334.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #87CEFA;" />
    </children>
 </AnchorPane>

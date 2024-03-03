@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ModifierUniteController">
-    <children>
-        <!-- Logo -->
-        <ImageView fitHeight="65.0" fitWidth="108.0" layoutX="10.0" layoutY="10.0">
-            <image>
-                <Image url="@images/1.png" />
-            </image>
-        </ImageView>
-
-        <VBox layoutX="108.0" layoutY="84.0" prefHeight="217.0" prefWidth="478.0" spacing="10.0">
-            <children>
-
-                <!-- Titre -->
-                <TextField fx:id="titreField" promptText="Titre" />
-
-                <!-- Statut -->
-                <TextField fx:id="statutField" promptText="Statut" />
-
-                <!-- Contenu -->
-                <TextArea fx:id="contenuField" prefHeight="100.0" promptText="Contenu" />
-
-                <!-- Label pour le cours sélectionné -->
-                <Label fx:id="lblSelectedCour" />
-            </children>
-        </VBox>
-
-        <Text fontSmoothingType="LCD" layoutX="178.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MODIFIER UNITE" wrappingWidth="354.13671875">
-            <font>
-                <Font size="44.0" />
-            </font>
-        </Text>
-
-        <!-- Bouton d'ajout -->
-        <Button fx:id="ModifierUnite" layoutX="457.0" layoutY="337.0" onAction="#ModifierUnite" prefHeight="25.0" prefWidth="138.0" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Modifier" />
-
-        <Button fx:id="Retour" layoutX="125.0" layoutY="337.0" onAction="#Retour" prefHeight="25.0" prefWidth="138.0" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Retour" />
-
-        <!-- Bouton d'ajout de fichiers -->
-        <Button layoutX="457.0" layoutY="299.0" onAction="#importFiles" prefHeight="25.0" prefWidth="138.0" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Importer des fichiers" />
-    </children>
+<AnchorPane prefHeight="400.0" prefWidth="628.0" style="-fx-background-color: linear-gradient(to bottom, #3b5998, #1B365D);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModifierQuestionController">
+   <children>
+      <ImageView fitHeight="600" fitWidth="900">
+         <image>
+            <Image url="@images/Background.png" />
+         </image>
+      </ImageView>
+      <Text fill="#150eda" fontSmoothingType="LCD" layoutX="232.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MODIFIER QUESTION" wrappingWidth="435.7366943359375">
+         <font>
+            <Font size="44.0" />
+         </font>
+      </Text>
+      <Button layoutX="746.0" layoutY="320.0" onAction="#ModifierQuestion" prefHeight="33.0" prefWidth="146.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Modifier" />
+      <Button fx:id="Retour" layoutX="10.0" layoutY="320.0" onAction="#Retour" prefHeight="33.0" prefWidth="146.0" style="-fx-background-color: linear-gradient(to bottom, #FFFFFF, #B2CCFF); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-text-fill: #1B365D; -fx-padding: 8px 16px;" text="Retour" />
+      <ImageView fitHeight="29.0" fitWidth="32.0" layoutX="746.0" layoutY="322.0">
+         <image>
+            <Image url="@images/add.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="14.0" layoutY="322.0">
+         <image>
+            <Image url="@images/back.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="92.0" fitWidth="262.0" layoutX="319.0" layoutY="25.0">
+         <image>
+            <Image url="@images/1.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="tf_enonce" layoutX="192.0" layoutY="239.0" prefHeight="26.0" prefWidth="513.0" />
+      <TextField fx:id="tf_opt1" layoutX="240.0" layoutY="295.0" prefHeight="26.0" prefWidth="310.0" />
+      <TextField fx:id="tf_opt2" layoutX="240.0" layoutY="339.0" prefHeight="26.0" prefWidth="310.0" />
+      <TextField fx:id="tf_opt3" layoutX="240.0" layoutY="382.0" prefHeight="26.0" prefWidth="310.0" />
+      <TextField fx:id="tf_opt4" layoutX="240.0" layoutY="423.0" prefHeight="26.0" prefWidth="310.0" />
+      <CheckBox fx:id="tf_a" layoutX="201.0" layoutY="299.0" mnemonicParsing="false" prefWidth="3.0" text="CheckBox" />
+      <CheckBox fx:id="tf_b" layoutX="201.0" layoutY="343.0" mnemonicParsing="false" prefWidth="3.0" text="CheckBox" />
+      <CheckBox fx:id="tf_c" layoutX="201.0" layoutY="386.0" mnemonicParsing="false" prefWidth="3.0" text="CheckBox" />
+      <CheckBox fx:id="tf_d" layoutX="201.0" layoutY="427.0" mnemonicParsing="false" prefWidth="3.0" text="CheckBox" />
+      <TextField fx:id="tf_concept" layoutX="262.0" layoutY="487.0" prefHeight="26.0" prefWidth="128.0" promptText="concept" />
+      <TextField fx:id="tf_max_score" layoutX="428.0" layoutY="488.0" prefHeight="26.0" prefWidth="70.0" promptText="score max" />
+      <TextField fx:id="tf_num" layoutX="192.0" layoutY="205.0" prefHeight="26.0" prefWidth="70.0" promptText="num question" />
+   </children>
 </AnchorPane>

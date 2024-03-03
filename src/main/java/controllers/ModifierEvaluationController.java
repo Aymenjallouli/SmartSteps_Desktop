@@ -70,6 +70,9 @@ public class ModifierEvaluationController {
 
         ServiceEvaluation st = new ServiceEvaluation();
         try {
+            System.out.println("blablablablablablablablablablablablablablablablabla");
+            System.out.println(currentEvaluation.getId());
+
             st.modifier(currentEvaluation);
         } catch (SQLException e) {
             throw new RuntimeException(e);

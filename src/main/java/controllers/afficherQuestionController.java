@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 public class afficherQuestionController {
 
     @FXML
-    private Button ModifierEvaluation;
+    private Button ModifierQuestion;
 
     @FXML
     private Button Retour;
@@ -144,6 +144,21 @@ public class afficherQuestionController {
 
             Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             currentStage.setScene(new Scene(root));
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }@FXML
+    public void Modifier(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierQuestion.fxml"));
+            Parent root = loader.load();
+
+            Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            currentStage.setScene(new Scene(root));
+            ModifierQuestionController modifierQuestionController = loader.getController();
+
+            modifierQuestionController.setQuestionData(q);
 
         } catch (IOException e) {
             System.out.println(e.getMessage());
