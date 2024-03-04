@@ -5,16 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-<<<<<<< HEAD
-    <artifactId>WorkshopJDB_JavaFX</artifactId>
-    <version>1.0-SNAPSHOT</version>
-
-
-=======
     <artifactId>smartsteps</artifactId>
     <version>1.0-SNAPSHOT</version>
-
->>>>>>> Gestion_Evaluation
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -27,30 +19,22 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
         </dependency>
-<<<<<<< HEAD
-=======
-
->>>>>>> Gestion_Evaluation
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>21.0.2</version>
         </dependency>
-<<<<<<< HEAD
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
             <version>1.6.2</version>
         </dependency>
-=======
->>>>>>> Gestion_Evaluation
 
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>21.0.2</version>
         </dependency>
-<<<<<<< HEAD
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
@@ -95,10 +79,6 @@
             <artifactId>json</artifactId>
             <version>20210307</version>
         </dependency>
-
-    </dependencies>
-
-=======
         <!-- https://mvnrepository.com/artifact/org.eclipse.platform/org.eclipse.jface.notifications -->
         <dependency>
             <groupId>org.eclipse.platform</groupId>
@@ -119,13 +99,17 @@
             <artifactId>pdfbox</artifactId>
             <version>2.0.30</version>
         </dependency>
+            <!-- Other dependencies -->
+        <!-- https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+            <version>5.5.13.3</version>
+        </dependency>
 
 
 
     </dependencies>
-
-
->>>>>>> Gestion_Evaluation
     <build>
         <plugins>
             <plugin>
@@ -138,9 +122,4 @@
             </plugin>
         </plugins>
     </build>
-
-<<<<<<< HEAD
-
-=======
->>>>>>> Gestion_Evaluation
 </project>

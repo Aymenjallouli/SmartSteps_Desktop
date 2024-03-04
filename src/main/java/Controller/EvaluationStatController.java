@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers;
+package Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -44,7 +44,7 @@ public class EvaluationStatController implements Initializable {
     private Statement st;
     private ResultSet rs;
     private Connection cnx;
-    int idd=1;
+    int idd=LoginUserController.IdOfUser;
 
     /**
      * Initializes the controller class.

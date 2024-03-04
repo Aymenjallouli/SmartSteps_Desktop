@@ -1,4 +1,4 @@
-package controllers;
+package Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -57,7 +57,7 @@ public class MainWindowControllerE {
     void Etudiant(ActionEvent event)throws Exception {
         try {
             NotifApi notifApi = new NotifApi();
-            notifApi.scheduleNotification();
+            //notifApi.scheduleNotification();
             Parent root = FXMLLoader.load(getClass().getResource("/AfficherEvaluationEtudiant.fxml"));
             Scene scene = new Scene(root);
 

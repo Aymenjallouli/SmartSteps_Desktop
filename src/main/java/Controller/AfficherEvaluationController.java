@@ -14,29 +14,23 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import services.ServiceEvaluation;
 
-import java.sql.*;
-
-import utils.MyDB;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Comparator;
 import java.util.ResourceBundle;
-import services.PdfApi;
 
-
-public class AfficherEvaluationEtudiantController implements Initializable {
+public class AfficherEvaluationController implements Initializable {
 
     @FXML
     private ListView<Evaluation> listevaluation;
 
     @FXML
-    private Button ModifierEvaluation;
+    private Button Modifier;
 
     @FXML
     private Button Retour;
 
-    @FXML
-    private Button progres;
 
     @FXML
     private Button SupprimerEvaluation;
@@ -45,16 +39,10 @@ public class AfficherEvaluationEtudiantController implements Initializable {
     private TextField searchField;
     @FXML
     private Button AfficherQuestion;
-
     @FXML
-    private Button certificat;
+    private Button AjouterQuestion;
 
     private ObservableList<Evaluation> evaluationList;
-
-    private Connection cnx;
-    int idd=LoginUserController.IdOfUser;
-    private Statement st;
-    private ResultSet rs;
 
 
     @Override
@@ -74,7 +62,21 @@ public class AfficherEvaluationEtudiantController implements Initializable {
         loadEvaluation();
     }
 
+    @FXML
+    void AjouterEvaluation(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/ajouterEvaluation.fxml"));
+            Scene scene = new Scene(root);
 
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
 
     private void loadEvaluation() {
@@ -87,11 +89,52 @@ public class AfficherEvaluationEtudiantController implements Initializable {
         }}
 
 
+    @FXML
+    void SupprimerEvaluation() {
+        Evaluation selectedEvaluation = listevaluation.getSelectionModel().getSelectedItem();
+        if (selectedEvaluation != null) {
+            try {
+                ServiceEvaluation serviceEvaluation = new ServiceEvaluation();
+                serviceEvaluation.supprimer(selectedEvaluation);
+
+                listevaluation.getItems().remove(selectedEvaluation);
+                showAlert(Alert.AlertType.INFORMATION, "Suppression réussie", "L'evaluation a été supprimé avec succès.");
+            } catch (SQLException e) {
+                showAlert(Alert.AlertType.ERROR, "Erreur", "Une erreur s'est produite lors de la suppression de l'evaluation : " + e.getMessage());
+            }
+        } else {
+            showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Veuillez sélectionner une evaluation à supprimer.");
+        }
+    }
+
+    @FXML
+    void ModifierEvaluation() {
+        Evaluation selectedEvaluation = listevaluation.getSelectionModel().getSelectedItem();
+        if (selectedEvaluation != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierEvaluation.fxml"));
+                Parent root = loader.load();
+
+                Scene scene = listevaluation.getScene();
+
+                scene.setRoot(root);
+
+                ModifierEvaluationController modifierEvaluationController = loader.getController();
+
+                modifierEvaluationController.setEvaluationData(selectedEvaluation);
+            } catch (Exception e) {
+                e.printStackTrace();
+                showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible de modifier l'évaluation.");
+            }
+        } else {
+            showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Veuillez sélectionner une évaluation à modifier.");
+        }
+    }
 
     @FXML
     void Retour(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/MenuGestionsEtudiant.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/MenuGestionsProf.fxml"));
             Parent root = loader.load();
 
             Stage newStage = new Stage();
@@ -110,14 +153,14 @@ public class AfficherEvaluationEtudiantController implements Initializable {
 
     @FXML
     void AfficherQuestion() {
-        Evaluation selectedEvaluation = listevaluation.getSelectionModel().getSelectedItem();
+    Evaluation selectedEvaluation = listevaluation.getSelectionModel().getSelectedItem();
         if (selectedEvaluation != null) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherQuestionEtudiant.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherQuestion.fxml"));
                 Parent root = loader.load();
-                AfficherQuestionEtudiantController questionEtudiantController = loader.getController();
-                questionEtudiantController.setSelectedEvaluation(selectedEvaluation);
-                questionEtudiantController.shit();
+                afficherQuestionController questionController = loader.getController();
+                questionController.setSelectedEvaluation(selectedEvaluation);
+                questionController.shit();
                 Stage currentStage = (Stage) listevaluation.getScene().getWindow();
                 currentStage.setScene(new Scene(root));
 
@@ -127,6 +170,26 @@ public class AfficherEvaluationEtudiantController implements Initializable {
             }
         } else {
             showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Veuillez sélectionner une evaluation pour afficher les questions.");
+        }
+    }
+    @FXML
+    void AjouterQuestion() {
+    Evaluation selectedEvaluation = listevaluation.getSelectionModel().getSelectedItem();
+        if (selectedEvaluation != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterQuestion.fxml"));
+                Parent root = loader.load();
+                AjouterQuestionController ajouterQuestionController = loader.getController();
+                ajouterQuestionController.setSelectedEvaluation(selectedEvaluation);
+                Stage currentStage = (Stage) listevaluation.getScene().getWindow();
+                currentStage.setScene(new Scene(root));
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible d'afficher les questions.");
+            }
+        } else {
+            showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Veuillez sélectionner une evaluation pour ajouter une question.");
         }
     }
     @FXML
@@ -148,51 +211,6 @@ public class AfficherEvaluationEtudiantController implements Initializable {
         listevaluation.setItems(filteredList);
     }
 
-
-    @FXML
-    void evalStat(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/EvalStat.fxml"));
-            Parent root = loader.load();
-            Stage currentStage = (Stage) listevaluation.getScene().getWindow();
-            currentStage.setScene(new Scene(root));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            showAlert(Alert.AlertType.ERROR, "Erreur", "Impossible d'afficher votre progrès.");
-        }
-    }
-
-
-
-    @FXML
-    void imprimerCertif(ActionEvent event) {
-        cnx = MyDB.getInstance().getConnection();
-        try{String query = "SELECT note FROM note WHERE id_etudiant = ?";
-        PreparedStatement PreparedStatement = cnx.prepareStatement(query);
-        PreparedStatement.setInt(1, idd);
-        rs = PreparedStatement.executeQuery();
-            int i=0;
-            int total = 0;
-            while (rs.next()) {
-                int result = rs.getInt("note");
-                total +=result;
-                i++;
-            }
-            total = (int) ((double) total / i);
-            if(total>=70){
-                PdfApi pdfApi = new PdfApi();
-                pdfApi.certif("mohamed", String.valueOf(total));
-            }
-            else{
-                showAlert(Alert.AlertType.INFORMATION, "", "Completez vos évaluations pour obtenir un certificat");
-
-            }
-
-        }catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
     private void showAlert(Alert.AlertType type, String title, String contentText) {
         showAlert(type, title, null, contentText);
     }

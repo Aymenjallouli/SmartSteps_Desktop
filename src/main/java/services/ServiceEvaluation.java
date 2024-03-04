@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServiceEvaluation implements IService<Evaluation> {
+public class ServiceEvaluation implements IServiceE<Evaluation> {
 
     private Connection con;
 

@@ -8,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Objects;
 import java.util.logging.Level;
@@ -20,7 +19,20 @@ public class MenuGestionsProfController {
 
     @FXML
     private Button rec1;
-    public void Evaluation(ActionEvent actionEvent) {
+    @FXML
+     void Evaluation(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficherEvaluation.fxml"));
+            Scene scene = new Scene(root);
+
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void Forum(ActionEvent actionEvent) {

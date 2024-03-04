@@ -1,4 +1,5 @@
 package services;
+import Controller.LoginUserController;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import entities.Evaluation;
@@ -17,9 +18,8 @@ import org.controlsfx.control.* ;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 public class NotifApi {
-    private int id_etudiant=1;
     private List<Evaluation> evaluations = new ArrayList<>();
-    public void scheduleNotification() {
+    public void scheduleNotification(int id_etudiant) {
         ServiceNote serviceNote = new ServiceNote();
         List<Integer> ids = new ArrayList<>();
         try{ ids = serviceNote.getIdEval(id_etudiant);}

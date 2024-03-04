@@ -1,4 +1,4 @@
-package controllers;
+package Controller;
 //import com.sun.prism.impl.QueuedPixelSource;
 import entities.Evaluation;
 import entities.Question;
@@ -87,7 +87,7 @@ public class AfficherQuestionEtudiantController {
     @FXML
     private ImageView previous;
     Evaluation selectedEvaluation;
-    int id_etudiant=1;
+    int id_etudiant=LoginUserController.IdOfUser;
     Note note;
     int num=1;
     Question q;

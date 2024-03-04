@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServiceNote implements IService<Note> {
+public class ServiceNote implements IServiceE<Note> {
 
     private Connection con;
 

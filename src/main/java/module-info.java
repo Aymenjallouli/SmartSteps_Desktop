@@ -13,6 +13,8 @@ requires javafx.controls;
     requires jbcrypt;
     requires java.mail;
     requires itextpdf;
+    requires org.controlsfx.controls;
+    requires org.apache.pdfbox;
 
 
     opens test to javafx.fxml;

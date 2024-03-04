@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import services.NotifApi;
 
 import java.io.IOException;
 import java.net.URI;
@@ -75,6 +76,20 @@ public class MenuGestionsEtudiantController {
 
 
 public void Evaluation(ActionEvent actionEvent) {
+    try {
+        NotifApi notifApi = new NotifApi();
+        notifApi.scheduleNotification(LoginUserController.IdOfUser);
+        Parent root = FXMLLoader.load(getClass().getResource("/AfficherEvaluationEtudiant.fxml"));
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+        stage.setScene(scene);
+        stage.show();
+
+    } catch (IOException e) {
+        System.out.println(e.getMessage());
+    }
     }
 
     public void Forum(ActionEvent actionEvent) {
