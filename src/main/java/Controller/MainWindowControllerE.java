@@ -1,4 +1,4 @@
-package Controller;
+package controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,7 +13,7 @@ import services.NotifApi;
 import java.io.IOException;
 
 
-public class MainWindowController {
+public class MainWindowControllerE {
 
     @FXML
     private Button Retour;
